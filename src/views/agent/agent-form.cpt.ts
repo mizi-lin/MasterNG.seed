@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Agent} from './agent';
 import {AgentServ} from './agent.serv';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,7 +7,7 @@ declare var console: any;
 declare var mu: any;
 
 @Component({
-    selector: 'inmain.agent-form',
+    selector: 'agent-form',
     templateUrl: 'views/agent/agent-form.html'
 })
 
@@ -15,6 +15,8 @@ export class AgentFormCpt implements OnInit {
     agent: Agent = new Agent;
     fm: Agent = new Agent;
     sub: any;
+
+    @Input() m: string;
 
     constructor(private agentServ: AgentServ,
                 private route: ActivatedRoute,
@@ -32,15 +34,18 @@ export class AgentFormCpt implements OnInit {
     }
 
     ngOnInit() {
+
         // 获得上级router 参数多艰难呀`~~
         let agencyId: number = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
-        this.sub = this.agentServ.getAgent(agencyId).subscribe((res)=> {
-            this.agent = res.data;
-            this.fm = mu.clone(res.data);
-        });
+        if(agencyId){
+            this.sub = this.agentServ.getAgent(agencyId).subscribe((res)=> {
+                this.agent = res.data;
+                this.fm = mu.clone(res.data);
+            });
+        }
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        this.sub && this.sub.unsubscribe();
     }
 }

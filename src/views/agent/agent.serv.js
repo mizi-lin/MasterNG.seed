@@ -16,6 +16,12 @@ var AgentServ = (function () {
     function AgentServ(httpClient, router) {
         this.httpClient = httpClient;
         this.router = router;
+        this.setAg = function (agent) {
+            this.ag = new Promise(function (resolve) { return resolve(agent); });
+        };
+        this.getAg = function () {
+            return this.ag;
+        };
     }
     AgentServ.prototype.getAgents = function () {
         return this.httpClient.get(const_1.API.AGENCY);

@@ -30,17 +30,23 @@ var AgentFormCpt = (function () {
     AgentFormCpt.prototype.ngOnInit = function () {
         var _this = this;
         var agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
-        this.sub = this.agentServ.getAgent(agencyId).subscribe(function (res) {
-            _this.agent = res.data;
-            _this.fm = mu.clone(res.data);
-        });
+        if (agencyId) {
+            this.sub = this.agentServ.getAgent(agencyId).subscribe(function (res) {
+                _this.agent = res.data;
+                _this.fm = mu.clone(res.data);
+            });
+        }
     };
     AgentFormCpt.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
+        this.sub && this.sub.unsubscribe();
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], AgentFormCpt.prototype, "m", void 0);
     AgentFormCpt = __decorate([
         core_1.Component({
-            selector: 'inmain.agent-form',
+            selector: 'agent-form',
             templateUrl: 'views/agent/agent-form.html'
         }), 
         __metadata('design:paramtypes', [agent_serv_1.AgentServ, router_1.ActivatedRoute, router_1.Router])

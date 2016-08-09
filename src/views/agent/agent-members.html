@@ -23,8 +23,10 @@
                     {{member.name}}
                 </td>
                 <td>{{member.email}}</td>
-                <td>{{member.createTime}}</td>
-                <td></td>
+                <td>{{member.createTime | date: 'yyyy-MM-dd HH:mm'}}</td>
+                <td>
+                    <button class="btn" (click)="disabled()">禁用</button>
+                </td>
             </tr>
         </tbody>
 

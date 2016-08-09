@@ -33,6 +33,8 @@ export class HttpClient {
                 }) || '';
         });
 
+        url = url.replace(/\/$/, '');
+
         let searchParams: URLSearchParams = new URLSearchParams();
 
         mu.run(sp, (p)=> {
@@ -48,7 +50,6 @@ export class HttpClient {
     }
 
     get(url: string, search?: any, options?: any) {
-
 
         let headers = new Headers();
         let rest = this.restful(url, search);
@@ -94,7 +95,7 @@ export class HttpClient {
             search: rest.searchParams
         }, options || {});
 
-        return this.http.post(url, data, options).map(this.resbody);
+        return this.http.post(restdata.url, data, options).map(this.resbody);
     }
 
     patch(url: string, search?: any, data?: any, options?: any) {

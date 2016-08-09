@@ -22,6 +22,7 @@ var AgentDetailCpt = (function () {
             var agencyId = +params['agencyId'];
             _this.agentServ.getAgent(agencyId).subscribe(function (res) {
                 _this.agent = res.data;
+                _this.agentServ.setAg(res.data);
             });
         });
     };
