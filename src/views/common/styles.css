@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box; }
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+  ul.inline {
+    font-size: 0; }
+    ul.inline li {
+      display: inline-block;
+      font-size: 14px; }
+
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
+
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #eaeaea; }
+  .btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer; }
+
+input[type='text'],
+input[type='password'] {
+  padding: 0 0 0 5px;
+  margin: 0;
+  height: 32px;
+  width: 150px;
+  border: 1px solid #eaeaea;
+  outline: none;
+  line-height: 32px;
+  color: #666; }
+  input[type='text'].auto,
+  input[type='password'].auto {
+    width: auto; }
+  input[type='text'].large,
+  input[type='password'].large {
+    width: 250px; }
+
+.form > .item {
+  min-height: 52px; }
+  .form > .item label {
+    display: inline-block;
+    width: 100px; }
+    .form > .item label::after {
+      content: ': '; }
+    .form > .item label::before {
+      content: '*';
+      color: #fff; }
+    .form > .item label.required::before {
+      content: '*';
+      color: #f00; }
+
+#wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  min-width: 1240px;
+  overflow-y: auto;
+  background: #f6f6f6;
+  color: #666;
+  font-size: 14px; }
+  #wrapper a {
+    text-decoration: none;
+    color: #666; }
+  #wrapper fe {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%; }
+    #wrapper fe.login .main {
+      display: block;
+      margin: 200px auto;
+      padding: 30px;
+      width: 360px;
+      height: 200px;
+      background: #fff;
+      border: 1px solid #eaeaea; }
+      #wrapper fe.login .main input {
+        width: 300px;
+        height: 42px;
+        font-size: 16px;
+        line-height: 42px; }
+  #wrapper > .content {
+    width: 100%;
+    height: 100%; }
+    #wrapper > .content > layout {
+      display: block;
+      width: 100%;
+      height: 100%; }
+      #wrapper > .content > layout header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 46px;
+        background: #343f45; }
+        #wrapper > .content > layout header .logo,
+        #wrapper > .content > layout header .nav,
+        #wrapper > .content > layout header .bar {
+          position: absolute;
+          top: 0;
+          bottom: 2px; }
+          #wrapper > .content > layout header .logo > li,
+          #wrapper > .content > layout header .nav > li,
+          #wrapper > .content > layout header .bar > li {
+            line-height: 44px;
+            color: #fff; }
+            #wrapper > .content > layout header .logo > li > a,
+            #wrapper > .content > layout header .nav > li > a,
+            #wrapper > .content > layout header .bar > li > a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              color: #ddd; }
+        #wrapper > .content > layout header .logo {
+          left: 0;
+          width: 160px;
+          line-height: 46px;
+          text-align: center;
+          font-size: 0;
+          background: url("http://www.youce.io/images/logo.png") no-repeat 20px center;
+          background-size: 50%; }
+        #wrapper > .content > layout header .nav {
+          left: 160px; }
+          #wrapper > .content > layout header .nav > li {
+            display: inline-block; }
+            #wrapper > .content > layout header .nav > li > a {
+              padding: 0 15px; }
+            #wrapper > .content > layout header .nav > li.active, #wrapper > .content > layout header .nav > li:hover {
+              background: rgba(0, 0, 0, 0.3);
+              color: #09bcbd;
+              cursor: pointer;
+              border-bottom: 2px solid #09bcbd; }
+        #wrapper > .content > layout header .bar {
+          right: 10px;
+          bottom: 0; }
+      #wrapper > .content > layout main {
+        position: absolute;
+        top: 46px;
+        right: 0;
+        bottom: 0;
+        left: 0; }
+      #wrapper > .content > layout page {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%; }
+        #wrapper > .content > layout page .title-bar {
+          position: relative;
+          padding-left: 20px;
+          height: 46px;
+          background: #fff;
+          border-bottom: 1px solid #eaeaea; }
+          #wrapper > .content > layout page .title-bar h5 {
+            display: inline-block;
+            font-size: 17px;
+            font-weight: 200;
+            line-height: 46px; }
+            #wrapper > .content > layout page .title-bar h5 + .actions {
+              border-left: 1px solid #eaeaea; }
+          #wrapper > .content > layout page .title-bar .actions {
+            position: absolute;
+            right: 20px;
+            top: 0;
+            bottom: 0;
+            padding-left: 20px; }
+            #wrapper > .content > layout page .title-bar .actions::before {
+              content: '';
+              display: inline-block;
+              width: 0;
+              height: 100%;
+              font-size: 0;
+              vertical-align: middle; }
+        #wrapper > .content > layout page > .main {
+          margin: 20px;
+          padding: 20px;
+          min-height: 100px;
+          background: #fff;
+          border: 1px solid #eaeaea;
+          box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1); }
+        #wrapper > .content > layout page > .main-sidebar {
+          position: relative;
+          height: 100%; }
+          #wrapper > .content > layout page > .main-sidebar > .sidebar {
+            padding-top: 20px;
+            width: 160px;
+            height: 100%;
+            background: #fff;
+            border-right: 1px solid #eaeaea; }
+            #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li {
+              position: relative;
+              padding-left: 20px;
+              height: 52px;
+              line-height: 52px;
+              color: #999; }
+              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover {
+                background: #f0fbfc;
+                cursor: pointer; }
+                #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active > a, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover > a {
+                  color: #14bbbc; }
+                #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active::after, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover::after {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  left: 100%;
+                  border-right: 2px solid #09bcbd;
+                  z-index: 1000; }
+              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li > a {
+                display: block;
+                width: 100%;
+                height: 100%; }
+              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li + li {
+                margin-top: 1px; }
+          #wrapper > .content > layout page > .main-sidebar > .main {
+            position: absolute;
+            left: 160px;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 20px;
+            background: #fff; }
+      #wrapper > .content > layout .table {
+        width: 100%;
+        max-width: 100%;
+        border: 0;
+        border-spacing: 0;
+        border-collapse: collapse; }
+        #wrapper > .content > layout .table th, #wrapper > .content > layout .table td {
+          text-align: left;
+          padding-left: 10px;
+          height: 36px; }
+        #wrapper > .content > layout .table th {
+          font-weight: 200;
+          font-size: 15px;
+          background: #f3f3f3;
+          color: #666; }
+        #wrapper > .content > layout .table td {
+          border-top: 1px solid #eaeaea;
+          font-size: 14px; }
+        #wrapper > .content > layout .table.hover > tbody > tr:hover {
+          background: #f8f8f8; }
+
+/*# sourceMappingURL=styles.css.map */
