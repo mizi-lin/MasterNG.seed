@@ -15,6 +15,7 @@ export class AgentDetailCpt implements OnInit, OnDestroy {
     agent: Agent;
     paramsSub: any;
 
+
     constructor(private agentServ: AgentServ,
                 private route: ActivatedRoute) {
     }
@@ -22,9 +23,12 @@ export class AgentDetailCpt implements OnInit, OnDestroy {
     ngOnInit() {
         this.paramsSub = this.route.params.subscribe(params => {
             let agencyId: number = +params['agencyId'];
+
             this.agentServ.getAgent(agencyId).subscribe((res)=> {
                 this.agent = res.data;
+                this.agentServ.setAg(res.data);
             });
+
         });
     }
 

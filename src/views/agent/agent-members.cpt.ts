@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AgentServ} from './agent.serv';
 import {Admin} from '../admin/admin';
 
+declare var console: any;
+
 @Component({
     selector: 'inmain.agent-member',
     templateUrl: 'views/agent/agent-members.html'
@@ -11,6 +13,7 @@ import {Admin} from '../admin/admin';
 export class AgentMembersCpt {
     private sub: any;
     private members: Admin[];
+    private agencyId: number;
 
     constructor(private agentServ: AgentServ,
                 private route: ActivatedRoute,
@@ -19,10 +22,13 @@ export class AgentMembersCpt {
 
     ngOnInit() {
         // 获得上级router 参数多艰难呀`~~
-        let agencyId: number = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
-        this.sub = this.agentServ.getAgentMember(agencyId).subscribe((res)=> {
+        this.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.sub = this.agentServ.getAgentMember(this.agencyId).subscribe((res)=> {
             this.members = res.data;
         });
+    }
+
+    disabled() {
     }
 
     ngOnDestroy() {

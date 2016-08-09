@@ -32,6 +32,7 @@ var HttpClient = (function () {
                 return v;
             }) || '';
         });
+        url = url.replace(/\/$/, '');
         var searchParams = new http_1.URLSearchParams();
         mu.run(sp, function (p) {
             mu.each(p, function (v, k) { return searchParams.set(k, v); });
@@ -79,7 +80,7 @@ var HttpClient = (function () {
             headers: headers,
             search: rest.searchParams
         }, options || {});
-        return this.http.post(url, data, options).map(this.resbody);
+        return this.http.post(restdata.url, data, options).map(this.resbody);
     };
     HttpClient.prototype.patch = function (url, search, data, options) {
         switch (arguments.length) {

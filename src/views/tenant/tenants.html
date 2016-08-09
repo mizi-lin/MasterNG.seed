@@ -1,4 +1,36 @@
+<div class="title-bar">
+    <h5>租户管理</h5>
+    <div class="actions">
+        <div class="btn">添加租户</div>
+    </div>
+</div>
 
-<main>
-    Tenants
-</main>
+<div class="main">
+
+    <table class="table hover">
+
+        <thead>
+            <tr>
+                <th>租户名称</th>
+                <th>公司名称</th>
+                <th>创建用户</th>
+                <th>用户所属组织</th>
+                <th>活动数</th>
+                <th>余额</th>
+                <th>信用额度</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let tenant of tenants">
+                <td>
+                    <a [routerLink]="['/tenants', tenant.tenantId]">{{tenant.name}}</a>
+                </td>
+                <td>{{tenant.companyName}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

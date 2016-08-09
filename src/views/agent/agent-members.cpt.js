@@ -19,10 +19,12 @@ var AgentMembersCpt = (function () {
     }
     AgentMembersCpt.prototype.ngOnInit = function () {
         var _this = this;
-        var agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
-        this.sub = this.agentServ.getAgentMember(agencyId).subscribe(function (res) {
+        this.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.sub = this.agentServ.getAgentMember(this.agencyId).subscribe(function (res) {
             _this.members = res.data;
         });
+    };
+    AgentMembersCpt.prototype.disabled = function () {
     };
     AgentMembersCpt.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();

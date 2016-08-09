@@ -10,9 +10,18 @@ import {Admin} from '../admin/admin';
 
 @Injectable()
 export class AgentServ {
+    ag: Observable<Agent>;
 
     constructor(private httpClient: HttpClient, private router: Router) {
     }
+
+    setAg = function(agent: Agent){
+        this.ag = new Promise<Agent>((resolve)=>resolve(agent));
+    };
+
+    getAg = function(){
+        return this.ag;
+    };
 
     /**
      * 获得代理列表
@@ -53,6 +62,11 @@ export class AgentServ {
         });
     }
 
+    /**
+     * 创建管理员
+     * @param admin
+     * @returns {Observable<R>}
+     */
     saveAdmin(admin: Admin) {
         return this.httpClient.post(API.ADMIN, admin);
     }
