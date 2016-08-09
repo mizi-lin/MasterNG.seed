@@ -1,0 +1,29 @@
+{
+  "name": "mujs",
+  "version": "1.7.9",
+  "authors": [
+    "Mizi <mizi.lin@hunteron.com>"
+  ],
+  "description": "Mizi uitls by js",
+  "main": "app/index.html",
+  "keywords": [
+    "mu",
+    "utils"
+  ],
+  "dependencies": {
+  },
+  "license": "MIT",
+  "homepage": "www.mizi.club",
+  
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+
+  }
+}
