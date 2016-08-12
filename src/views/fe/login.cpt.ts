@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {LoginServ} from './login.serv';
 import {Router} from '@angular/router';
 
-import {HEADER_TOKEN} from '../const';
+import {HEADER_TOKEN} from '../common/const';
+import {GLOBAL} from '../common/global';
 
 declare var mu: any;
 
@@ -19,14 +20,19 @@ export class LoginCpt {
         'password': 'admaster12345'
     };
 
-    constructor(private loginServ: LoginServ, private router: Router) {
+    constructor(private loginServ: LoginServ,
+                private G: GLOBAL,
+                private router: Router) {
     }
 
     save = function (myForm) {
         mu.storage(HEADER_TOKEN, '');
-        this.loginServ.login(this.fm).subscribe((data)=> {
+        this.loginServ.login(this.fm).subscribe((res)=> {
+            let data = res.data;
             mu.storage(HEADER_TOKEN, data.token);
-            this.router.navigate(['/agents']);
+            mu.storage('CURRENT', data);
+            this.G.setCurrent(data);
+            this.router.navigate(['/tenants']);
         });
     };
 

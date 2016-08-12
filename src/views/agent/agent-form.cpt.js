@@ -24,9 +24,6 @@ var AgentFormCpt = (function () {
         this.sub = this.agentServ.saveAgent(this.fm).subscribe(function (res) {
         });
     };
-    AgentFormCpt.prototype.cancel = function () {
-        this.fm = mu.clone(this.agent);
-    };
     AgentFormCpt.prototype.ngOnInit = function () {
         var _this = this;
         var agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
@@ -40,10 +37,6 @@ var AgentFormCpt = (function () {
     AgentFormCpt.prototype.ngOnDestroy = function () {
         this.sub && this.sub.unsubscribe();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], AgentFormCpt.prototype, "m", void 0);
     AgentFormCpt = __decorate([
         core_1.Component({
             selector: 'agent-form',

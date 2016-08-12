@@ -1,0 +1,21 @@
+<div class="title-bar">
+    <h5>{{admin?.name}}</h5>
+</div>
+
+<div class="main-sidebar">
+    <div class="sidebar">
+        <ol>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['./']">基本信息</a>
+            </li>
+
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['./modifypwd']">修改密码</a>
+            </li>
+        </ol>
+    </div>
+
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>

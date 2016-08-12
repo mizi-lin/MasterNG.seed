@@ -1,0 +1,33 @@
+
+<form class="form" #myForm="ngForm" (ngSubmit)="save(myForm)"  autocomplete="off" novalidate>
+
+    <div class="item">
+        <label class="required">账户名称</label>
+        <input type="text" name="name"
+               [(ngModel)]="fm.name"
+               required />
+    </div>
+
+    <div class="item">
+        <label>账户类型</label>
+        <span>{{admin?.anencyId ? '代理' : '管理员'}}</span>
+    </div>
+
+    <div class="item">
+        <label>公司名称</label>
+        <span>{{admin?.companyName || '-'}}</span>
+    </div>
+
+    <div class="item">
+        <label class="required">Email</label>
+        <input type="text" name="email"
+               [(ngModel)]="fm.email"
+               required />
+    </div>
+
+    <div class="actions">
+        <button type="submit" class="btn">保存</button>
+        <button class="btn" type="button" [routerLink]="['../']">取消</button>
+    </div>
+
+</form>

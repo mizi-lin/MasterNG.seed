@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {CONFIG} from '../common/const';
+import {GLOBAL} from '../common/global';
+
+declare var mu: any, console: any;
 
 @Component({
     selector: 'header',
@@ -7,5 +11,21 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
     directives: [ROUTER_DIRECTIVES]
 })
 
-export class Header {
+export class Header implements OnInit {
+    constructor(private router: Router, private G: GLOBAL) {
+        console.debug('oOooooOOOoooOOOoo')
+    }
+
+    // current: any;
+
+    ngOnInit(): void {
+        // this.current = this.G.current;
+        // console.debug(this.current);
+    }
+
+    logout(): void {
+        mu.storage(CONFIG.HEADER_TOKEN, '');
+        this.router.navigate(['/login']);
+    }
+
 }

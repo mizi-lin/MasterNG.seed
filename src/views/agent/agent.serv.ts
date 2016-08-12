@@ -2,26 +2,17 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 
-import {HttpClient} from '../http-client';
+import {HttpClient} from '../common/http-client';
 import {Agent} from './agent';
 
-import {API} from '../const';
-import {Admin} from '../admin/admin';
+import {API} from '../common/const';
+import {Admin} from '../admin/admin.model';
 
 @Injectable()
 export class AgentServ {
-    ag: Observable<Agent>;
 
     constructor(private httpClient: HttpClient, private router: Router) {
     }
-
-    setAg = function(agent: Agent){
-        this.ag = new Promise<Agent>((resolve)=>resolve(agent));
-    };
-
-    getAg = function(){
-        return this.ag;
-    };
 
     /**
      * 获得代理列表
@@ -68,6 +59,6 @@ export class AgentServ {
      * @returns {Observable<R>}
      */
     saveAdmin(admin: Admin) {
-        return this.httpClient.post(API.ADMIN, admin);
+        return this.httpClient.post(API.ADMINS, admin);
     }
 }

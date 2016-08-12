@@ -1,14 +1,12 @@
 <div class="title-bar">
     <h5>租户管理</h5>
     <div class="actions">
-        <div class="btn">添加租户</div>
+        <div class="btn" [routerLink]="['./create']">添加租户</div>
     </div>
 </div>
 
 <div class="main">
-
     <table class="table hover">
-
         <thead>
             <tr>
                 <th>租户名称</th>
@@ -25,12 +23,17 @@
         <tbody>
             <tr *ngFor="let tenant of tenants">
                 <td>
-                    <a [routerLink]="['/tenants', tenant.tenantId]">{{tenant.name}}</a>
+                    <a [routerLink]="['/tenants', tenant.tenantId]">{{tenant.tenantName}}</a>
                 </td>
                 <td>{{tenant.companyName}}</td>
+                <td></td>
+                <td>{{tenant.agencyId ? '代理' : '管理员'}}</td>
+                <td>{{tenant.activityNum}}</td>
+                <td>{{tenant.balance}}</td>
+                <td>{{tenant.credit}}</td>
+                <td></td>
             </tr>
         </tbody>
-
     </table>
-
 </div>
+

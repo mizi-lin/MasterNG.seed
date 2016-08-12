@@ -11,13 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var agent_serv_1 = require('./agent.serv');
-var admin_1 = require('../admin/admin');
+var admin_model_1 = require('../admin/admin.model');
 var AgentMemberFormCpt = (function () {
     function AgentMemberFormCpt(agentServ, route, router) {
         this.agentServ = agentServ;
         this.route = route;
         this.router = router;
-        this.fm = new admin_1.Admin;
+        this.fm = new admin_model_1.Admin;
     }
     AgentMemberFormCpt.prototype.save = function (myForm) {
         this.agentServ.saveAdmin(this.fm).subscribe();

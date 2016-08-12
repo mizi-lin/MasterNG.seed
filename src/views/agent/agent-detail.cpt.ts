@@ -13,7 +13,7 @@ import {Agent} from './agent';
 export class AgentDetailCpt implements OnInit, OnDestroy {
 
     agent: Agent;
-    paramsSub: any;
+    sub: any;
 
 
     constructor(private agentServ: AgentServ,
@@ -21,18 +21,17 @@ export class AgentDetailCpt implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.paramsSub = this.route.params.subscribe(params => {
+        this.sub = this.route.params.subscribe(params => {
             let agencyId: number = +params['agencyId'];
 
             this.agentServ.getAgent(agencyId).subscribe((res)=> {
                 this.agent = res.data;
-                this.agentServ.setAg(res.data);
             });
 
         });
     }
 
     ngOnDestroy() {
-        this.paramsSub.unsubscribe();
+        this.sub.unsubscribe();
     }
 }

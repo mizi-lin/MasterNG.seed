@@ -1,0 +1,29 @@
+
+<form class="form" #myForm="ngForm" (ngSubmit)="save(myForm)"  autocomplete="off" novalidate>
+
+    <div class="item">
+        <label class="required">用户名</label>
+        <input type="text" name="name"
+               [(ngModel)]="fm.name"
+               required />
+    </div>
+
+    <div class="item">
+        <label class="required">邮箱</label>
+        <input type="text" name="email"
+               [(ngModel)]="fm.email"
+               required />
+    </div>
+
+    <div class="item">
+        <label class="required">用户权限</label>
+        <select [(ngModel)]="fm.root" name="root">
+            <option *ngFor="let root of roots" [value]="root.val">{{root.title}}</option>
+        </select>
+    </div>
+
+    <div class="actions">
+        <button type="submit" class="btn">保存</button>
+    </div>
+
+</form>

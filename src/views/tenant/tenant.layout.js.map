@@ -1,0 +1,1 @@
+{"version":3,"file":"tenant.layout.js","sourceRoot":"","sources":["tenant.layout.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAE1C,uBAAuB,WAAW,CAAC,CAAA;AAQnC;IAAA;IACA,CAAC;IAPD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,QAAQ;YAClB,WAAW,EAAE,iCAAiC;YAC9C,UAAU,EAAE,CAAC,eAAM,CAAC;SACvB,CAAC;;uBAAA;IAGF,sBAAC;AAAD,CAAC,AADD,IACC;AADY,uBAAe,kBAC3B,CAAA"}

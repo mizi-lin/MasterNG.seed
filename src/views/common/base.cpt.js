@@ -1,0 +1,13 @@
+"use strict";
+var BaseCpt = (function () {
+    function BaseCpt(router) {
+        this.router = router;
+    }
+    BaseCpt.prototype.goback = function () {
+        console.debug(1);
+        this.router.navigate(['../']);
+    };
+    return BaseCpt;
+}());
+exports.BaseCpt = BaseCpt;
+//# sourceMappingURL=base.cpt.js.map

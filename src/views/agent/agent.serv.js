@@ -10,18 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var http_client_1 = require('../http-client');
-var const_1 = require('../const');
+var http_client_1 = require('../common/http-client');
+var const_1 = require('../common/const');
 var AgentServ = (function () {
     function AgentServ(httpClient, router) {
         this.httpClient = httpClient;
         this.router = router;
-        this.setAg = function (agent) {
-            this.ag = new Promise(function (resolve) { return resolve(agent); });
-        };
-        this.getAg = function () {
-            return this.ag;
-        };
     }
     AgentServ.prototype.getAgents = function () {
         return this.httpClient.get(const_1.API.AGENCY);
@@ -40,7 +34,7 @@ var AgentServ = (function () {
         });
     };
     AgentServ.prototype.saveAdmin = function (admin) {
-        return this.httpClient.post(const_1.API.ADMIN, admin);
+        return this.httpClient.post(const_1.API.ADMINS, admin);
     };
     AgentServ = __decorate([
         core_1.Injectable(), 
