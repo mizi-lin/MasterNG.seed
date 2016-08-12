@@ -10,7 +10,7 @@ import {
 
 import {AgentMemberFormCpt} from './agent-member-form.cpt';
 
-import {AuthGuide} from '../auth-guide';
+import {AuthGuide} from '../common/auth-guide';
 import {AgentCreateCpt} from './agent-create.cpt';
 
 /**
@@ -28,7 +28,7 @@ export const agentDetailRouter: RouterConfig = [
 export const agentsRouter: RouterConfig = [
     {path: '', component: AgentsCpt, canActivate: [AuthGuide]},
     {path: 'create', component: AgentCreateCpt, canActivate: [AuthGuide]},
-    {path: ':agencyId', component: AgentDetailCpt, children: [...agentDetailRouter]}
+    {path: ':agencyId', component: AgentDetailCpt, canActivate: [AuthGuide], children: [...agentDetailRouter]}
 ];
 
 /**

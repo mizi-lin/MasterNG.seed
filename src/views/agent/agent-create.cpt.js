@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var agent_form_cpt_1 = require('./agent-form.cpt');
 var agent_serv_1 = require('./agent.serv');
+var router_1 = require('@angular/router');
 var AgentCreateCpt = (function () {
-    function AgentCreateCpt() {
+    function AgentCreateCpt(router) {
+        this.router = router;
     }
     AgentCreateCpt = __decorate([
         core_1.Component({
@@ -21,7 +23,7 @@ var AgentCreateCpt = (function () {
             directives: [agent_form_cpt_1.AgentFormCpt],
             providers: [agent_serv_1.AgentServ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AgentCreateCpt);
     return AgentCreateCpt;
 }());

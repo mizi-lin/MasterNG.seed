@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var http_client_1 = require('../common/http-client');
 var API_LOGIN = '/services/admin/login';
 var LoginServ = (function () {
-    function LoginServ(http) {
-        this.http = http;
+    function LoginServ(httpClient) {
+        this.httpClient = httpClient;
     }
     LoginServ.prototype.login = function (fm) {
-        return this.http.post(API_LOGIN, fm)
-            .map(this.extractData);
-    };
-    LoginServ.prototype.extractData = function (res) {
-        var body = res.json();
-        return body.data || {};
+        return this.httpClient.post(API_LOGIN, fm);
     };
     LoginServ = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_client_1.HttpClient])
     ], LoginServ);
     return LoginServ;
 }());

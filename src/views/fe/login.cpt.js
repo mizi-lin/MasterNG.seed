@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var login_serv_1 = require('./login.serv');
 var router_1 = require('@angular/router');
-var const_1 = require('../const');
+var const_1 = require('../common/const');
+var global_1 = require('../common/global');
 var LoginCpt = (function () {
-    function LoginCpt(loginServ, router) {
+    function LoginCpt(loginServ, G, router) {
         this.loginServ = loginServ;
+        this.G = G;
         this.router = router;
         this.fm = {
             'email': 'youce-service@admaster.com.cn',
@@ -23,9 +25,12 @@ var LoginCpt = (function () {
         this.save = function (myForm) {
             var _this = this;
             mu.storage(const_1.HEADER_TOKEN, '');
-            this.loginServ.login(this.fm).subscribe(function (data) {
+            this.loginServ.login(this.fm).subscribe(function (res) {
+                var data = res.data;
                 mu.storage(const_1.HEADER_TOKEN, data.token);
-                _this.router.navigate(['/agents']);
+                mu.storage('CURRENT', data);
+                _this.G.setCurrent(data);
+                _this.router.navigate(['/tenants']);
             });
         };
     }
@@ -35,7 +40,7 @@ var LoginCpt = (function () {
             templateUrl: 'views/fe/login.html',
             providers: [login_serv_1.LoginServ]
         }), 
-        __metadata('design:paramtypes', [login_serv_1.LoginServ, router_1.Router])
+        __metadata('design:paramtypes', [login_serv_1.LoginServ, global_1.GLOBAL, router_1.Router])
     ], LoginCpt);
     return LoginCpt;
 }());

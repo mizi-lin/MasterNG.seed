@@ -9,16 +9,18 @@ import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // import { PROJECTS_PROVIDERS } from './core/projects';
 
 // routes
-import { ROUTER_PROVIDERS } from './views/routes';
+import { ROUTER_PROVIDERS } from './views/common/routes';
 
 // httpClient (interceptor)
-import { HttpClient } from './views/http-client';
+import { HttpClient } from './views/common/http-client';
 
 // root component
 import { App } from './views/app';
 
 // common styles
 import './views/common/styles.scss';
+
+import {GLOBAL} from './views/common/global';
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -27,9 +29,13 @@ if (process.env.NODE_ENV === 'production') {
 
 
 bootstrap(App, [
+    // 全局变量
+    GLOBAL,
+
     // API_PROVIDERS,
     HTTP_PROVIDERS,
     // PROJECTS_PROVIDERS,
+
     ROUTER_PROVIDERS,
 
     HttpClient,

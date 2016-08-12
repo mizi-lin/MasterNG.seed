@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {AgentFormCpt} from './agent-form.cpt';
 import {AgentServ} from './agent.serv';
+import {Router} from '@angular/router';
+
+declare var mu: any, console: any;
 
 @Component({
     selector: 'page.agent-create',
@@ -10,4 +13,11 @@ import {AgentServ} from './agent.serv';
 })
 
 export class AgentCreateCpt {
+
+    constructor(private router: Router) {
+    }
+
+
+
+
 }

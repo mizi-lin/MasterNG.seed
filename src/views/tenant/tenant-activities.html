@@ -1,0 +1,46 @@
+<div class="title-bar">
+    <div class="title">活动数</div>
+</div>
+
+<div class="main">
+
+    <table class="table hover">
+
+        <thead>
+            <tr>
+                <th>活动名称</th>
+                <th>优惠券数量</th>
+                <th>活动起止</th>
+                <th>创建用户</th>
+                <th>累计兑现金额</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let activity of activities">
+                <td>
+                    {{activity.activityName || '-'}}
+                </td>
+                <td></td>
+                <td>{{activity.startTime | date: 'yyyy-MM-dd'}} - {{activity.endTime | date: 'yyyy-MM-dd'}}</td>
+                <td>
+                    {{activity.createUserName}}
+                </td>
+                <td>
+                    {{activity.createUserName}}
+                </td>
+                <td>
+                    {{activity.status}}
+                </td>
+                <td>
+                    <button class="btn" (click)="pending(activity)" *ngIf="activity.status===2">暂停</button>
+                    <button class="btn" (click)="restore(activity)" *ngIf="activity.status===3">恢复</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

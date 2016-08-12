@@ -10,16 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var const_1 = require('../common/const');
+var global_1 = require('../common/global');
 var Header = (function () {
-    function Header() {
+    function Header(router, G) {
+        this.router = router;
+        this.G = G;
+        console.debug('oOooooOOOoooOOOoo');
     }
+    Header.prototype.ngOnInit = function () {
+    };
+    Header.prototype.logout = function () {
+        mu.storage(const_1.CONFIG.HEADER_TOKEN, '');
+        this.router.navigate(['/login']);
+    };
     Header = __decorate([
         core_1.Component({
             selector: 'header',
             templateUrl: 'views/layout/header.html',
             directives: [router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router, global_1.GLOBAL])
     ], Header);
     return Header;
 }());

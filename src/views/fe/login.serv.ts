@@ -1,25 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import {HttpClient} from '../common/http-client';
 
 const API_LOGIN = '/services/admin/login';
 
 @Injectable()
 export class LoginServ {
 
-    constructor(private http: Http) {
+    constructor(private httpClient: HttpClient) {
     }
 
     login(fm: any): Observable<any> {
-        return this.http.post(API_LOGIN, fm)
-            .map(this.extractData);
+        return this.httpClient.post(API_LOGIN, fm);
     }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || {};
-    }
-
-
-
 }

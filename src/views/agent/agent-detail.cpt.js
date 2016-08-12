@@ -18,16 +18,15 @@ var AgentDetailCpt = (function () {
     }
     AgentDetailCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.paramsSub = this.route.params.subscribe(function (params) {
+        this.sub = this.route.params.subscribe(function (params) {
             var agencyId = +params['agencyId'];
             _this.agentServ.getAgent(agencyId).subscribe(function (res) {
                 _this.agent = res.data;
-                _this.agentServ.setAg(res.data);
             });
         });
     };
     AgentDetailCpt.prototype.ngOnDestroy = function () {
-        this.paramsSub.unsubscribe();
+        this.sub.unsubscribe();
     };
     AgentDetailCpt = __decorate([
         core_1.Component({

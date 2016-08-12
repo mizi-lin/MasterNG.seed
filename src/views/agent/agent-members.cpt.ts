@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentServ} from './agent.serv';
-import {Admin} from '../admin/admin';
+import {Admin} from '../admin/admin.model';
 
 declare var console: any;
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Agent} from './agent';
 import {AgentServ} from './agent.serv';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,12 +11,10 @@ declare var mu: any;
     templateUrl: 'views/agent/agent-form.html'
 })
 
-export class AgentFormCpt implements OnInit {
+export class AgentFormCpt implements OnInit, OnDestroy  {
     agent: Agent = new Agent;
     fm: Agent = new Agent;
     sub: any;
-
-    @Input() m: string;
 
     constructor(private agentServ: AgentServ,
                 private route: ActivatedRoute,
@@ -27,10 +25,6 @@ export class AgentFormCpt implements OnInit {
     save(myForm) {
         this.sub = this.agentServ.saveAgent(this.fm).subscribe((res)=> {
         });
-    }
-
-    cancel() {
-        this.fm = mu.clone(this.agent);
     }
 
     ngOnInit() {

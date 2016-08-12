@@ -22,7 +22,7 @@
         <tbody>
             <tr *ngFor="let agent of agents">
                 <td>
-                    <a [routerLink]="['/agents', agent.agencyId]">{{agent.name}}</a>
+                    <a [routerLink]="['/agents', agent.agencyId]">{{agent.name || '-'}}</a>
                 </td>
                 <td>{{agent.companyName}}</td>
                 <td>{{agent.tenantNum}}</td>

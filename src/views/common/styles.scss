@@ -46,11 +46,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 input[type='text'],
-input[type='password'] {
+input[type='password'],
+select {
     padding: 0 0 0 5px;
     margin: 0;
     height: 32px;
-    width: 150px;
+    width: 200px;
 
     border: 1px solid $borderColor;
     outline: none;
@@ -63,7 +64,11 @@ input[type='password'] {
     }
 
     &.large {
-        width: 250px;
+        width: 280px;
+    }
+
+    &.small {
+        width: 150px;
     }
 
 
@@ -71,10 +76,8 @@ input[type='password'] {
 }
 
 .form {
-
     > .item {
         min-height: 52px;
-
         label {
             display: inline-block;
             width: 100px;
@@ -96,7 +99,6 @@ input[type='password'] {
             }
         }
     }
-
 }
 
 #wrapper {
@@ -164,6 +166,7 @@ input[type='password'] {
                 right: 0;
                 height: $mainTop;
                 background: #343f45;
+                z-index: 888;
 
                 .logo,
                 .nav,
@@ -219,6 +222,21 @@ input[type='password'] {
                 .bar {
                     right: 10px;
                     bottom: 0;
+
+                    > li {
+                        padding: 0 20px;
+
+                        + li {
+                            border-left: 1px solid rgba(255, 255, 255, .1);
+                        }
+
+                        &.active,
+                        &:hover {
+                            background: rgba(255, 255, 255, .1);
+                            cursor: pointer;
+                        }
+                    }
+
                 }
             }
 
@@ -338,6 +356,9 @@ input[type='password'] {
                         top: 0;
                         height: 100%;
                         padding: $basePaddingLeft;
+                        overflow: hidden;
+                        overflow-y: auto;
+
                         background: #fff;
 
 

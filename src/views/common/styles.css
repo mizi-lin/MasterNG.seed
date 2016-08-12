@@ -29,21 +29,28 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer; }
 
 input[type='text'],
-input[type='password'] {
+input[type='password'],
+select {
   padding: 0 0 0 5px;
   margin: 0;
   height: 32px;
-  width: 150px;
+  width: 200px;
   border: 1px solid #eaeaea;
   outline: none;
   line-height: 32px;
   color: #666; }
   input[type='text'].auto,
-  input[type='password'].auto {
+  input[type='password'].auto,
+  select.auto {
     width: auto; }
   input[type='text'].large,
-  input[type='password'].large {
-    width: 250px; }
+  input[type='password'].large,
+  select.large {
+    width: 280px; }
+  input[type='text'].small,
+  input[type='password'].small,
+  select.small {
+    width: 150px; }
 
 .form > .item {
   min-height: 52px; }
@@ -107,7 +114,8 @@ input[type='password'] {
         left: 0;
         right: 0;
         height: 46px;
-        background: #343f45; }
+        background: #343f45;
+        z-index: 888; }
         #wrapper > .content > layout header .logo,
         #wrapper > .content > layout header .nav,
         #wrapper > .content > layout header .bar {
@@ -148,6 +156,13 @@ input[type='password'] {
         #wrapper > .content > layout header .bar {
           right: 10px;
           bottom: 0; }
+          #wrapper > .content > layout header .bar > li {
+            padding: 0 20px; }
+            #wrapper > .content > layout header .bar > li + li {
+              border-left: 1px solid rgba(255, 255, 255, 0.1); }
+            #wrapper > .content > layout header .bar > li.active, #wrapper > .content > layout header .bar > li:hover {
+              background: rgba(255, 255, 255, 0.1);
+              cursor: pointer; }
       #wrapper > .content > layout main {
         position: absolute;
         top: 46px;
@@ -233,6 +248,8 @@ input[type='password'] {
             top: 0;
             height: 100%;
             padding: 20px;
+            overflow: hidden;
+            overflow-y: auto;
             background: #fff; }
       #wrapper > .content > layout .table {
         width: 100%;
