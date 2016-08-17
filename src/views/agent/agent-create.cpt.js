@@ -12,18 +12,20 @@ var core_1 = require('@angular/core');
 var agent_form_cpt_1 = require('./agent-form.cpt');
 var agent_serv_1 = require('./agent.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../common/global');
 var AgentCreateCpt = (function () {
-    function AgentCreateCpt(router) {
+    function AgentCreateCpt(G, router) {
+        this.G = G;
         this.router = router;
     }
     AgentCreateCpt = __decorate([
         core_1.Component({
-            selector: 'page.agent-create',
+            selector: 'page.agent-create.dlg.small',
             templateUrl: 'views/agent/agent-create.html',
             directives: [agent_form_cpt_1.AgentFormCpt],
             providers: [agent_serv_1.AgentServ]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, router_1.Router])
     ], AgentCreateCpt);
     return AgentCreateCpt;
 }());

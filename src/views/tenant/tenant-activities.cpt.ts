@@ -3,12 +3,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TenantServ} from './tenant.serv';
 import {Admin} from '../admin/admin.model';
 import {DICT} from '../common/const';
+import {NamePipe} from '../common/pipe/name.pipe';
+import {GLOBAL} from '../common/global';
 
 declare var console: any, mu: any;
 
 @Component({
     selector: 'inmain.tenant-activities',
-    templateUrl: 'views/tenant/tenant-activities.html'
+    templateUrl: 'views/tenant/tenant-activities.html',
+    pipes: [NamePipe]
 })
 
 export class TenantActivitiesCpt {
@@ -18,6 +21,7 @@ export class TenantActivitiesCpt {
     private roots: any;
 
     constructor(private tenantServ: TenantServ,
+                private G: GLOBAL,
                 private route: ActivatedRoute,
                 private router: Router) {
     }

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var admin_upload_1 = require('./admin-upload');
+var admin_update_1 = require('./admin-update');
 var admin_serv_1 = require('./admin.serv');
 var AdminCreateCpt = (function () {
     function AdminCreateCpt() {
@@ -18,7 +18,7 @@ var AdminCreateCpt = (function () {
         core_1.Component({
             selector: 'page.admin-create',
             templateUrl: 'views/admin/admin-create.html',
-            directives: [admin_upload_1.AdminUpdateCpt],
+            directives: [admin_update_1.AdminUpdateCpt],
             providers: [admin_serv_1.AdminServ]
         }), 
         __metadata('design:paramtypes', [])

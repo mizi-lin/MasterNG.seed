@@ -12,8 +12,10 @@ var core_1 = require('@angular/core');
 var const_1 = require('../../common/const');
 var tenant_serv_1 = require('../tenant.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../../common/global');
 var TenantUserCreateCpt = (function () {
-    function TenantUserCreateCpt(ts, route, router) {
+    function TenantUserCreateCpt(G, ts, route, router) {
+        this.G = G;
         this.ts = ts;
         this.route = route;
         this.router = router;
@@ -28,16 +30,21 @@ var TenantUserCreateCpt = (function () {
         }, []);
         this.tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
     };
-    TenantUserCreateCpt.prototype.save = function () {
-        this.fm.tenantId = this.tenantId;
-        this.ts.saveTenantUser(this.fm).subscribe();
+    TenantUserCreateCpt.prototype.save = function (form) {
+        var _this = this;
+        this.G.save(form, this, function (form) {
+            _this.fm.tenantId = _this.tenantId;
+            _this.ts.saveTenantUser(_this.fm).subscribe(function () {
+                _this.router.navigate(['/tenants', _this.tenantId, 'users']);
+            });
+        });
     };
     TenantUserCreateCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenant-create',
+            selector: 'page.tenant-user-create.dlg.small',
             templateUrl: 'views/tenant/user/user-form.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
     ], TenantUserCreateCpt);
     return TenantUserCreateCpt;
 }());

@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AgentServ} from './agent.serv';
 import {Agent} from './agent';
+import {GLOBAL} from '../common/global';
 
 @Component({
     selector: 'page.agent-detail',
@@ -15,8 +16,8 @@ export class AgentDetailCpt implements OnInit, OnDestroy {
     agent: Agent;
     sub: any;
 
-
-    constructor(private agentServ: AgentServ,
+    constructor(private G: GLOBAL,
+                private agentServ: AgentServ,
                 private route: ActivatedRoute) {
     }
 

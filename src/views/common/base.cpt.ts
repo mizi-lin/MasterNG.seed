@@ -8,7 +8,6 @@ export class BaseCpt {
     }
 
     goback() {
-        console.debug(1);
         this.router.navigate(['../']);
     }
 }

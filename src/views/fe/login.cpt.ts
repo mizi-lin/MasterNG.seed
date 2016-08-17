@@ -25,15 +25,16 @@ export class LoginCpt {
                 private router: Router) {
     }
 
-    save = function (myForm) {
-        mu.storage(HEADER_TOKEN, '');
-        this.loginServ.login(this.fm).subscribe((res)=> {
-            let data = res.data;
-            mu.storage(HEADER_TOKEN, data.token);
-            mu.storage('CURRENT', data);
-            this.G.setCurrent(data);
-            this.router.navigate(['/tenants']);
+    save(form): void {
+        this.G.save(form, this, (form)=> {
+            mu.storage(HEADER_TOKEN, '');
+            this.loginServ.login(this.fm).subscribe((res)=> {
+                let data = res.data;
+                mu.storage(HEADER_TOKEN, data.token);
+                mu.storage('CURRENT', data);
+                this.G.setCurrent(data);
+                this.router.navigate(['/tenants']);
+            });
         });
-    };
-
+    }
 }

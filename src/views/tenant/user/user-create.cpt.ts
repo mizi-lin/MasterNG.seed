@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {DICT} from '../../common/const';
 import {TenantServ} from '../tenant.serv';
 import {ActivatedRoute, Router} from '@angular/router';
+import {GLOBAL} from '../../common/global';
 
 declare var mu: any, console: any;
 
 @Component({
-    selector: 'page.tenant-create',
+    selector: 'page.tenant-user-create.dlg.small',
     templateUrl: 'views/tenant/user/user-form.html'
 })
 
@@ -18,7 +19,10 @@ export class TenantUserCreateCpt implements OnInit {
 
     tenantId: number;
 
-    constructor(private ts: TenantServ, private route: ActivatedRoute, private router: Router) {
+    constructor(private G: GLOBAL,
+                private ts: TenantServ,
+                private route: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -32,9 +36,13 @@ export class TenantUserCreateCpt implements OnInit {
         this.tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
     }
 
-    save(): void {
-        this.fm.tenantId = this.tenantId;
-        this.ts.saveTenantUser(this.fm).subscribe();
+    save(form): void {
+        this.G.save(form, this, (form)=> {
+            this.fm.tenantId = this.tenantId;
+            this.ts.saveTenantUser(this.fm).subscribe(()=> {
+                this.router.navigate(['/tenants', this.tenantId, 'users']);
+            });
+        });
     }
 
 }

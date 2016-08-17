@@ -22,18 +22,20 @@ var LoginCpt = (function () {
             'email': 'youce-service@admaster.com.cn',
             'password': 'admaster12345'
         };
-        this.save = function (myForm) {
-            var _this = this;
+    }
+    LoginCpt.prototype.save = function (form) {
+        var _this = this;
+        this.G.save(form, this, function (form) {
             mu.storage(const_1.HEADER_TOKEN, '');
-            this.loginServ.login(this.fm).subscribe(function (res) {
+            _this.loginServ.login(_this.fm).subscribe(function (res) {
                 var data = res.data;
                 mu.storage(const_1.HEADER_TOKEN, data.token);
                 mu.storage('CURRENT', data);
                 _this.G.setCurrent(data);
                 _this.router.navigate(['/tenants']);
             });
-        };
-    }
+        });
+    };
     LoginCpt = __decorate([
         core_1.Component({
             selector: 'fe.login',

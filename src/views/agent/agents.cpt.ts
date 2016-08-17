@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {AgentServ} from './agent.serv';
 import {Agent} from './agent';
+import {GLOBAL} from '../common/global';
 
 
 @Component({
@@ -13,7 +14,8 @@ import {Agent} from './agent';
 export class AgentsCpt implements OnInit {
     agents: Agent[];
 
-    constructor(private agentServ: AgentServ) {
+    constructor(private G: GLOBAL,
+                private agentServ: AgentServ) {
     }
 
     ngOnInit() {

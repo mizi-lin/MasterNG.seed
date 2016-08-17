@@ -12,17 +12,21 @@ var core_1 = require('@angular/core');
 var admin_model_1 = require('./admin.model');
 var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../common/global');
 var AdminUpdateCpt = (function () {
-    function AdminUpdateCpt(adminServ, route, router) {
+    function AdminUpdateCpt(G, adminServ, route, router) {
+        this.G = G;
         this.adminServ = adminServ;
         this.route = route;
         this.router = router;
         this.fm = new admin_model_1.Admin();
     }
-    AdminUpdateCpt.prototype.save = function (myform) {
+    AdminUpdateCpt.prototype.save = function (form) {
         var _this = this;
-        this.adminServ.saveAdmin(this.fm).subscribe(function (res) {
-            _this.fm = res.data;
+        this.G.save(form, this, function (form) {
+            _this.adminServ.saveAdmin(_this.fm).subscribe(function (res) {
+                _this.fm = res.data;
+            });
         });
     };
     AdminUpdateCpt.prototype.ngOnInit = function () {
@@ -43,9 +47,9 @@ var AdminUpdateCpt = (function () {
             selector: 'admin-form',
             templateUrl: 'views/admin/admin.form.html'
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, router_1.ActivatedRoute, router_1.Router])
     ], AdminUpdateCpt);
     return AdminUpdateCpt;
 }());
 exports.AdminUpdateCpt = AdminUpdateCpt;
-//# sourceMappingURL=admin-upload.js.map
+//# sourceMappingURL=admin-update.js.map

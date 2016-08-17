@@ -12,9 +12,11 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var tenant_serv_1 = require('../tenant.serv');
 var const_1 = require('../../common/const');
+var global_1 = require('../../common/global');
 var TenantUsersCpt = (function () {
-    function TenantUsersCpt(tenantServ, route, router) {
+    function TenantUsersCpt(tenantServ, G, route, router) {
         this.tenantServ = tenantServ;
+        this.G = G;
         this.route = route;
         this.router = router;
     }
@@ -47,7 +49,7 @@ var TenantUsersCpt = (function () {
             selector: 'inmain.tenant-users',
             templateUrl: 'views/tenant/user/tenant-users.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
     ], TenantUsersCpt);
     return TenantUsersCpt;
 }());

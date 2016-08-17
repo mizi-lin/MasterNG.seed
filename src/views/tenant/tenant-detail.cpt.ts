@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {TenantServ} from './tenant.serv';
 import {Tenant} from './tenant.model';
 import {ActivatedRoute} from '@angular/router';
+import {GLOBAL} from '../common/global';
 
 @Component({
     selector: 'page.detail',
@@ -16,10 +17,11 @@ export class TenantDetailCpt implements OnInit, OnDestroy {
 
 
     constructor(private tenantServ: TenantServ,
+                private G: GLOBAL,
                 private route: ActivatedRoute) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             let tenantId: number = +params['tenantId'];
             this.tenantServ.getTenant(tenantId).subscribe((res)=> {
@@ -29,7 +31,7 @@ export class TenantDetailCpt implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 

@@ -2,7 +2,7 @@ import {RouterConfig} from '@angular/router';
 
 import {AdminLayoutCpt, AdminsCpt, AdminCreateCpt, AdminUpdateCpt, AdminDetailCpt} from './';
 import {AuthGuide} from '../common/auth-guide';
-import {AdminModifyPwdCpt} from './admin-modifypwd';
+import {AdminModifyPwdCpt} from './admin-modifypwd.cpt';
 
 export const adminDetailRouter: RouterConfig = [ {
         path: ':adminId', component: AdminDetailCpt, canActivate: [AuthGuide], children: [

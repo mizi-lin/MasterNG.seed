@@ -12,25 +12,30 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var agent_serv_1 = require('./agent.serv');
 var admin_model_1 = require('../admin/admin.model');
+var global_1 = require('../common/global');
 var AgentMemberFormCpt = (function () {
-    function AgentMemberFormCpt(agentServ, route, router) {
+    function AgentMemberFormCpt(agentServ, G, route, router) {
         this.agentServ = agentServ;
+        this.G = G;
         this.route = route;
         this.router = router;
         this.fm = new admin_model_1.Admin;
     }
-    AgentMemberFormCpt.prototype.save = function (myForm) {
-        this.agentServ.saveAdmin(this.fm).subscribe();
+    AgentMemberFormCpt.prototype.save = function (form) {
+        var _this = this;
+        this.G.save(form, this, function (form) {
+            _this.agentServ.saveAdmin(_this.fm).subscribe();
+        });
     };
     AgentMemberFormCpt.prototype.ngOnInit = function () {
         this.fm.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
     };
     AgentMemberFormCpt = __decorate([
         core_1.Component({
-            selector: 'inmain.agent-member-form',
+            selector: 'page.agent-member-form.dlg.small',
             templateUrl: 'views/agent/agent-member-form.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
     ], AgentMemberFormCpt);
     return AgentMemberFormCpt;
 }());

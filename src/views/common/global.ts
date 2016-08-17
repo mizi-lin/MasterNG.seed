@@ -10,7 +10,6 @@ export class GLOBAL {
     isAdmin: boolean;
 
     constructor() {
-        console.debug('oOOooOOooOOoo -- 1');
         mu.run(mu.storage('CURRENT'), (admin)=> {
             this.current = admin;
         });
@@ -23,5 +22,15 @@ export class GLOBAL {
     setCurrent(current: any): void {
         this.isAdmin = !current.agencyId;
         this.current = current;
+    }
+
+    /**
+     * 保存表单统一处理
+     */
+    save(form: any, vm: any, fn: any): any {
+        if (form.valid) {
+            fn.call(vm, form, fn);
+            return true;
+        }
     }
 }

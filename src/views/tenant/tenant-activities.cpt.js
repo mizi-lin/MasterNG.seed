@@ -12,9 +12,12 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var tenant_serv_1 = require('./tenant.serv');
 var const_1 = require('../common/const');
+var name_pipe_1 = require('../common/pipe/name.pipe');
+var global_1 = require('../common/global');
 var TenantActivitiesCpt = (function () {
-    function TenantActivitiesCpt(tenantServ, route, router) {
+    function TenantActivitiesCpt(tenantServ, G, route, router) {
         this.tenantServ = tenantServ;
+        this.G = G;
         this.route = route;
         this.router = router;
     }
@@ -51,9 +54,10 @@ var TenantActivitiesCpt = (function () {
     TenantActivitiesCpt = __decorate([
         core_1.Component({
             selector: 'inmain.tenant-activities',
-            templateUrl: 'views/tenant/tenant-activities.html'
+            templateUrl: 'views/tenant/tenant-activities.html',
+            pipes: [name_pipe_1.NamePipe]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
     ], TenantActivitiesCpt);
     return TenantActivitiesCpt;
 }());
