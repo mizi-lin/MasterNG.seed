@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var GLOBAL = (function () {
     function GLOBAL() {
         var _this = this;
-        console.debug('oOOooOOooOOoo -- 1');
         mu.run(mu.storage('CURRENT'), function (admin) {
             _this.current = admin;
         });
@@ -20,6 +19,12 @@ var GLOBAL = (function () {
     GLOBAL.prototype.setCurrent = function (current) {
         this.isAdmin = !current.agencyId;
         this.current = current;
+    };
+    GLOBAL.prototype.save = function (form, vm, fn) {
+        if (form.valid) {
+            fn.call(vm, form, fn);
+            return true;
+        }
     };
     GLOBAL = __decorate([
         core_1.Injectable(), 

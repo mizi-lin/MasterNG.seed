@@ -32,7 +32,7 @@
                     {{activity.createUserName}}
                 </td>
                 <td>
-                    {{activity.status}}
+                    {{activity.status | name: 'ACTIVITY'}}
                 </td>
                 <td>
                     <button class="btn" (click)="pending(activity)" *ngIf="activity.status===2">暂停</button>

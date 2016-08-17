@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var agent_serv_1 = require('./agent.serv');
+var global_1 = require('../common/global');
 var AgentsCpt = (function () {
-    function AgentsCpt(agentServ) {
+    function AgentsCpt(G, agentServ) {
+        this.G = G;
         this.agentServ = agentServ;
     }
     AgentsCpt.prototype.ngOnInit = function () {
@@ -24,7 +26,7 @@ var AgentsCpt = (function () {
             selector: 'page.agents',
             templateUrl: 'views/agent/agents.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ])
+        __metadata('design:paramtypes', [global_1.GLOBAL, agent_serv_1.AgentServ])
     ], AgentsCpt);
     return AgentsCpt;
 }());

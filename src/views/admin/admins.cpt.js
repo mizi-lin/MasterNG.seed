@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var admin_serv_1 = require('./admin.serv');
+var global_1 = require('../common/global');
 var AdminsCpt = (function () {
-    function AdminsCpt(ts) {
+    function AdminsCpt(G, ts) {
+        this.G = G;
         this.ts = ts;
     }
     AdminsCpt.prototype.ngOnInit = function () {
@@ -24,7 +26,7 @@ var AdminsCpt = (function () {
             templateUrl: 'views/admin/admins.html',
             providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ])
     ], AdminsCpt);
     return AdminsCpt;
 }());

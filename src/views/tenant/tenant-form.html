@@ -1,4 +1,8 @@
-<form class="form" #myForm="ngForm" (ngSubmit)="save(myForm)"  autocomplete="off" novalidate>
+
+<form class="form" autocomplete="off" novalidate
+      #myForm="ngForm"
+      [class.submitted]="myForm._submitted"
+      (ngSubmit)="save(myForm)">
 
     <div class="item">
         <label class="required">租户名称</label>
@@ -26,7 +30,7 @@
 
     <div class="actions">
         <button type="submit" class="btn">保存</button>
-        <button class="btn" type="button" [routerLink]="['../']">取消</button>
+        <button class="btn" type="button" [routerLink]="['../']" *ngIf="!tenantId">取消</button>
     </div>
 
 </form>

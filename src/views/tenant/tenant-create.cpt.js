@@ -16,7 +16,7 @@ var TenantCreateCpt = (function () {
     }
     TenantCreateCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenant-create',
+            selector: 'page.tenant-create.dlg.small',
             templateUrl: 'views/tenant/tenant-create.html',
             directives: [tenant_form_cpt_1.TenantUpdateCpt],
             providers: [tenant_serv_1.TenantServ]

@@ -12,18 +12,22 @@ var core_1 = require('@angular/core');
 var admin_model_1 = require('./admin.model');
 var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../common/global');
 var AdminModifyPwdCpt = (function () {
-    function AdminModifyPwdCpt(adminServ, route, router) {
+    function AdminModifyPwdCpt(G, adminServ, route, router) {
+        this.G = G;
         this.adminServ = adminServ;
         this.route = route;
         this.router = router;
         this.fm = new admin_model_1.Admin();
     }
-    AdminModifyPwdCpt.prototype.save = function (myform) {
+    AdminModifyPwdCpt.prototype.save = function (form) {
         var _this = this;
-        this.fm.adminId = this.adminId;
-        this.adminServ.saveAdmin(this.fm).subscribe(function (res) {
-            _this.fm = res.data;
+        this.G.save(form, this, function (form) {
+            _this.fm.adminId = _this.adminId;
+            _this.adminServ.saveAdmin(_this.fm).subscribe(function (res) {
+                _this.fm = res.data;
+            });
         });
     };
     AdminModifyPwdCpt.prototype.ngOnInit = function () {
@@ -32,11 +36,11 @@ var AdminModifyPwdCpt = (function () {
     AdminModifyPwdCpt = __decorate([
         core_1.Component({
             selector: 'admin-form',
-            templateUrl: 'views/admin/admin-modifypwd.html'
+            templateUrl: 'views/admin/admin-modifypwd.form.html'
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, router_1.ActivatedRoute, router_1.Router])
     ], AdminModifyPwdCpt);
     return AdminModifyPwdCpt;
 }());
 exports.AdminModifyPwdCpt = AdminModifyPwdCpt;
-//# sourceMappingURL=admin-modifypwd.js.map
+//# sourceMappingURL=admin-modifypwd.cpt.js.map

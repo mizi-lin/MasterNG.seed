@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TenantServ} from '../tenant.serv';
 import {Admin} from '../../admin/admin.model';
 import {DICT} from '../../common/const';
+import {GLOBAL} from '../../common/global';
 
 declare var console: any, mu: any;
 
@@ -18,6 +19,7 @@ export class TenantUsersCpt {
     private roots: any;
 
     constructor(private tenantServ: TenantServ,
+                private G: GLOBAL,
                 private route: ActivatedRoute,
                 private router: Router) {
     }

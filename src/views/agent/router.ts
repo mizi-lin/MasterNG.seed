@@ -26,9 +26,9 @@ export const agentDetailRouter: RouterConfig = [
  * 代理模块子路由
  */
 export const agentsRouter: RouterConfig = [
-    {path: '', component: AgentsCpt, canActivate: [AuthGuide]},
+    {path: '', component: AgentsCpt, canActivate: [AuthGuide], outlet: ''},
     {path: 'create', component: AgentCreateCpt, canActivate: [AuthGuide]},
-    {path: ':agencyId', component: AgentDetailCpt, canActivate: [AuthGuide], children: [...agentDetailRouter]}
+    {path: ':agencyId', component: AgentDetailCpt, canActivate: [AuthGuide], outlet: '', children: [...agentDetailRouter]}
 ];
 
 /**

@@ -9,29 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var const_1 = require('../common/const');
-var global_1 = require('../common/global');
-var Header = (function () {
-    function Header(router, G) {
-        this.router = router;
+var global_1 = require('../global');
+var const_1 = require('../const');
+var NamePipe = (function () {
+    function NamePipe(G) {
         this.G = G;
+        this.D = const_1.DICT;
     }
-    Header.prototype.ngOnInit = function () {
+    NamePipe.prototype.transform = function (value, key, options) {
+        options = mu.extend({
+            parent: 'STATUS',
+            source: 'D'
+        }, options || {});
+        return this[options.source][options.parent][key][value];
     };
-    Header.prototype.logout = function () {
-        mu.storage(const_1.CONFIG.HEADER_TOKEN, '');
-        this.router.navigate(['/login']);
-    };
-    Header = __decorate([
-        core_1.Component({
-            selector: 'header',
-            templateUrl: 'views/layout/header.html',
-            directives: [router_1.ROUTER_DIRECTIVES]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, global_1.GLOBAL])
-    ], Header);
-    return Header;
+    NamePipe = __decorate([
+        core_1.Pipe({ name: 'name' }), 
+        __metadata('design:paramtypes', [global_1.GLOBAL])
+    ], NamePipe);
+    return NamePipe;
 }());
-exports.Header = Header;
-//# sourceMappingURL=header.js.map
+exports.NamePipe = NamePipe;
+//# sourceMappingURL=name.pipe.js.map

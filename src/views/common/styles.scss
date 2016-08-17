@@ -71,11 +71,20 @@ select {
         width: 150px;
     }
 
-
+    &.ng-invalid.ng-touched {
+        border: 1px solid #FF0000;
+    }
 
 }
 
 .form {
+
+    &.submitted {
+        .ng-invalid {
+            border: 1px solid #FF0000;
+        }
+    }
+
     > .item {
         min-height: 52px;
         label {
@@ -254,6 +263,32 @@ select {
                 width: 100%;
                 height: 100%;
 
+                &.dlg {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    padding-top: 200px;
+                    background: rgba(0, 0, 0, .3);
+                    z-index: 10000;
+
+                    &.small > .content,
+                    .content.small {
+                        width: 400px;
+                    }
+
+                    .content {
+                        margin: 0 auto;
+                        width: 800px;
+                        background: #fff;
+
+                        .main {
+                            padding: 20px;
+                        }
+                    }
+                }
+
                 .title-bar {
                     position: relative;
                     padding-left: $basePaddingLeft;
@@ -275,7 +310,8 @@ select {
                     .actions {
                         position: absolute;
                         right: $basePaddingLeft;
-                        top: 0; bottom: 0;
+                        top: 0;
+                        bottom: 0;
                         padding-left: $basePaddingLeft;
 
                         &::before {
@@ -289,7 +325,7 @@ select {
                     }
                 }
 
-                > .main  {
+                > .main {
                     margin: $basePaddingLeft;
                     padding: $basePaddingLeft;
                     min-height: 100px;
@@ -330,13 +366,13 @@ select {
                                 &::after {
                                     content: '';
                                     position: absolute;
-                                    top: 0; bottom: 0;
+                                    top: 0;
+                                    bottom: 0;
                                     left: 100%;
                                     border-right: 2px solid $baseColor;
                                     z-index: 1000;
                                 }
                             }
-
 
                             > a {
                                 display: block;
@@ -352,7 +388,8 @@ select {
 
                     > .main {
                         position: absolute;
-                        left: $leftSidebar; right: 0;
+                        left: $leftSidebar;
+                        right: 0;
                         top: 0;
                         height: 100%;
                         padding: $basePaddingLeft;
@@ -360,7 +397,6 @@ select {
                         overflow-y: auto;
 
                         background: #fff;
-
 
                     }
 

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentServ} from './agent.serv';
 import {Admin} from '../admin/admin.model';
+import {GLOBAL} from '../common/global';
 
 declare var console: any;
 
@@ -16,6 +17,7 @@ export class AgentMembersCpt {
     private agencyId: number;
 
     constructor(private agentServ: AgentServ,
+                private G: GLOBAL,
                 private route: ActivatedRoute,
                 private router: Router) {
     }

@@ -6,6 +6,24 @@ import {HEADER_TOKEN} from './const';
 declare var mu: any;
 declare var console: any;
 
+/**
+ * http 服务的补充
+ * 1. 简单 restful 的支持
+ * 2. map 数据
+ * 3. 操作成功提醒
+ * 4. 载入处理
+ * 5. 异常处理
+ *
+ *  httpClient.v1.0
+ *
+ * observable 流程处理
+ * map()：遍历流
+ * filter()：过滤流
+ * do()：监视流（通常打个console而已）
+ * catch()：捕获异常
+ * subscribe()：订阅流（即执行）
+ */
+
 @Injectable()
 export class HttpClient {
 

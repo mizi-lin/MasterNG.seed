@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminServ} from './admin.serv';
 import {Admin} from './admin.model';
+import {GLOBAL} from '../common/global';
 
 @Component({
     selector: 'page.admins',
@@ -10,7 +11,7 @@ import {Admin} from './admin.model';
 
 export class AdminsCpt implements OnInit {
     admins: Admin[];
-    constructor(private ts: AdminServ){ }
+    constructor(private G: GLOBAL, private ts: AdminServ){ }
 
     ngOnInit() {
         this.ts.getAdmin().subscribe((res)=> this.admins = res.data);

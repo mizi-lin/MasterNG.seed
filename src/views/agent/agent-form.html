@@ -1,5 +1,8 @@
 
-<form class="form" #myForm="ngForm" (ngSubmit)="save(myForm)"  autocomplete="off" novalidate>
+<form class="form" autocomplete="off" novalidate
+      #myForm="ngForm"
+      [class.submitted]="myForm._submitted"
+      (ngSubmit)="save(myForm)">
 
     <div class="item">
         <label class="required">代理名称</label>

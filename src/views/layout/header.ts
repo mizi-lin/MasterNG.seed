@@ -13,7 +13,6 @@ declare var mu: any, console: any;
 
 export class Header implements OnInit {
     constructor(private router: Router, private G: GLOBAL) {
-        console.debug('oOooooOOOoooOOOoo')
     }
 
     // current: any;

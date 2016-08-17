@@ -51,7 +51,13 @@ select {
   input[type='password'].small,
   select.small {
     width: 150px; }
+  input[type='text'].ng-invalid.ng-touched,
+  input[type='password'].ng-invalid.ng-touched,
+  select.ng-invalid.ng-touched {
+    border: 1px solid #FF0000; }
 
+.form.submitted .ng-invalid {
+  border: 1px solid #FF0000; }
 .form > .item {
   min-height: 52px; }
   .form > .item label {
@@ -174,6 +180,24 @@ select {
         display: block;
         width: 100%;
         height: 100%; }
+        #wrapper > .content > layout page.dlg {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          padding-top: 200px;
+          background: rgba(0, 0, 0, 0.3);
+          z-index: 10000; }
+          #wrapper > .content > layout page.dlg.small > .content,
+          #wrapper > .content > layout page.dlg .content.small {
+            width: 400px; }
+          #wrapper > .content > layout page.dlg .content {
+            margin: 0 auto;
+            width: 800px;
+            background: #fff; }
+            #wrapper > .content > layout page.dlg .content .main {
+              padding: 20px; }
         #wrapper > .content > layout page .title-bar {
           position: relative;
           padding-left: 20px;

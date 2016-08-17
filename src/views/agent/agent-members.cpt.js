@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var agent_serv_1 = require('./agent.serv');
+var global_1 = require('../common/global');
 var AgentMembersCpt = (function () {
-    function AgentMembersCpt(agentServ, route, router) {
+    function AgentMembersCpt(agentServ, G, route, router) {
         this.agentServ = agentServ;
+        this.G = G;
         this.route = route;
         this.router = router;
     }
@@ -34,7 +36,7 @@ var AgentMembersCpt = (function () {
             selector: 'inmain.agent-member',
             templateUrl: 'views/agent/agent-members.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
     ], AgentMembersCpt);
     return AgentMembersCpt;
 }());

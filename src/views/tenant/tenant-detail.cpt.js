@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var tenant_serv_1 = require('./tenant.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../common/global');
 var TenantDetailCpt = (function () {
-    function TenantDetailCpt(tenantServ, route) {
+    function TenantDetailCpt(tenantServ, G, route) {
         this.tenantServ = tenantServ;
+        this.G = G;
         this.route = route;
     }
     TenantDetailCpt.prototype.ngOnInit = function () {
@@ -34,7 +36,7 @@ var TenantDetailCpt = (function () {
             templateUrl: 'views/tenant/tenant-detail.html',
             providers: [tenant_serv_1.TenantServ]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, router_1.ActivatedRoute])
     ], TenantDetailCpt);
     return TenantDetailCpt;
 }());
