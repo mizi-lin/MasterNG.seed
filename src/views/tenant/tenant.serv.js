@@ -36,6 +36,9 @@ var TenantServ = (function () {
         var method = user.userId ? 'patch' : 'post';
         return this.httpClient[method](const_1.API.TENANTS_USER, user);
     };
+    TenantServ.prototype.getTenantUserSimulator = function (search) {
+        return this.httpClient.get(const_1.API.TENANTS_USER_SIMULATOR, search);
+    };
     TenantServ.prototype.getTenantActivities = function (search) {
         return this.httpClient.get(const_1.API.TENANTS_ACTIVITY, search);
     };

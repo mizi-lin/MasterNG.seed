@@ -31,6 +31,9 @@ export const API = {
     // 租户下的用户
     TENANTS_USER: '/services/boss/tenant/{tenantId}/user/{userId}',
 
+    // 租户下的用户模拟登陆
+    TENANTS_USER_SIMULATOR: '/services/boss/tenant/{tenantId}/user/{userId}/simulator',
+
     // 租户下的活动
     TENANTS_ACTIVITY: '/services/boss/tenant/{tenantId}/activity/{activityId}',
 

@@ -20,6 +20,20 @@ var TenantUsersCpt = (function () {
         this.route = route;
         this.router = router;
     }
+    TenantUsersCpt.prototype.changeUserRoot = function (user, root) {
+        user.root = +root;
+        user.tenantId = this.tenantId;
+        this.tenantServ.saveTenantUser(user).subscribe();
+    };
+    TenantUsersCpt.prototype.simulator = function (evt, userId, user, index) {
+        this.tenantServ.getTenantUserSimulator({
+            userId: userId,
+            tenantId: this.tenantId
+        }).subscribe(function (res) {
+            var token = res.data.token;
+            user.href = 'http://test.youce.io/start.html?accessToken=' + token;
+        });
+    };
     TenantUsersCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.roots = mu.map(const_1.DICT.ROOT, function (v, k) {
@@ -33,13 +47,17 @@ var TenantUsersCpt = (function () {
         this.sub = this.tenantServ.getTenantUsers({
             tenantId: this.tenantId
         }).subscribe(function (res) {
-            _this.users = res.data;
+            _this.users = mu.map(res.data, function (user) {
+                _this.tenantServ.getTenantUserSimulator({
+                    userId: user.userId,
+                    tenantId: _this.tenantId
+                }).subscribe(function (res) {
+                    var token = res.data.token;
+                    user.href = 'http://test.youce.io/start.html?accessToken=' + token;
+                });
+                return user;
+            });
         });
-    };
-    TenantUsersCpt.prototype.changeUserRoot = function (user, root) {
-        user.root = +root;
-        user.tenantId = this.tenantId;
-        this.tenantServ.saveTenantUser(user).subscribe();
     };
     TenantUsersCpt.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();

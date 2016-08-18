@@ -9,6 +9,7 @@ exports.API = {
     AGENCY_TENANTS: '/services/boss/agency/{agencyId}/tenant/{tenantId}',
     TENANTS: '/services/boss/tenant/{tenantId}',
     TENANTS_USER: '/services/boss/tenant/{tenantId}/user/{userId}',
+    TENANTS_USER_SIMULATOR: '/services/boss/tenant/{tenantId}/user/{userId}/simulator',
     TENANTS_ACTIVITY: '/services/boss/tenant/{tenantId}/activity/{activityId}',
     ADMINS: '/services/boss/admin/{adminId}'
 };
