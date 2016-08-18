@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     core_1.enableProdMode();
 }
 platform_browser_dynamic_1.bootstrap(app_1.App, [
+    core_1.provide(Window, { useValue: window }),
     global_1.GLOBAL,
     http_1.HTTP_PROVIDERS,
     routes_1.ROUTER_PROVIDERS,

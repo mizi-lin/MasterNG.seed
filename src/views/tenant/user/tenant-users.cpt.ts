@@ -24,11 +24,28 @@ export class TenantUsersCpt {
                 private router: Router) {
     }
 
-    ngOnInit() {
+    changeUserRoot(user: any, root: number): void {
+        user.root = +root;
+        user.tenantId = this.tenantId;
+        this.tenantServ.saveTenantUser(user).subscribe();
+    }
+
+    simulator(evt: any, userId: number, user: any, index: number): void {
+
+        this.tenantServ.getTenantUserSimulator({
+            userId: userId,
+            tenantId: this.tenantId
+        }).subscribe((res)=> {
+            let token = res.data.token;
+            user.href = 'http://test.youce.io/start.html?accessToken=' + token;
+        });
+    }
+
+    ngOnInit(): void {
 
         this.roots = mu.map(DICT.ROOT, (v, k)=> {
             return {
-                val: + k,
+                val: +k,
                 title: v
             };
         }, []);
@@ -42,14 +59,21 @@ export class TenantUsersCpt {
             tenantId: this.tenantId
         }).subscribe((res)=> {
             //todo
-            this.users = res.data;
-        });
-    }
+            // this.users = res.data;
 
-    changeUserRoot(user, root) {
-        user.root = + root;
-        user.tenantId = this.tenantId;
-        this.tenantServ.saveTenantUser(user).subscribe();
+            this.users = mu.map(res.data, (user)=> {
+                this.tenantServ.getTenantUserSimulator({
+                    userId: user.userId,
+                    tenantId: this.tenantId
+                }).subscribe((res)=> {
+                    let token = res.data.token;
+                    user.href = 'http://test.youce.io/start.html?accessToken=' + token;
+                });
+
+                return user;
+            });
+
+        });
     }
 
     ngOnDestroy() {

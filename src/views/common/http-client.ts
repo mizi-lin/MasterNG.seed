@@ -31,11 +31,11 @@ export class HttpClient {
         this.http = http;
     }
 
-    private addHeaderWithToken(headers: Headers) {
+    addHeaderWithToken(headers: Headers): void {
         headers.append(HEADER_TOKEN, mu.storage(HEADER_TOKEN));
     }
 
-    private resbody(response: Response) {
+    resbody(response: Response): any {
         let body = response.json();
         return body || {};
     }
@@ -47,7 +47,7 @@ export class HttpClient {
      * @param isReplace | true : 是否将不存在的占位符转为''(空)
      * @returns {{url: string, searchParams: URLSearchParams, search: any, params: any}}
      */
-    private restful(url: string, params: any, isReplace?: boolean) {
+    restful(url: string, params: any, isReplace?: boolean) {
         url = url || '';
         isReplace = mu.ifnvl(isReplace, true);
 
