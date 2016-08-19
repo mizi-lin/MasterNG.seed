@@ -15,9 +15,7 @@ var AgentLayoutCpt = (function () {
     }
     AgentLayoutCpt = __decorate([
         core_1.Component({
-            selector: 'layout',
-            templateUrl: 'views/agent/layout.html',
-            directives: [layout_1.Header]
+            selector: 'layout', templateUrl: 'views/agent/layout.html', directives: [layout_1.Header]
         }), 
         __metadata('design:paramtypes', [])
     ], AgentLayoutCpt);

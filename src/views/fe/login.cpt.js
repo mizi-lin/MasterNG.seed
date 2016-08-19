@@ -32,7 +32,7 @@ var LoginCpt = (function () {
                 mu.storage(const_1.HEADER_TOKEN, data.token);
                 mu.storage('CURRENT', data);
                 _this.G.setCurrent(data);
-                _this.router.navigate(['/tenants']);
+                _this.router.navigate([const_1.CONFIG.BE_INDEX_PAGE]);
             });
         });
     };

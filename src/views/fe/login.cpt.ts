@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {LoginServ} from './login.serv';
 import {Router} from '@angular/router';
 
-import {HEADER_TOKEN} from '../common/const';
+import {HEADER_TOKEN, CONFIG} from '../common/const';
 import {GLOBAL} from '../common/global';
 
 declare var mu: any;
@@ -25,15 +25,15 @@ export class LoginCpt {
                 private router: Router) {
     }
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
             mu.storage(HEADER_TOKEN, '');
-            this.loginServ.login(this.fm).subscribe((res)=> {
+            this.loginServ.login(this.fm).subscribe((res) => {
                 let data = res.data;
                 mu.storage(HEADER_TOKEN, data.token);
                 mu.storage('CURRENT', data);
                 this.G.setCurrent(data);
-                this.router.navigate(['/tenants']);
+                this.router.navigate([CONFIG.BE_INDEX_PAGE]);
             });
         });
     }

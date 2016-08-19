@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-
 import {HttpClient} from '../common/http-client';
 import {Tenant} from './tenant.model';
 import {API} from '../common/const';
@@ -18,7 +17,7 @@ export class TenantServ {
         let search: any = {};
         let url: string = API.TENANTS;
 
-        if(tenantId){
+        if (tenantId) {
             search.tenantId = tenantId;
         }
         return this.httpClient.get(url, search);
@@ -33,7 +32,7 @@ export class TenantServ {
      * 租户下的用户
      */
 
-    getTenantUsers(search): Observable<any> {
+    getTenantUsers(search: any): Observable<any> {
         return this.httpClient.get(API.TENANTS_USER, search);
     }
 
@@ -42,7 +41,7 @@ export class TenantServ {
         return this.httpClient[method](API.TENANTS_USER, user);
     }
 
-    getTenantUserSimulator(search): Observable<any> {
+    getTenantUserSimulator(search: any): Observable<any> {
         return this.httpClient.get(API.TENANTS_USER_SIMULATOR, search);
     }
 
@@ -50,7 +49,7 @@ export class TenantServ {
      * 租户下的活动
      */
 
-    getTenantActivities(search): Observable<any> {
+    getTenantActivities(search: any): Observable<any> {
         return this.httpClient.get(API.TENANTS_ACTIVITY, search);
     }
 
@@ -58,7 +57,4 @@ export class TenantServ {
         let method = activity.activityId ? 'patch' : 'post';
         return this.httpClient[method](API.TENANTS_ACTIVITY, activity);
     }
-
-
-
 }

@@ -1,7 +1,8 @@
 "use strict";
 exports.HEADER_TOKEN = 'X-ACCESS-TOKEN-BOSS';
 exports.CONFIG = {
-    HEADER_TOKEN: 'X-ACCESS-TOKEN-BOSS'
+    HEADER_TOKEN: 'X-ACCESS-TOKEN-BOSS',
+    BE_INDEX_PAGE: '/tenants'
 };
 exports.API = {
     AGENCY: '/services/boss/agency/{agencyId}',

@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {GLOBAL} from '../global';
 import {DICT} from '../const';
 
-declare var mu: any, console:any;
+declare var mu: any, console: any;
 
 /**
  * 某个 value 对应的 name

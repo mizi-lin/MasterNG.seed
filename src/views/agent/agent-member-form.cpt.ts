@@ -12,7 +12,7 @@ declare var console: any;
 })
 
 export class AgentMemberFormCpt {
-    fm: Admin = new Admin;
+    fm: Admin = new Admin();
 
     constructor(private agentServ: AgentServ,
                 private G: GLOBAL,
@@ -20,13 +20,13 @@ export class AgentMemberFormCpt {
                 private router: Router) {
     }
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
             this.agentServ.saveAdmin(this.fm).subscribe();
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
 
         // 获得上级router 参数多艰难呀`~~
         // 而且只能在 ngOnInit 中获取

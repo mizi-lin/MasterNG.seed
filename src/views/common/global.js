@@ -25,6 +25,7 @@ var GLOBAL = (function () {
             fn.call(vm, form, fn);
             return true;
         }
+        return false;
     };
     GLOBAL = __decorate([
         core_1.Injectable(), 

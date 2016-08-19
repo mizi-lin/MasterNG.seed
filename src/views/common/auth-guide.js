@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var const_1 = require('./const');
 var global_1 = require('./global');
+var const_1 = require('./const');
 var AuthGuide = (function () {
     function AuthGuide(router, G) {
         this.router = router;

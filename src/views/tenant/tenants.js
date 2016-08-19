@@ -22,9 +22,7 @@ var TenantsCpt = (function () {
     };
     TenantsCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenants',
-            templateUrl: 'views/tenant/tenants.html',
-            providers: [tenant_serv_1.TenantServ]
+            selector: 'page.tenants', templateUrl: 'views/tenant/tenants.html', providers: [tenant_serv_1.TenantServ]
         }), 
         __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL])
     ], TenantsCpt);

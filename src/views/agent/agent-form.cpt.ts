@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Agent} from './agent';
 import {AgentServ} from './agent.serv';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -29,9 +29,9 @@ export class AgentFormCpt implements OnInit, OnDestroy {
         this.vm = this;
     }
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
-            this.sub = this.agentServ.saveAgent(this.fm).subscribe((res)=> {
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
+            this.sub = this.agentServ.saveAgent(this.fm).subscribe((res) => {
                 if (!this.agencyId) {
                     this.router.navigate(['/agents']);
                 }
@@ -44,7 +44,7 @@ export class AgentFormCpt implements OnInit, OnDestroy {
         let agencyId: number = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
         if (agencyId) {
             this.agencyId = agencyId;
-            this.sub = this.agentServ.getAgent(agencyId).subscribe((res)=> {
+            this.sub = this.agentServ.getAgent(agencyId).subscribe((res) => {
                 this.agent = res.data;
                 this.fm = mu.clone(res.data);
             });

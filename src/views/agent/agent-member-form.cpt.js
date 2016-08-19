@@ -19,7 +19,7 @@ var AgentMemberFormCpt = (function () {
         this.G = G;
         this.route = route;
         this.router = router;
-        this.fm = new admin_model_1.Admin;
+        this.fm = new admin_model_1.Admin();
     }
     AgentMemberFormCpt.prototype.save = function (form) {
         var _this = this;

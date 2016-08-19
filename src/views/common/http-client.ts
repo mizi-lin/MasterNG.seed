@@ -2,6 +2,7 @@ import {Http, Headers, Response, URLSearchParams} from '@angular/http';
 
 import {Injectable} from '@angular/core';
 import {HEADER_TOKEN} from './const';
+import {Observable} from 'rxjs';
 
 declare var mu: any;
 declare var console: any;
@@ -47,15 +48,15 @@ export class HttpClient {
      * @param isReplace | true : 是否将不存在的占位符转为''(空)
      * @returns {{url: string, searchParams: URLSearchParams, search: any, params: any}}
      */
-    restful(url: string, params: any, isReplace?: boolean) {
+    restful(url: string, params: any, isReplace?: boolean): any {
         url = url || '';
         isReplace = mu.ifnvl(isReplace, true);
 
         let sp: any = mu.clone(params || {});
         let restParams: any = {};
 
-        url = url.replace(/\{(.+?)\}/g, function (m: string, key: string) {
-            return mu.run(sp[key], function (v: string) {
+        url = url.replace(/\{(.+?)\}/g, (m: string, key: string) => {
+            return mu.run(sp[key], (v: string) => {
                     restParams[key] = v;
                     sp = mu.remove(sp, key);
                     return v;
@@ -66,8 +67,8 @@ export class HttpClient {
 
         let searchParams: URLSearchParams = new URLSearchParams();
 
-        mu.run(sp, (p)=> {
-            mu.each(p, (v: any, k: string)=> searchParams.set(k, v));
+        mu.run(sp, (p) => {
+            mu.each(p, (v: any, k: string) => searchParams.set(k, v));
         });
 
         return {
@@ -79,7 +80,7 @@ export class HttpClient {
         };
     }
 
-    get(url: string, search?: any, options?: any) {
+    get(url: string, search?: any, options?: any): Observable<any> {
 
         let headers = new Headers();
         let rest = this.restful(url, search);
@@ -95,7 +96,7 @@ export class HttpClient {
         return this.http.get(url, options).map(this.resbody);
     }
 
-    post(url: string, search?: any, data?: any, options?: any) {
+    post(url: string, search?: any, data?: any, options?: any): Observable<any> {
 
         switch (arguments.length) {
             case 1:
@@ -128,7 +129,7 @@ export class HttpClient {
         return this.http.post(restdata.url, data, options).map(this.resbody);
     }
 
-    patch(url: string, search?: any, data?: any, options?: any) {
+    patch(url: string, search?: any, data?: any, options?: any): Observable<any> {
         switch (arguments.length) {
             case 1:
                 search = {};

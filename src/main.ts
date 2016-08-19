@@ -1,4 +1,4 @@
-import {enableProdMode, provide} from '@angular/core';
+import {enableProdMode} from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { HTTP_PROVIDERS } from '@angular/http';
 
@@ -21,6 +21,7 @@ import { App } from './views/app';
 import './views/common/styles.scss';
 
 import {GLOBAL} from './views/common/global';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -29,7 +30,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 bootstrap(App, [
-    provide(Window, {useValue: window}),
 
     // 全局变量
     GLOBAL,
@@ -40,9 +40,13 @@ bootstrap(App, [
 
     ROUTER_PROVIDERS,
 
+    // provide(LocationStrategy, {useClass: HashLocationStrategy}),
+
+
     HttpClient,
 
     disableDeprecatedForms(),
+
     provideForms()
 
 ]).catch((error: Error) => console.error(error));

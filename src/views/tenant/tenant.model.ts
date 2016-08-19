@@ -38,8 +38,6 @@ export class Tenant {
     // 最近更新时间戳
     updateTime: number;
 
-    constructor() { }
-
-
-
+    constructor() {
+    }
 }

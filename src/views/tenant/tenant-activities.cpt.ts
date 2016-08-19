@@ -28,7 +28,7 @@ export class TenantActivitiesCpt {
 
     ngOnInit(): void {
 
-        this.roots = mu.map(DICT.ROOT, (v, k)=> {
+        this.roots = mu.map(DICT.ROOT, (v, k) => {
             return {
                 val: +k,
                 title: v
@@ -42,7 +42,7 @@ export class TenantActivitiesCpt {
 
         this.sub = this.tenantServ.getTenantActivities({
             tenantId: this.tenantId
-        }).subscribe((res)=> {
+        }).subscribe((res) => {
             //todo
             this.activities = res.data;
         });
