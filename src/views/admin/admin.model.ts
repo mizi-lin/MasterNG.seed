@@ -44,4 +44,5 @@ export class Admin {
         // 创建时间
         createTime?: number) {
     }
+
 }

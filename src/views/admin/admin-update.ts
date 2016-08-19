@@ -23,26 +23,26 @@ export class AdminUpdateCpt implements OnInit, OnDestroy {
                 private router: Router) {
     }
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
-            this.adminServ.saveAdmin(this.fm).subscribe((res)=> {
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
+            this.adminServ.saveAdmin(this.fm).subscribe((res) => {
                 this.fm = res.data;
             });
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // 获得上级router 参数多艰难呀`~~
         let adminId: number = +this.router.routerState.parent(this.route).snapshot.params['adminId'];
         if (adminId) {
-            this.sub = this.adminServ.getAdmin(adminId).subscribe((res)=> {
+            this.sub = this.adminServ.getAdmin(adminId).subscribe((res) => {
                 this.fm = res.data;
                 this.admin = res.data;
             });
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub && this.sub.unsubscribe();
     }
 }

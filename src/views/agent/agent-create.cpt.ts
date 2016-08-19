@@ -17,8 +17,4 @@ export class AgentCreateCpt {
 
     constructor(private G: GLOBAL, private router: Router) {
     }
-
-
-
-
 }

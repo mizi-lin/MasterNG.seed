@@ -18,7 +18,7 @@ export class AgentsCpt implements OnInit {
                 private agentServ: AgentServ) {
     }
 
-    ngOnInit() {
-        this.agentServ.getAgents().subscribe((rst)=> this.agents = rst.data);
+    ngOnInit(): void {
+        this.agentServ.getAgents().subscribe((rst) => this.agents = rst.data);
     }
 }

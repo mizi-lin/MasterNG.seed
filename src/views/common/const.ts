@@ -1,7 +1,8 @@
 export const HEADER_TOKEN = 'X-ACCESS-TOKEN-BOSS';
 
 export const CONFIG = {
-    HEADER_TOKEN: 'X-ACCESS-TOKEN-BOSS'
+    HEADER_TOKEN: 'X-ACCESS-TOKEN-BOSS',
+    BE_INDEX_PAGE: '/tenants'
 };
 
 export const API = {

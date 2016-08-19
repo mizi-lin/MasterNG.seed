@@ -24,8 +24,7 @@ var TenantUserCreateCpt = (function () {
     TenantUserCreateCpt.prototype.ngOnInit = function () {
         this.roots = mu.map(const_1.DICT.ROOT, function (v, k) {
             return {
-                val: +k,
-                title: v
+                val: +k, title: v
             };
         }, []);
         this.tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
@@ -41,8 +40,7 @@ var TenantUserCreateCpt = (function () {
     };
     TenantUserCreateCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenant-user-create.dlg.small',
-            templateUrl: 'views/tenant/user/user-form.html'
+            selector: 'page.tenant-user-create.dlg.small', templateUrl: 'views/tenant/user/user-form.html'
         }), 
         __metadata('design:paramtypes', [global_1.GLOBAL, tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
     ], TenantUserCreateCpt);

@@ -37,4 +37,3 @@ export const agentsRouter: RouterConfig = [
 export const agentRouter: RouterConfig = [
     {path: 'agents', component: AgentLayoutCpt, canActivate: [AuthGuide], children: [...agentsRouter]}
 ];
-

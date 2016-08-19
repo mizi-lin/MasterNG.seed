@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Router, CanActivate} from '@angular/router';
-import {CONFIG} from './const';
 import {GLOBAL} from './global';
+import {CONFIG} from './const';
 
-declare var mu: any;
+declare var mu: any, console: any;
 
 /**
  * 身份校验
@@ -17,9 +17,10 @@ export class AuthGuide implements CanActivate {
 
     canActivate(): boolean {
         if (mu.storage(CONFIG.HEADER_TOKEN)) {
-            mu.empty(this.G.current, ()=> {
+            mu.empty(this.G.current, () => {
                 this.G.setCurrent(mu.storage('CURRENT'));
             });
+
             return true;
         }
 

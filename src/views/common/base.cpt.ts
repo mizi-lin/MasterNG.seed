@@ -7,7 +7,7 @@ export class BaseCpt {
     constructor(private router: Router) {
     }
 
-    goback() {
+    goback(): void {
         this.router.navigate(['../']);
     }
 }

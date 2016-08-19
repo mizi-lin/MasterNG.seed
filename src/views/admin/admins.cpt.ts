@@ -11,10 +11,12 @@ import {GLOBAL} from '../common/global';
 
 export class AdminsCpt implements OnInit {
     admins: Admin[];
-    constructor(private G: GLOBAL, private ts: AdminServ){ }
 
-    ngOnInit() {
-        this.ts.getAdmin().subscribe((res)=> this.admins = res.data);
+    constructor(private G: GLOBAL, private ts: AdminServ) {
+    }
+
+    ngOnInit(): void {
+        this.ts.getAdmin().subscribe((res) => this.admins = res.data);
     }
 
 }

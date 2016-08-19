@@ -19,19 +19,19 @@ export class AdminDetailCpt implements OnInit, OnDestroy {
                 private route: ActivatedRoute) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             let adminId: number = +params['adminId'];
-            this.adminServ.getAdmin(adminId).subscribe((res)=> {
+            this.adminServ.getAdmin(adminId).subscribe((res) => {
                 this.admin = res.data;
             });
 
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
-
-
 }
+
+

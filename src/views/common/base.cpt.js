@@ -4,7 +4,6 @@ var BaseCpt = (function () {
         this.router = router;
     }
     BaseCpt.prototype.goback = function () {
-        console.debug(1);
         this.router.navigate(['../']);
     };
     return BaseCpt;

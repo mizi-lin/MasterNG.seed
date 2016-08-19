@@ -30,20 +30,20 @@ export class TenantUsersCpt {
         this.tenantServ.saveTenantUser(user).subscribe();
     }
 
-    simulator(evt: any, userId: number, user: any, index: number): void {
-
-        this.tenantServ.getTenantUserSimulator({
-            userId: userId,
-            tenantId: this.tenantId
-        }).subscribe((res)=> {
-            let token = res.data.token;
-            user.href = 'http://test.youce.io/start.html?accessToken=' + token;
-        });
-    }
+    // simulator(evt: any, userId: number, user: any, index: number): void {
+    //
+    //     this.tenantServ.getTenantUserSimulator({
+    //         userId: userId,
+    //         tenantId: this.tenantId
+    //     }).subscribe((res)=> {
+    //         let token = res.data.token;
+    //         user.href = 'http://test.youce.io/start.html?accessToken=' + token;
+    //     });
+    // }
 
     ngOnInit(): void {
 
-        this.roots = mu.map(DICT.ROOT, (v, k)=> {
+        this.roots = mu.map(DICT.ROOT, (v, k) => {
             return {
                 val: +k,
                 title: v
@@ -57,26 +57,16 @@ export class TenantUsersCpt {
 
         this.sub = this.tenantServ.getTenantUsers({
             tenantId: this.tenantId
-        }).subscribe((res)=> {
+        }).subscribe((res) => {
             //todo
             // this.users = res.data;
 
-            this.users = mu.map(res.data, (user)=> {
-                this.tenantServ.getTenantUserSimulator({
-                    userId: user.userId,
-                    tenantId: this.tenantId
-                }).subscribe((res)=> {
-                    let token = res.data.token;
-                    user.href = 'http://test.youce.io/start.html?accessToken=' + token;
-                });
-
-                return user;
-            });
+            this.users = res.data;
 
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 

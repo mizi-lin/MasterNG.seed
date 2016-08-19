@@ -33,8 +33,7 @@ var AgentMembersCpt = (function () {
     };
     AgentMembersCpt = __decorate([
         core_1.Component({
-            selector: 'inmain.agent-member',
-            templateUrl: 'views/agent/agent-members.html'
+            selector: 'inmain.agent-member', templateUrl: 'views/agent/agent-members.html'
         }), 
         __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
     ], AgentMembersCpt);

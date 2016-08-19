@@ -4,16 +4,17 @@ import {Tenant} from './tenant.model';
 import {GLOBAL} from '../common/global';
 
 @Component({
-    selector: 'page.tenants',
-    templateUrl: 'views/tenant/tenants.html',
-    providers: [TenantServ]
+    selector: 'page.tenants', templateUrl: 'views/tenant/tenants.html', providers: [TenantServ]
 })
 
 export class TenantsCpt implements OnInit {
     tenants: Tenant[];
-    constructor(private ts: TenantServ, private G: GLOBAL){ }
-    ngOnInit() {
-        this.ts.getTenant().subscribe((res)=> this.tenants = res.data);
+
+    constructor(private ts: TenantServ, private G: GLOBAL) {
+    }
+
+    ngOnInit(): void {
+        this.ts.getTenant().subscribe((res) => this.tenants = res.data);
     }
 
 }

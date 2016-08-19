@@ -88,7 +88,9 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION || ENV_TEST) {
             minChunks: Infinity
         }),
         new CopyWebpackPlugin([
-            {from: './src/assets', to: 'assets'}
+            {from: './src/assets', to: 'assets'},
+            {from: './src/lib', to: 'lib'},
+            {from: './src/views', to: 'views', ignore: ['*.ts', '*.js', '*.map']}
         ]),
         new HtmlWebpackPlugin({
             chunkSortMode: 'dependency',
@@ -181,6 +183,26 @@ if(ENV_PRODUCTION) {
             include: path.resolve('src/views/common/styles')
         }
     );
+
+    config.devServer = {
+        contentBase: './src',
+        historyApiFallback: true,
+        host: HOST,
+        outputPath: config.output.path,
+        port: PORT,
+        publicPath: config.output.publicPath,
+        stats: {
+            cached: true,
+            cachedAssets: true,
+            chunks: true,
+            chunkModules: false,
+            colors: true,
+            hash: false,
+            reasons: true,
+            timings: true,
+            version: false
+        }
+    };
 
     config.plugins.push(
         new WebpackMd5Hash(),

@@ -46,8 +46,7 @@ var TenantUpdateCpt = (function () {
     };
     TenantUpdateCpt = __decorate([
         core_1.Component({
-            selector: 'tenant-form',
-            templateUrl: 'views/tenant/tenant-form.html'
+            selector: 'tenant-form', templateUrl: 'views/tenant/tenant-form.html'
         }), 
         __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
     ], TenantUpdateCpt);

@@ -7,8 +7,7 @@ import {GLOBAL} from '../common/global';
 declare var mu: any, console: any;
 
 @Component({
-    selector: 'tenant-form',
-    templateUrl: 'views/tenant/tenant-form.html'
+    selector: 'tenant-form', templateUrl: 'views/tenant/tenant-form.html'
 })
 
 export class TenantUpdateCpt implements OnInit, OnDestroy {
@@ -17,34 +16,31 @@ export class TenantUpdateCpt implements OnInit, OnDestroy {
     sub: any;
     tenantId: number;
 
-    constructor(private ts: TenantServ,
-                private route: ActivatedRoute,
-                private router: Router,
-                private G: GLOBAL) {
+    constructor(private ts: TenantServ, private route: ActivatedRoute, private router: Router, private G: GLOBAL) {
     }
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
-            this.ts.saveTenant(this.fm).subscribe((res)=> {
-                if(!this.tenantId){
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
+            this.ts.saveTenant(this.fm).subscribe((res) => {
+                if (!this.tenantId) {
                     this.router.navigate(['/tenants']);
                 }
             });
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // 获得上级router 参数多艰难呀`~~
         let tenantId: number = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
         if (tenantId) {
             this.tenantId = tenantId;
-            this.sub = this.ts.getTenant(tenantId).subscribe((res)=> {
+            this.sub = this.ts.getTenant(tenantId).subscribe((res) => {
                 this.fm = res.data;
             });
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub && this.sub.unsubscribe();
     }
 }

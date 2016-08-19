@@ -1,13 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Header} from '../layout';
 
-import { Header } from '../layout';
-
-declare var console:any, mu: any;
+declare var console: any, mu: any;
 
 @Component({
-    selector: 'layout',
-    templateUrl: 'views/agent/layout.html',
-    directives: [Header]
+    selector: 'layout', templateUrl: 'views/agent/layout.html', directives: [Header]
 })
 
 export class AgentLayoutCpt {

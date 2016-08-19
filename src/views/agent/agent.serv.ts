@@ -27,7 +27,7 @@ export class AgentServ {
      * @param agencyId
      * @returns {Observable<R>}
      */
-    getAgent(agencyId: number) {
+    getAgent(agencyId: number): Observable<any>  {
         return this.httpClient.get(API.AGENCY, {
             agencyId: agencyId
         });
@@ -38,7 +38,7 @@ export class AgentServ {
      * @param agent
      * @returns {any}
      */
-    saveAgent(agent: Agent) {
+    saveAgent(agent: Agent): Observable<any>  {
         return this.httpClient[agent.agencyId ? 'patch' : 'post'](API.AGENCY, agent);
     }
 
@@ -47,7 +47,7 @@ export class AgentServ {
      * @param agencyId
      * @returns {Observable<R>}
      */
-    getAgentMember(agencyId: number) {
+    getAgentMember(agencyId: number): Observable<any>  {
         return this.httpClient.get(API.AGENCY_ADMIN, {
             agencyId: agencyId
         });
@@ -58,7 +58,7 @@ export class AgentServ {
      * @param admin
      * @returns {Observable<R>}
      */
-    saveAdmin(admin: Admin) {
+    saveAdmin(admin: Admin): Observable<any>  {
         return this.httpClient.post(API.ADMINS, admin);
     }
 }

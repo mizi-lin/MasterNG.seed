@@ -10,7 +10,7 @@ export class GLOBAL {
     isAdmin: boolean;
 
     constructor() {
-        mu.run(mu.storage('CURRENT'), (admin)=> {
+        mu.run(mu.storage('CURRENT'), (admin) => {
             this.current = admin;
         });
     }
@@ -27,10 +27,12 @@ export class GLOBAL {
     /**
      * 保存表单统一处理
      */
-    save(form: any, vm: any, fn: any): any {
+    save(form: any, vm: any, fn: any): boolean {
         if (form.valid) {
             fn.call(vm, form, fn);
             return true;
         }
+
+        return false;
     }
 }

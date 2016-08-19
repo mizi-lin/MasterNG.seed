@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Admin} from './admin.model';
 import {AdminServ} from './admin.serv';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -21,16 +21,16 @@ export class AdminModifyPwdCpt implements OnInit {
     }
 
 
-    save(form): void {
-        this.G.save(form, this, (form)=> {
+    save(form: any): void {
+        this.G.save(form, this, (form) => {
             this.fm.adminId = this.adminId;
-            this.adminServ.saveAdmin(this.fm).subscribe((res)=> {
+            this.adminServ.saveAdmin(this.fm).subscribe((res) => {
                 this.fm = res.data;
             });
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.adminId = +this.router.routerState.parent(this.route).snapshot.params['adminId'];
     }
 

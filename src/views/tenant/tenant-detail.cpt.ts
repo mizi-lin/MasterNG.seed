@@ -24,7 +24,7 @@ export class TenantDetailCpt implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             let tenantId: number = +params['tenantId'];
-            this.tenantServ.getTenant(tenantId).subscribe((res)=> {
+            this.tenantServ.getTenant(tenantId).subscribe((res) => {
                 this.tenant = res.data;
             });
 
@@ -34,6 +34,4 @@ export class TenantDetailCpt implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
-
-
 }
