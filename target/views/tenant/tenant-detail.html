@@ -1,0 +1,23 @@
+<div class="title-bar">
+    <h5>{{tenant?.tenantName}}</h5>
+</div>
+
+<div class="main-sidebar">
+    <div class="sidebar">
+        <ol>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['./']">基本设置</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['./users']">用户管理</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a [routerLink]="['./activities']">活动管理</a>
+            </li>
+        </ol>
+    </div>
+
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>

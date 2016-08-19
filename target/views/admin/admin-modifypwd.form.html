@@ -1,0 +1,31 @@
+<form class="form" autocomplete="off" novalidate
+      #myForm="ngForm"
+      [class.submitted]="myForm._submitted"
+      (ngSubmit)="save(myForm)">
+
+    <div class="item">
+        <label class="required">旧密码</label>
+        <input type="password" name="oldPassword"
+               [(ngModel)]="fm.oldPassword"
+               required />
+    </div>
+
+    <div class="item">
+        <label class="required">新密码</label>
+        <input type="password" name="password"
+               [(ngModel)]="fm.password"
+               required />
+    </div>
+
+    <div class="item">
+        <label class="required">确认新密码</label>
+        <input type="password" name="confirmPassword"
+               required />
+    </div>
+
+    <div class="actions">
+        <button type="submit" class="btn">保存</button>
+        <button class="btn" type="button" [routerLink]="['../']">取消</button>
+    </div>
+
+</form>

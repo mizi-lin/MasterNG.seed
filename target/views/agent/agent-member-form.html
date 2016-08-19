@@ -1,0 +1,43 @@
+<div class="content">
+    <div class="title-bar">
+        <h5>添加代理用户</h5>
+    </div>
+
+    <div class="main">
+        <form class="form" autocomplete="off" novalidate
+              #myForm="ngForm"
+              [class.submitted]="myForm._submitted"
+              (ngSubmit)="save(myForm)">
+
+            <div class="item">
+                <label class="required">用户名</label>
+                <input type="text" name="name"
+                       [(ngModel)]="fm.name"
+                       required />
+            </div>
+
+            <div class="item">
+                <label class="required">邮箱</label>
+                <input type="text" name="email"
+                       [(ngModel)]="fm.email"
+                       required />
+            </div>
+
+            <div class="item">
+                <label>密码</label>
+                <input type="text" name="password" [(ngModel)]="fm.password" required />
+            </div>
+
+            <div class="item">
+                <label>确认密码</label>
+                <input type="text" name="confrimPassword" [(ngModel)]="fm.confrimPassword" required />
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn">保存</button>
+                <button class="btn" type="button" [routerLink]="['../']" *ngIf="!agentId">取消</button>
+            </div>
+        </form>
+    </div>
+
+</div>
