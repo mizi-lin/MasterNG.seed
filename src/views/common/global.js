@@ -9,9 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var const_1 = require('./const');
 var GLOBAL = (function () {
     function GLOBAL() {
         var _this = this;
+        this.httpStatus = 0;
         mu.run(mu.storage('CURRENT'), function (admin) {
             _this.current = admin;
         });
@@ -19,6 +21,13 @@ var GLOBAL = (function () {
     GLOBAL.prototype.setCurrent = function (current) {
         this.isAdmin = !current.agencyId;
         this.current = current;
+        mu.storage(const_1.CONST.CURRENT, current);
+    };
+    GLOBAL.prototype.clearCurrent = function () {
+        this.isAdmin = null;
+        this.current = null;
+        mu.storage(const_1.CONST.HEADER_TOKEN, '');
+        mu.storage(const_1.CONST.CURRENT, '');
     };
     GLOBAL.prototype.save = function (form, vm, fn) {
         if (form.valid) {

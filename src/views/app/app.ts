@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MNote} from '../common/directive/mNote.direc';
+import {GLOBAL} from '../common/global';
 
 // import { Header } from '../layout';
 
@@ -29,10 +31,12 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'app',
-    templateUrl: 'views/layout/layout.html'
-    // directives: [Header]
+    templateUrl: 'views/layout/layout.html',
+    directives: [MNote]
 })
 
 export class App {
-}
+    constructor(private G: GLOBAL) {
+    }
 
+}

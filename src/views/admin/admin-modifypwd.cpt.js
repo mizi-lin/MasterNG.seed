@@ -13,10 +13,13 @@ var admin_model_1 = require('./admin.model');
 var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
+var mVEquals_validation_direc_1 = require('../common/directive/validation/mVEquals-validation.direc');
 var AdminModifyPwdCpt = (function () {
-    function AdminModifyPwdCpt(G, adminServ, route, router) {
+    function AdminModifyPwdCpt(G, adminServ, $$, route, router) {
         this.G = G;
         this.adminServ = adminServ;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
         this.fm = new admin_model_1.Admin();
@@ -24,21 +27,30 @@ var AdminModifyPwdCpt = (function () {
     AdminModifyPwdCpt.prototype.save = function (form) {
         var _this = this;
         this.G.save(form, this, function (form) {
-            _this.fm.adminId = _this.adminId;
-            _this.adminServ.saveAdmin(_this.fm).subscribe(function (res) {
+            var rp;
+            if (_this.adminId === 'current') {
+                rp = 'current';
+                _this.fm.adminId = _this.G.current.adminId;
+            }
+            else {
+                rp = 'admins';
+                _this.fm.adminId = _this.adminId;
+            }
+            _this.$$[rp].patch(_this.fm).subscribe(function (res) {
                 _this.fm = res.data;
             });
         });
     };
     AdminModifyPwdCpt.prototype.ngOnInit = function () {
-        this.adminId = +this.router.routerState.parent(this.route).snapshot.params['adminId'];
+        this.adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
     };
     AdminModifyPwdCpt = __decorate([
         core_1.Component({
             selector: 'admin-form',
-            templateUrl: 'views/admin/admin-modifypwd.form.html'
+            templateUrl: 'views/admin/admin-modifypwd.form.html',
+            directives: [mVEquals_validation_direc_1.MVEquals]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AdminModifyPwdCpt);
     return AdminModifyPwdCpt;
 }());

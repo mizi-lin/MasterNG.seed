@@ -14,18 +14,25 @@
         <label class="required">新密码</label>
         <input type="password" name="password"
                [(ngModel)]="fm.password"
+               #password="ngModel"
+               reverse="true"
+               mVEquals="__password__"
                required />
     </div>
 
     <div class="item">
         <label class="required">确认新密码</label>
-        <input type="password" name="confirmPassword"
+        <input type="password" name="__password__"
+               [(ngModel)]="fm.__password__"
+               #__password__="ngModel"
+               mVEquals="password"
+               reverse="false"
                required />
     </div>
 
     <div class="actions">
-        <button type="submit" class="btn">保存</button>
-        <button class="btn" type="button" [routerLink]="['../']">取消</button>
+        <button type="submit" class="btn blue">保存</button>
+        <button class="btn white" type="button" [routerLink]="['../']">取消</button>
     </div>
 
 </form>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AdminUpdateCpt} from './admin-update';
+import {AdminUpdateCpt} from './admin-update.cpt';
 import {AdminServ} from './admin.serv';
 
 @Component({

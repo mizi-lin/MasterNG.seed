@@ -3,11 +3,13 @@ import {Tenant} from './tenant.model';
 import {TenantServ} from './tenant.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
 
 declare var mu: any, console: any;
 
 @Component({
-    selector: 'tenant-form', templateUrl: 'views/tenant/tenant-form.html'
+    selector: 'tenant-form',
+    templateUrl: 'views/tenant/tenant-form.html'
 })
 
 export class TenantUpdateCpt implements OnInit, OnDestroy {
@@ -16,12 +18,17 @@ export class TenantUpdateCpt implements OnInit, OnDestroy {
     sub: any;
     tenantId: number;
 
-    constructor(private ts: TenantServ, private route: ActivatedRoute, private router: Router, private G: GLOBAL) {
+    constructor(private ts: TenantServ,
+                private route: ActivatedRoute,
+                private router: Router,
+                private $$: ResourcePool,
+                private G: GLOBAL) {
     }
 
     save(form: any): void {
         this.G.save(form, this, (form) => {
-            this.ts.saveTenant(this.fm).subscribe((res) => {
+            this.fm.__primary__ = 'tenantId';
+            this.$$.tenants.save(this.fm).subscribe((res) => {
                 if (!this.tenantId) {
                     this.router.navigate(['/tenants']);
                 }
@@ -34,9 +41,12 @@ export class TenantUpdateCpt implements OnInit, OnDestroy {
         let tenantId: number = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
         if (tenantId) {
             this.tenantId = tenantId;
-            this.sub = this.ts.getTenant(tenantId).subscribe((res) => {
+            this.sub = this.$$.tenants.get({
+                tenantId: tenantId
+            }).subscribe((res) => {
                 this.fm = res.data;
             });
+
         }
     }
 

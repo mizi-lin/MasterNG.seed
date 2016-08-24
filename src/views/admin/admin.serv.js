@@ -10,27 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var http_client_1 = require('../common/http-client');
-var const_1 = require('../common/const');
+var http_1 = require('@angular/http');
 var AdminServ = (function () {
-    function AdminServ(httpClient, router) {
-        this.httpClient = httpClient;
+    function AdminServ(http, router) {
+        this.http = http;
         this.router = router;
     }
-    AdminServ.prototype.getAdmin = function (adminId) {
-        var search = {};
-        if (adminId) {
-            search.adminId = adminId;
-        }
-        return this.httpClient.get(const_1.API.ADMINS, search);
-    };
-    AdminServ.prototype.saveAdmin = function (admin) {
-        var method = admin.adminId ? 'patch' : 'post';
-        return this.httpClient[method](const_1.API.ADMINS, admin);
-    };
     AdminServ = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_client_1.HttpClient, router_1.Router])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], AdminServ);
     return AdminServ;
 }());

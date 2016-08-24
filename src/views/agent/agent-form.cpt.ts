@@ -3,6 +3,7 @@ import {Agent} from './agent';
 import {AgentServ} from './agent.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
 
 declare var console: any;
 declare var mu: any;
@@ -23,6 +24,7 @@ export class AgentFormCpt implements OnInit, OnDestroy {
     agencyId: number;
 
     constructor(private agentServ: AgentServ,
+                private $$: ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router,
                 private G: GLOBAL) {
@@ -31,7 +33,8 @@ export class AgentFormCpt implements OnInit, OnDestroy {
 
     save(form: any): void {
         this.G.save(form, this, (form) => {
-            this.sub = this.agentServ.saveAgent(this.fm).subscribe((res) => {
+            this.fm.__primary__ = 'agencyId';
+            this.sub = this.$$.agencies.patch(this.fm).subscribe((res) => {
                 if (!this.agencyId) {
                     this.router.navigate(['/agents']);
                 }
@@ -44,7 +47,9 @@ export class AgentFormCpt implements OnInit, OnDestroy {
         let agencyId: number = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
         if (agencyId) {
             this.agencyId = agencyId;
-            this.sub = this.agentServ.getAgent(agencyId).subscribe((res) => {
+            this.sub = this.$$.agencies.get({
+                agencyId: agencyId
+            }).subscribe((res) => {
                 this.agent = res.data;
                 this.fm = mu.clone(res.data);
             });

@@ -26,6 +26,10 @@ export class Admin {
     // 创建时间
     createTime: number;
 
+    __password__: any;
+
+    __primary__: string = 'adminId';
+
     constructor(// 管理员ID
         adminId?: number,
         // 所属代理ID

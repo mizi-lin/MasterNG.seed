@@ -4,16 +4,22 @@
           [class.submitted]="myForm._submitted"
           (ngSubmit)="save(myForm, save)">
 
+        <h5>Sign in Youce's Boos</h5>
+
         <div class="item">
-            <input type="text" name="email" placeholder="用户名" [(ngModel)]="fm.email" required />
+            <input type="text" name="email" class="full"
+                   placeholder="用户名"
+                   [(ngModel)]="fm.email"
+                   mVEmail
+                   required />
         </div>
 
         <div class="item">
-            <input type="password" name="password" placeholder="密码" [(ngModel)]="fm.password" required />
+            <input type="password" name="password" class="full" placeholder="密码" [(ngModel)]="fm.password" required />
         </div>
 
         <div class="actions">
-            <button class="btn" type="submit">登录</button>
+            <button class="btn full blue" type="submit">登录</button>
         </div>
     </form>
 </div>

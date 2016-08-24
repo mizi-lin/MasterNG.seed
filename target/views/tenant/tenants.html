@@ -1,7 +1,7 @@
 <div class="title-bar">
     <h5>租户管理</h5>
     <div class="actions">
-        <div class="btn" [routerLink]="['./create']">添加租户</div>
+        <div class="btn blue" [routerLink]="['./create']">添加租户</div>
     </div>
 </div>
 
@@ -16,6 +16,7 @@
                 <th>活动数</th>
                 <th>余额</th>
                 <th>信用额度</th>
+                <th>状态</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -26,11 +27,12 @@
                     <a [routerLink]="['/tenants', tenant.tenantId]">{{tenant.tenantName}}</a>
                 </td>
                 <td>{{tenant.companyName}}</td>
-                <td></td>
+                <td>{{tenant.adminName}}</td>
                 <td>{{tenant.agencyId ? '代理' : '管理员'}}</td>
                 <td>{{tenant.activityNum}}</td>
                 <td>{{tenant.balance}}</td>
                 <td>{{tenant.credit}}</td>
+                <td>{{tenant.status || 1 | name: 'TENANT' }}</td>
                 <td></td>
             </tr>
         </tbody>

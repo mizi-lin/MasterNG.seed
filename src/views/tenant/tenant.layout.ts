@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-
-import { Header } from '../layout';
+import {Component} from '@angular/core';
+import {Header} from '../layout';
 
 @Component({
     selector: 'layout',

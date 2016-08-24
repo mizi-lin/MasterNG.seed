@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TenantServ} from '../tenant.serv';
-import {Admin} from '../../admin/admin.model';
 import {DICT} from '../../common/const';
 import {GLOBAL} from '../../common/global';
+import {ResourcePool} from '../../common/resource-pool';
 
 declare var console: any, mu: any;
 
@@ -14,12 +14,13 @@ declare var console: any, mu: any;
 
 export class TenantUsersCpt {
     private sub: any;
-    private users: Admin[];
+    private users: any[];
     private tenantId: number;
     private roots: any;
 
     constructor(private tenantServ: TenantServ,
                 private G: GLOBAL,
+                private $$: ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -27,19 +28,10 @@ export class TenantUsersCpt {
     changeUserRoot(user: any, root: number): void {
         user.root = +root;
         user.tenantId = this.tenantId;
-        this.tenantServ.saveTenantUser(user).subscribe();
+        user.__primary__ = 'userId';
+        this.$$.tenants_users.save(user).subscribe();
     }
 
-    // simulator(evt: any, userId: number, user: any, index: number): void {
-    //
-    //     this.tenantServ.getTenantUserSimulator({
-    //         userId: userId,
-    //         tenantId: this.tenantId
-    //     }).subscribe((res)=> {
-    //         let token = res.data.token;
-    //         user.href = 'http://test.youce.io/start.html?accessToken=' + token;
-    //     });
-    // }
 
     ngOnInit(): void {
 
@@ -55,14 +47,10 @@ export class TenantUsersCpt {
         // 获得上级router 参数多艰难呀`~~
         this.tenantId = +routeParams.tenantId;
 
-        this.sub = this.tenantServ.getTenantUsers({
+        this.sub = this.$$.tenants_users.get({
             tenantId: this.tenantId
         }).subscribe((res) => {
-            //todo
-            // this.users = res.data;
-
             this.users = res.data;
-
         });
     }
 

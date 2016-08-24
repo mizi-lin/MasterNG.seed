@@ -10,32 +10,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var agent_serv_1 = require('./agent.serv');
 var admin_model_1 = require('../admin/admin.model');
 var global_1 = require('../common/global');
+var admin_serv_1 = require('../admin/admin.serv');
+var resource_pool_1 = require('../common/resource-pool');
+var const_1 = require('../common/const');
+var index_1 = require('../common/directive/validation/index');
 var AgentMemberFormCpt = (function () {
-    function AgentMemberFormCpt(agentServ, G, route, router) {
-        this.agentServ = agentServ;
+    function AgentMemberFormCpt(adminServ, G, $$, route, router) {
+        this.adminServ = adminServ;
         this.G = G;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
         this.fm = new admin_model_1.Admin();
+        this.CONST = const_1.CONST;
     }
     AgentMemberFormCpt.prototype.save = function (form) {
         var _this = this;
         this.G.save(form, this, function (form) {
-            _this.agentServ.saveAdmin(_this.fm).subscribe();
+            _this.fm.__primary__ = 'adminId';
+            _this.$$.admins.save(_this.fm).subscribe(function () {
+                _this.router.navigate([
+                    'agents',
+                    _this.fm.agencyId,
+                    'members'
+                ]);
+            });
         });
     };
     AgentMemberFormCpt.prototype.ngOnInit = function () {
+        var _this = this;
         this.fm.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.adminId = +this.route.snapshot.params['adminId'];
+        if (this.adminId) {
+            this.$$.admins.get({
+                adminId: this.adminId
+            }).subscribe(function (res) {
+                _this.fm = res.data;
+            });
+        }
     };
     AgentMemberFormCpt = __decorate([
         core_1.Component({
-            selector: 'page.agent-member-form.dlg.small',
-            templateUrl: 'views/agent/agent-member-form.html'
+            selector: 'agent-member-form',
+            templateUrl: 'views/agent/agent-member-form.html',
+            providers: [admin_serv_1.AdminServ],
+            directives: [index_1.M_VALIDATION]
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AgentMemberFormCpt);
     return AgentMemberFormCpt;
 }());

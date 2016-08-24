@@ -11,14 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var agent_serv_1 = require('./agent.serv');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AgentsCpt = (function () {
-    function AgentsCpt(G, agentServ) {
+    function AgentsCpt(G, $$, agentServ) {
         this.G = G;
+        this.$$ = $$;
         this.agentServ = agentServ;
     }
     AgentsCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.agentServ.getAgents().subscribe(function (rst) { return _this.agents = rst.data; });
+        this.$$.agencies.get().subscribe(function (rst) { return _this.agents = rst.data; });
     };
     AgentsCpt = __decorate([
         core_1.Component({
@@ -26,7 +28,7 @@ var AgentsCpt = (function () {
             selector: 'page.agents',
             templateUrl: 'views/agent/agents.html'
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, agent_serv_1.AgentServ])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, agent_serv_1.AgentServ])
     ], AgentsCpt);
     return AgentsCpt;
 }());

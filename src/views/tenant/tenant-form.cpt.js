@@ -13,18 +13,21 @@ var tenant_model_1 = require('./tenant.model');
 var tenant_serv_1 = require('./tenant.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var TenantUpdateCpt = (function () {
-    function TenantUpdateCpt(ts, route, router, G) {
+    function TenantUpdateCpt(ts, route, router, $$, G) {
         this.ts = ts;
         this.route = route;
         this.router = router;
+        this.$$ = $$;
         this.G = G;
         this.fm = new tenant_model_1.Tenant();
     }
     TenantUpdateCpt.prototype.save = function (form) {
         var _this = this;
         this.G.save(form, this, function (form) {
-            _this.ts.saveTenant(_this.fm).subscribe(function (res) {
+            _this.fm.__primary__ = 'tenantId';
+            _this.$$.tenants.save(_this.fm).subscribe(function (res) {
                 if (!_this.tenantId) {
                     _this.router.navigate(['/tenants']);
                 }
@@ -36,7 +39,9 @@ var TenantUpdateCpt = (function () {
         var tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
         if (tenantId) {
             this.tenantId = tenantId;
-            this.sub = this.ts.getTenant(tenantId).subscribe(function (res) {
+            this.sub = this.$$.tenants.get({
+                tenantId: tenantId
+            }).subscribe(function (res) {
                 _this.fm = res.data;
             });
         }
@@ -46,9 +51,10 @@ var TenantUpdateCpt = (function () {
     };
     TenantUpdateCpt = __decorate([
         core_1.Component({
-            selector: 'tenant-form', templateUrl: 'views/tenant/tenant-form.html'
+            selector: 'tenant-form',
+            templateUrl: 'views/tenant/tenant-form.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router, resource_pool_1.ResourcePool, global_1.GLOBAL])
     ], TenantUpdateCpt);
     return TenantUpdateCpt;
 }());

@@ -1,5 +1,5 @@
 <div class="title-bar">
-    <div class="title">活动数</div>
+    <h5>活动数: {{ activities?.length }}</h5>
 </div>
 
 <div class="main">
@@ -35,8 +35,8 @@
                     {{activity.status | name: 'ACTIVITY'}}
                 </td>
                 <td>
-                    <button class="btn" (click)="pending(activity)" *ngIf="activity.status===2">暂停</button>
-                    <button class="btn" (click)="restore(activity)" *ngIf="activity.status===3">恢复</button>
+                    <button class="btn blue" (click)="pending(activity)" *ngIf="activity.status===2">暂停</button>
+                    <button class="btn white" (click)="restore(activity)" *ngIf="activity.status===3">恢复</button>
                 </td>
             </tr>
         </tbody>

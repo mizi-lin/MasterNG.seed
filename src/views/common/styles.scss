@@ -4,6 +4,8 @@ $borderColor: rgb(234, 234, 234);
 $baseColor: rgb(9, 188, 189);
 $basePaddingLeft: 20px;
 
+// 18 61 64
+
 * {
     box-sizing: border-box;
 }
@@ -33,14 +35,87 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+.pl0px {
+    padding-left: 0 !important;
+}
+
+
+note {
+    position: fixed;
+    top: 46px;
+    left: 0; right: 0;
+    min-height: 46px;
+    z-index: 100001;
+
+    &.hide {
+        display: none;
+    }
+
+    &.show {
+        display: block;
+    }
+
+    &.success {
+        background-color: rgba(18, 61, 64, .8);
+        text-align: center;
+        color: #fff;
+        line-height: 46px;
+    }
+
+    &.error {
+        background-color: rgba(255, 0, 0, .3);
+        text-align: center;
+        color: #ff0000;
+        line-height: 46px;
+    }
+
+    &.alert {
+        background-color: rgba(0, 0, 255, .2);
+        text-align: center;
+        color: #0066ff;
+        line-height: 46px;
+    }
+}
+
 .btn {
     display: inline-block;
     padding: 5px 10px;
     font-size: 14px;
     border: 1px solid $borderColor;
 
+    &.full {
+        width: 100%;
+    }
+
+    &.save {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    &.blue {
+        background: $baseColor;
+        color: #fff;
+        border: 1px solid rgba(9, 188, 189, .8);
+
+        &:hover {
+            background: rgba(9, 188, 189, .8);
+        }
+    }
+
+    &.white {
+        background: #fff;
+        color: #666;
+        border: 1px solid #d2d2d2;
+
+        &:hover {
+            color: #666;
+            background: #f5f5f5;
+        }
+    }
+
     &:hover {
-        background: rgba(0, 0, 0, .1);
+        color: #fff;
+        background: rgba(9, 188, 189, .6);
         cursor: pointer;
     }
 }
@@ -58,6 +133,10 @@ select {
 
     line-height: 32px;
     color: #666;
+
+    &.full {
+        width: 100%;
+    }
 
     &.auto {
         width: auto;
@@ -141,22 +220,43 @@ select {
         height: 100%;
 
         // login page style
-        &.login .main {
-            display: block;
-            margin: 200px auto;
-            padding: 30px;
-            width: 360px;
-            height: 200px;
-            background: #fff;
-            border: 1px solid $borderColor;
+        &.login {
+            padding-top: 200px;
+            background: url('../../assets/images/index_bg2.png') no-repeat, url('../../assets/images/fe_index.jpg') repeat;
+            background-size: cover, cover;
 
-            input {
-                width: 300px;
-                height: 42px;
-                font-size: 16px;
-                line-height: 42px;
+            .main {
+                display: block;
+                margin: 0 auto;
+                padding: 30px 30px 50px;
+                width: 380px;
+                background: rgba(0, 0, 0, .3);
+                //border: 3px solid rgba(255, 255, 255, .2);
+                border-radius: 3px;
+                box-shadow: 0 1px 100px 20px rgba(255, 255, 255, 0.1);
+
+                h5 {
+                    padding: 10px 0;
+                    color: #fff;
+                    font-weight: 300;
+                    font-size: 16px;
+                }
+
+                input {
+                    height: 42px;
+                    font-size: 16px;
+                    line-height: 42px;
+                }
+
+                .btn {
+                    margin-top: 20px;
+                    height: 42px;
+                    font-size: 16px;
+                }
+
             }
         }
+
     }
 
     > .content {
@@ -397,6 +497,19 @@ select {
                         overflow-y: auto;
 
                         background: #fff;
+
+                        .title-bar {
+                            padding-left: 0;
+                            .actions {
+                                right: 0;
+                            }
+                        }
+
+                        .dlg {
+                            .title-bar {
+                                padding-left: $basePaddingLeft;
+                            }
+                        }
 
                     }
 

@@ -11,20 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var tenant_serv_1 = require('./tenant.serv');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
+var name_pipe_1 = require('../common/pipe/name.pipe');
 var TenantsCpt = (function () {
-    function TenantsCpt(ts, G) {
+    function TenantsCpt(ts, $$, G) {
         this.ts = ts;
+        this.$$ = $$;
         this.G = G;
     }
     TenantsCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.ts.getTenant().subscribe(function (res) { return _this.tenants = res.data; });
+        this.$$.tenants.get().subscribe(function (res) { return _this.tenants = res.data; });
     };
     TenantsCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenants', templateUrl: 'views/tenant/tenants.html', providers: [tenant_serv_1.TenantServ]
+            selector: 'page.tenants',
+            templateUrl: 'views/tenant/tenants.html',
+            providers: [tenant_serv_1.TenantServ],
+            pipes: [name_pipe_1.NamePipe]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, resource_pool_1.ResourcePool, global_1.GLOBAL])
     ], TenantsCpt);
     return TenantsCpt;
 }());

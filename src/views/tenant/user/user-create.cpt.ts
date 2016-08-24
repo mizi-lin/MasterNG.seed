@@ -3,11 +3,15 @@ import {DICT} from '../../common/const';
 import {TenantServ} from '../tenant.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../../common/global';
+import {ResourcePool} from '../../common/resource-pool';
+import {M_VALIDATION} from '../../common/directive/validation/index';
 
 declare var mu: any, console: any;
 
 @Component({
-    selector: 'page.tenant-user-create.dlg.small', templateUrl: 'views/tenant/user/user-form.html'
+    selector: 'page.tenant-user-create.dlg.small',
+    templateUrl: 'views/tenant/user/user-form.html',
+    directives: [M_VALIDATION]
 })
 
 export class TenantUserCreateCpt implements OnInit {
@@ -18,13 +22,21 @@ export class TenantUserCreateCpt implements OnInit {
 
     tenantId: number;
 
-    constructor(private G: GLOBAL, private ts: TenantServ, private route: ActivatedRoute, private router: Router) {
+    vm: any;
+
+    constructor(private G: GLOBAL,
+                private ts: TenantServ,
+                private $$: ResourcePool,
+                private route: ActivatedRoute,
+                private router: Router) {
+        this.vm = this;
     }
 
     ngOnInit(): void {
         this.roots = mu.map(DICT.ROOT, (v, k) => {
             return {
-                val: +k, title: v
+                val: +k,
+                title: v
             };
         }, []);
 
@@ -34,8 +46,13 @@ export class TenantUserCreateCpt implements OnInit {
     save(form: any): void {
         this.G.save(form, this, (form) => {
             this.fm.tenantId = this.tenantId;
-            this.ts.saveTenantUser(this.fm).subscribe(() => {
-                this.router.navigate(['/tenants', this.tenantId, 'users']);
+            this.fm.__primary__ = 'userId';
+            this.$$.tenants_users.save(this.fm).subscribe(() => {
+                this.router.navigate([
+                    '/tenants',
+                    this.tenantId,
+                    'users'
+                ]);
             });
         });
     }

@@ -9,15 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var mNote_direc_1 = require('../common/directive/mNote.direc');
+var global_1 = require('../common/global');
 var App = (function () {
-    function App() {
+    function App(G) {
+        this.G = G;
     }
     App = __decorate([
         core_1.Component({
             selector: 'app',
-            templateUrl: 'views/layout/layout.html'
+            templateUrl: 'views/layout/layout.html',
+            directives: [mNote_direc_1.MNote]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [global_1.GLOBAL])
     ], App);
     return App;
 }());

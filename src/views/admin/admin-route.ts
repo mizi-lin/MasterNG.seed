@@ -7,6 +7,7 @@ import {AdminModifyPwdCpt} from './admin-modifypwd.cpt';
 export const adminDetailRouter: RouterConfig = [ {
         path: ':adminId', component: AdminDetailCpt, canActivate: [AuthGuide], children: [
             {path: '', component: AdminUpdateCpt, canActivate: [AuthGuide]},
+            {path: 'current', component: AdminUpdateCpt, canActivate: [AuthGuide]},
             {path: 'modifypwd', component: AdminModifyPwdCpt, canActivate: [AuthGuide]}
         ]
     }

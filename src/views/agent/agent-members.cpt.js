@@ -12,17 +12,21 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var agent_serv_1 = require('./agent.serv');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AgentMembersCpt = (function () {
-    function AgentMembersCpt(agentServ, G, route, router) {
+    function AgentMembersCpt(agentServ, G, $$, route, router) {
         this.agentServ = agentServ;
         this.G = G;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
     }
     AgentMembersCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
-        this.sub = this.agentServ.getAgentMember(this.agencyId).subscribe(function (res) {
+        this.sub = this.$$.agencies_members.get({
+            agencyId: this.agencyId
+        }).subscribe(function (res) {
             _this.members = res.data;
         });
     };
@@ -33,9 +37,10 @@ var AgentMembersCpt = (function () {
     };
     AgentMembersCpt = __decorate([
         core_1.Component({
-            selector: 'inmain.agent-member', templateUrl: 'views/agent/agent-members.html'
+            selector: 'inmain.agent-member',
+            templateUrl: 'views/agent/agent-members.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AgentMembersCpt);
     return AgentMembersCpt;
 }());
