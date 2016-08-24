@@ -2,8 +2,10 @@ import {Component} from '@angular/core';
 import {LoginServ} from './login.serv';
 import {Router} from '@angular/router';
 
-import {HEADER_TOKEN, CONFIG} from '../common/const';
+import {CONST} from '../common/const';
 import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
+import {M_VALIDATION} from '../common/directive/validation/index';
 
 declare var mu: any;
 
@@ -11,7 +13,8 @@ declare var mu: any;
 @Component({
     selector: 'fe.login',
     templateUrl: 'views/fe/login.html',
-    providers: [LoginServ]
+    providers: [LoginServ],
+    directives: [M_VALIDATION]
 })
 
 export class LoginCpt {
@@ -21,19 +24,20 @@ export class LoginCpt {
     };
 
     constructor(private loginServ: LoginServ,
+                private $$: ResourcePool,
                 private G: GLOBAL,
                 private router: Router) {
     }
 
     save(form: any): void {
         this.G.save(form, this, (form) => {
-            mu.storage(HEADER_TOKEN, '');
-            this.loginServ.login(this.fm).subscribe((res) => {
+            mu.storage(CONST.HEADER_TOKEN, '');
+            this.$$.login.post(this.fm).subscribe((res) => {
                 let data = res.data;
-                mu.storage(HEADER_TOKEN, data.token);
+                mu.storage(CONST.HEADER_TOKEN, data.token);
                 mu.storage('CURRENT', data);
                 this.G.setCurrent(data);
-                this.router.navigate([CONFIG.BE_INDEX_PAGE]);
+                this.router.navigate([CONST.BE_INDEX_PAGE]);
             });
         });
     }

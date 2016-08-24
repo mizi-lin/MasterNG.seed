@@ -19,7 +19,7 @@ var AuthGuide = (function () {
     }
     AuthGuide.prototype.canActivate = function () {
         var _this = this;
-        if (mu.storage(const_1.CONFIG.HEADER_TOKEN)) {
+        if (mu.storage(const_1.CONST.HEADER_TOKEN)) {
             mu.empty(this.G.current, function () {
                 _this.G.setCurrent(mu.storage('CURRENT'));
             });

@@ -11,14 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var admin_serv_1 = require('./admin.serv');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AdminsCpt = (function () {
-    function AdminsCpt(G, ts) {
+    function AdminsCpt(G, ts, $$) {
         this.G = G;
         this.ts = ts;
+        this.$$ = $$;
     }
     AdminsCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.ts.getAdmin().subscribe(function (res) { return _this.admins = res.data; });
+        this.$$.admins.get().subscribe(function (res) { return _this.admins = res.data; });
     };
     AdminsCpt = __decorate([
         core_1.Component({
@@ -26,7 +28,7 @@ var AdminsCpt = (function () {
             templateUrl: 'views/admin/admins.html',
             providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.ResourcePool])
     ], AdminsCpt);
     return AdminsCpt;
 }());

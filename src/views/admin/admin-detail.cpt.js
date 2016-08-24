@@ -11,22 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
+var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AdminDetailCpt = (function () {
-    function AdminDetailCpt(adminServ, route) {
+    function AdminDetailCpt(adminServ, G, $$, route) {
         this.adminServ = adminServ;
+        this.G = G;
+        this.$$ = $$;
         this.route = route;
     }
     AdminDetailCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.sub = this.route.params.subscribe(function (params) {
-            var adminId = +params['adminId'];
-            _this.adminServ.getAdmin(adminId).subscribe(function (res) {
+        var adminId = this.route.snapshot.params['adminId'];
+        if (adminId === 'current') {
+            this.admin = this.G.current;
+        }
+        else {
+            this.sub = this.$$.admins.get({
+                adminId: adminId
+            }).subscribe(function (res) {
                 _this.admin = res.data;
             });
-        });
+        }
     };
     AdminDetailCpt.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
+        this.sub && this.sub.unsubscribe();
     };
     AdminDetailCpt = __decorate([
         core_1.Component({
@@ -34,7 +43,7 @@ var AdminDetailCpt = (function () {
             templateUrl: 'views/admin/admin-detail.html',
             providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute])
     ], AdminDetailCpt);
     return AdminDetailCpt;
 }());

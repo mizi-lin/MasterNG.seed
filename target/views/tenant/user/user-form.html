@@ -8,12 +8,12 @@
         <form class="form" autocomplete="off" novalidate
               #myForm="ngForm"
               [class.submitted]="myForm._submitted"
-              (ngSubmit)="save(myForm, save)">
+              (ngSubmit)="save(myForm)">
 
             <div class="item">
                 <label class="required">用户名</label>
-                <input type="text" name="name"
-                       [(ngModel)]="fm.name"
+                <input type="text" name="userName"
+                       [(ngModel)]="fm.userName"
                        required />
             </div>
 
@@ -21,6 +21,7 @@
                 <label class="required">邮箱</label>
                 <input type="text" name="email"
                        [(ngModel)]="fm.email"
+                       mVEmail
                        required />
             </div>
 
@@ -32,8 +33,8 @@
             </div>
 
             <div class="actions">
-                <button type="submit" class="btn">保存</button>
-                <button type="text" class="btn" [routerLink]="['../']">取消</button>
+                <button type="submit" class="btn blue">保存</button>
+                <button type="text" class="btn white" [routerLink]="['../']">取消</button>
             </div>
 
         </form>

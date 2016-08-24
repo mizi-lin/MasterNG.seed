@@ -13,9 +13,11 @@ var agent_form_cpt_1 = require('./agent-form.cpt');
 var agent_serv_1 = require('./agent.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AgentCreateCpt = (function () {
-    function AgentCreateCpt(G, router) {
+    function AgentCreateCpt(G, $$, router) {
         this.G = G;
+        this.$$ = $$;
         this.router = router;
     }
     AgentCreateCpt = __decorate([
@@ -25,7 +27,7 @@ var AgentCreateCpt = (function () {
             directives: [agent_form_cpt_1.AgentFormCpt],
             providers: [agent_serv_1.AgentServ]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.Router])
     ], AgentCreateCpt);
     return AgentCreateCpt;
 }());

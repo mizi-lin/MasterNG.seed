@@ -13,9 +13,11 @@ var agent_1 = require('./agent');
 var agent_serv_1 = require('./agent.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var AgentFormCpt = (function () {
-    function AgentFormCpt(agentServ, route, router, G) {
+    function AgentFormCpt(agentServ, $$, route, router, G) {
         this.agentServ = agentServ;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
         this.G = G;
@@ -26,7 +28,8 @@ var AgentFormCpt = (function () {
     AgentFormCpt.prototype.save = function (form) {
         var _this = this;
         this.G.save(form, this, function (form) {
-            _this.sub = _this.agentServ.saveAgent(_this.fm).subscribe(function (res) {
+            _this.fm.__primary__ = 'agencyId';
+            _this.sub = _this.$$.agencies.patch(_this.fm).subscribe(function (res) {
                 if (!_this.agencyId) {
                     _this.router.navigate(['/agents']);
                 }
@@ -38,7 +41,9 @@ var AgentFormCpt = (function () {
         var agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
         if (agencyId) {
             this.agencyId = agencyId;
-            this.sub = this.agentServ.getAgent(agencyId).subscribe(function (res) {
+            this.sub = this.$$.agencies.get({
+                agencyId: agencyId
+            }).subscribe(function (res) {
                 _this.agent = res.data;
                 _this.fm = mu.clone(res.data);
             });
@@ -52,7 +57,7 @@ var AgentFormCpt = (function () {
             selector: 'agent-form',
             templateUrl: 'views/agent/agent-form.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
     ], AgentFormCpt);
     return AgentFormCpt;
 }());

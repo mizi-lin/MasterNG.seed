@@ -19,6 +19,8 @@ export class Agent {
     // tenantNum: number;
     // creditPerTenant: number;
 
+    __primary__: string;
+
     constructor(
         public agencyId?: number,
         public name?: string,

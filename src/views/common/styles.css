@@ -19,13 +19,62 @@ ol {
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 
+.pl0px {
+  padding-left: 0 !important; }
+
+note {
+  position: fixed;
+  top: 46px;
+  left: 0;
+  right: 0;
+  min-height: 46px;
+  z-index: 100001; }
+  note.hide {
+    display: none; }
+  note.show {
+    display: block; }
+  note.success {
+    background-color: rgba(18, 61, 64, 0.8);
+    text-align: center;
+    color: #fff;
+    line-height: 46px; }
+  note.error {
+    background-color: rgba(255, 0, 0, 0.3);
+    text-align: center;
+    color: #ff0000;
+    line-height: 46px; }
+  note.alert {
+    background-color: rgba(0, 0, 255, 0.2);
+    text-align: center;
+    color: #0066ff;
+    line-height: 46px; }
+
 .btn {
   display: inline-block;
   padding: 5px 10px;
   font-size: 14px;
   border: 1px solid #eaeaea; }
+  .btn.full {
+    width: 100%; }
+  .btn.save {
+    padding-left: 20px;
+    padding-right: 20px; }
+  .btn.blue {
+    background: #09bcbd;
+    color: #fff;
+    border: 1px solid rgba(9, 188, 189, 0.8); }
+    .btn.blue:hover {
+      background: rgba(9, 188, 189, 0.8); }
+  .btn.white {
+    background: #fff;
+    color: #666;
+    border: 1px solid #d2d2d2; }
+    .btn.white:hover {
+      color: #666;
+      background: #f5f5f5; }
   .btn:hover {
-    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    background: rgba(9, 188, 189, 0.6);
     cursor: pointer; }
 
 input[type='text'],
@@ -39,6 +88,10 @@ select {
   outline: none;
   line-height: 32px;
   color: #666; }
+  input[type='text'].full,
+  input[type='password'].full,
+  select.full {
+    width: 100%; }
   input[type='text'].auto,
   input[type='password'].auto,
   select.auto {
@@ -94,19 +147,31 @@ select {
     display: block;
     width: 100%;
     height: 100%; }
-    #wrapper fe.login .main {
-      display: block;
-      margin: 200px auto;
-      padding: 30px;
-      width: 360px;
-      height: 200px;
-      background: #fff;
-      border: 1px solid #eaeaea; }
-      #wrapper fe.login .main input {
-        width: 300px;
-        height: 42px;
-        font-size: 16px;
-        line-height: 42px; }
+    #wrapper fe.login {
+      padding-top: 200px;
+      background: url("../../assets/images/index_bg2.png") no-repeat, url("../../assets/images/fe_index.jpg") repeat;
+      background-size: cover, cover; }
+      #wrapper fe.login .main {
+        display: block;
+        margin: 0 auto;
+        padding: 30px 30px 50px;
+        width: 380px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+        box-shadow: 0 1px 100px 20px rgba(255, 255, 255, 0.1); }
+        #wrapper fe.login .main h5 {
+          padding: 10px 0;
+          color: #fff;
+          font-weight: 300;
+          font-size: 16px; }
+        #wrapper fe.login .main input {
+          height: 42px;
+          font-size: 16px;
+          line-height: 42px; }
+        #wrapper fe.login .main .btn {
+          margin-top: 20px;
+          height: 42px;
+          font-size: 16px; }
   #wrapper > .content {
     width: 100%;
     height: 100%; }
@@ -275,6 +340,12 @@ select {
             overflow: hidden;
             overflow-y: auto;
             background: #fff; }
+            #wrapper > .content > layout page > .main-sidebar > .main .title-bar {
+              padding-left: 0; }
+              #wrapper > .content > layout page > .main-sidebar > .main .title-bar .actions {
+                right: 0; }
+            #wrapper > .content > layout page > .main-sidebar > .main .dlg .title-bar {
+              padding-left: 20px; }
       #wrapper > .content > layout .table {
         width: 100%;
         max-width: 100%;

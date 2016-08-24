@@ -10,17 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var const_1 = require('../common/const');
 var global_1 = require('../common/global');
 var Header = (function () {
     function Header(router, G) {
         this.router = router;
         this.G = G;
     }
-    Header.prototype.ngOnInit = function () {
-    };
     Header.prototype.logout = function () {
-        mu.storage(const_1.CONFIG.HEADER_TOKEN, '');
+        this.G.clearCurrent();
         this.router.navigate(['/login']);
     };
     Header = __decorate([

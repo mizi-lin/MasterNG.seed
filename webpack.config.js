@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000;
 
 
 //=========================================================
-//  CONFIG
+//  CONST
 //---------------------------------------------------------
 const config = {};
 module.exports = config;
@@ -99,6 +99,12 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION || ENV_TEST) {
             inject: 'body',
             template: './src/index.html'
         })
+    );
+
+    // 解决图片编译的时候 出现错误
+    // You may need an appropriate loader to handle this file type.
+    config.module.loaders.push(
+        {test: /\.(png|jpg|jpge|gif|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000'}
     );
 }
 

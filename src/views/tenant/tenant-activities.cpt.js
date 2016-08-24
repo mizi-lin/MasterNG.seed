@@ -14,10 +14,12 @@ var tenant_serv_1 = require('./tenant.serv');
 var const_1 = require('../common/const');
 var name_pipe_1 = require('../common/pipe/name.pipe');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var TenantActivitiesCpt = (function () {
-    function TenantActivitiesCpt(tenantServ, G, route, router) {
+    function TenantActivitiesCpt(tenantServ, G, $$, route, router) {
         this.tenantServ = tenantServ;
         this.G = G;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
     }
@@ -31,16 +33,18 @@ var TenantActivitiesCpt = (function () {
         }, []);
         var routeParams = this.router.routerState.parent(this.route).snapshot.params;
         this.tenantId = +routeParams.tenantId;
-        this.sub = this.tenantServ.getTenantActivities({
+        this.sub = this.$$.tenants_activities.get({
             tenantId: this.tenantId
         }).subscribe(function (res) {
             _this.activities = res.data;
+            _this.res = res;
         });
     };
     TenantActivitiesCpt.prototype.changeUserStatus = function (activity, status) {
         activity.status = +status;
         activity.tenantId = this.tenantId;
-        this.tenantServ.saveTenantActivity(activity).subscribe();
+        activity.__primary__ = 'activityId';
+        this.$$.tenants_activities.save(activity).subscribe();
     };
     TenantActivitiesCpt.prototype.pending = function (activity) {
         this.changeUserStatus(activity, 3);
@@ -57,7 +61,7 @@ var TenantActivitiesCpt = (function () {
             templateUrl: 'views/tenant/tenant-activities.html',
             pipes: [name_pipe_1.NamePipe]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], TenantActivitiesCpt);
     return TenantActivitiesCpt;
 }());

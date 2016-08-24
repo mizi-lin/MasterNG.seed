@@ -12,17 +12,21 @@ var core_1 = require('@angular/core');
 var tenant_serv_1 = require('./tenant.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
 var TenantDetailCpt = (function () {
-    function TenantDetailCpt(tenantServ, G, route) {
+    function TenantDetailCpt(tenantServ, G, $$, route) {
         this.tenantServ = tenantServ;
         this.G = G;
+        this.$$ = $$;
         this.route = route;
     }
     TenantDetailCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
             var tenantId = +params['tenantId'];
-            _this.tenantServ.getTenant(tenantId).subscribe(function (res) {
+            _this.$$.tenants.get({
+                tenantId: tenantId
+            }).subscribe(function (res) {
                 _this.tenant = res.data;
             });
         });
@@ -36,7 +40,7 @@ var TenantDetailCpt = (function () {
             templateUrl: 'views/tenant/tenant-detail.html',
             providers: [tenant_serv_1.TenantServ]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute])
     ], TenantDetailCpt);
     return TenantDetailCpt;
 }());

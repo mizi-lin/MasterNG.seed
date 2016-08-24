@@ -13,9 +13,12 @@ var login_serv_1 = require('./login.serv');
 var router_1 = require('@angular/router');
 var const_1 = require('../common/const');
 var global_1 = require('../common/global');
+var resource_pool_1 = require('../common/resource-pool');
+var index_1 = require('../common/directive/validation/index');
 var LoginCpt = (function () {
-    function LoginCpt(loginServ, G, router) {
+    function LoginCpt(loginServ, $$, G, router) {
         this.loginServ = loginServ;
+        this.$$ = $$;
         this.G = G;
         this.router = router;
         this.fm = {
@@ -26,13 +29,13 @@ var LoginCpt = (function () {
     LoginCpt.prototype.save = function (form) {
         var _this = this;
         this.G.save(form, this, function (form) {
-            mu.storage(const_1.HEADER_TOKEN, '');
-            _this.loginServ.login(_this.fm).subscribe(function (res) {
+            mu.storage(const_1.CONST.HEADER_TOKEN, '');
+            _this.$$.login.post(_this.fm).subscribe(function (res) {
                 var data = res.data;
-                mu.storage(const_1.HEADER_TOKEN, data.token);
+                mu.storage(const_1.CONST.HEADER_TOKEN, data.token);
                 mu.storage('CURRENT', data);
                 _this.G.setCurrent(data);
-                _this.router.navigate([const_1.CONFIG.BE_INDEX_PAGE]);
+                _this.router.navigate([const_1.CONST.BE_INDEX_PAGE]);
             });
         });
     };
@@ -40,9 +43,10 @@ var LoginCpt = (function () {
         core_1.Component({
             selector: 'fe.login',
             templateUrl: 'views/fe/login.html',
-            providers: [login_serv_1.LoginServ]
+            providers: [login_serv_1.LoginServ],
+            directives: [index_1.M_VALIDATION]
         }), 
-        __metadata('design:paramtypes', [login_serv_1.LoginServ, global_1.GLOBAL, router_1.Router])
+        __metadata('design:paramtypes', [login_serv_1.LoginServ, resource_pool_1.ResourcePool, global_1.GLOBAL, router_1.Router])
     ], LoginCpt);
     return LoginCpt;
 }());

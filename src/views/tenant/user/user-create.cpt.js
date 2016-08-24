@@ -13,18 +13,23 @@ var const_1 = require('../../common/const');
 var tenant_serv_1 = require('../tenant.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../../common/global');
+var resource_pool_1 = require('../../common/resource-pool');
+var index_1 = require('../../common/directive/validation/index');
 var TenantUserCreateCpt = (function () {
-    function TenantUserCreateCpt(G, ts, route, router) {
+    function TenantUserCreateCpt(G, ts, $$, route, router) {
         this.G = G;
         this.ts = ts;
+        this.$$ = $$;
         this.route = route;
         this.router = router;
         this.fm = {};
+        this.vm = this;
     }
     TenantUserCreateCpt.prototype.ngOnInit = function () {
         this.roots = mu.map(const_1.DICT.ROOT, function (v, k) {
             return {
-                val: +k, title: v
+                val: +k,
+                title: v
             };
         }, []);
         this.tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
@@ -33,16 +38,23 @@ var TenantUserCreateCpt = (function () {
         var _this = this;
         this.G.save(form, this, function (form) {
             _this.fm.tenantId = _this.tenantId;
-            _this.ts.saveTenantUser(_this.fm).subscribe(function () {
-                _this.router.navigate(['/tenants', _this.tenantId, 'users']);
+            _this.fm.__primary__ = 'userId';
+            _this.$$.tenants_users.save(_this.fm).subscribe(function () {
+                _this.router.navigate([
+                    '/tenants',
+                    _this.tenantId,
+                    'users'
+                ]);
             });
         });
     };
     TenantUserCreateCpt = __decorate([
         core_1.Component({
-            selector: 'page.tenant-user-create.dlg.small', templateUrl: 'views/tenant/user/user-form.html'
+            selector: 'page.tenant-user-create.dlg.small',
+            templateUrl: 'views/tenant/user/user-form.html',
+            directives: [index_1.M_VALIDATION]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, tenant_serv_1.TenantServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], TenantUserCreateCpt);
     return TenantUserCreateCpt;
 }());

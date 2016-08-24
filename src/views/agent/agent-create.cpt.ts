@@ -3,6 +3,7 @@ import {AgentFormCpt} from './agent-form.cpt';
 import {AgentServ} from './agent.serv';
 import {Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
 
 declare var mu: any, console: any;
 
@@ -15,6 +16,8 @@ declare var mu: any, console: any;
 
 export class AgentCreateCpt {
 
-    constructor(private G: GLOBAL, private router: Router) {
+    constructor(private G: GLOBAL,
+                private $$: ResourcePool,
+                private router: Router) {
     }
 }

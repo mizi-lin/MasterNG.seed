@@ -1,13 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Admin} from '../admin/admin.model';
+import {CONST} from './const';
 
 declare var mu: any, console: any;
 
 @Injectable()
 export class GLOBAL {
+    // 当前用户信息
     current: Admin;
 
+    // 判断用户是否管理员
     isAdmin: boolean;
+
+    /**
+     * http status 状态
+     * @type {number}
+     *
+     * 0 初始
+     * 401 无权限
+     * 500 错误 或 API 调用错误
+     * 404 无接口
+     */
+    httpStatus: number = 0;
 
     constructor() {
         mu.run(mu.storage('CURRENT'), (admin) => {
@@ -22,6 +36,17 @@ export class GLOBAL {
     setCurrent(current: any): void {
         this.isAdmin = !current.agencyId;
         this.current = current;
+        mu.storage(CONST.CURRENT, current);
+    }
+
+    /**
+     * 清楚用户登录信息
+     */
+    clearCurrent(): void {
+        this.isAdmin = null;
+        this.current = null;
+        mu.storage(CONST.HEADER_TOKEN, '');
+        mu.storage(CONST.CURRENT, '');
     }
 
     /**

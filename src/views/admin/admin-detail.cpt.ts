@@ -2,6 +2,8 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {AdminServ} from './admin.serv';
 import {Admin} from './admin.model';
 import {ActivatedRoute} from '@angular/router';
+import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
 
 @Component({
     selector: 'page.detail',
@@ -16,21 +18,28 @@ export class AdminDetailCpt implements OnInit, OnDestroy {
 
 
     constructor(private adminServ: AdminServ,
+                private G: GLOBAL,
+                private $$: ResourcePool,
                 private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.sub = this.route.params.subscribe(params => {
-            let adminId: number = +params['adminId'];
-            this.adminServ.getAdmin(adminId).subscribe((res) => {
+
+        let adminId: any = this.route.snapshot.params['adminId'];
+
+        if (adminId === 'current') {
+            this.admin = this.G.current;
+        } else {
+            this.sub = this.$$.admins.get({
+                adminId: adminId
+            }).subscribe((res) => {
                 this.admin = res.data;
             });
-
-        });
+        }
     }
 
     ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.sub && this.sub.unsubscribe();
     }
 }
 

@@ -12,6 +12,7 @@ import {AgentMemberFormCpt} from './agent-member-form.cpt';
 
 import {AuthGuide} from '../common/auth-guide';
 import {AgentCreateCpt} from './agent-create.cpt';
+import {AgentMemberCreateCpt} from './agent-member-create.cpt';
 
 /**
  * 代理 detail 页面子路由
@@ -19,7 +20,8 @@ import {AgentCreateCpt} from './agent-create.cpt';
 export const agentDetailRouter: RouterConfig = [
     {path: '', component: AgentFormCpt, canActivate: [AuthGuide]},
     {path: 'members', component: AgentMembersCpt, canActivate: [AuthGuide]},
-    {path: 'members/create', component: AgentMemberFormCpt, canActivate: [AuthGuide]}
+    {path: 'members/create', component: AgentMemberCreateCpt, canActivate: [AuthGuide]},
+    {path: 'members/:adminId/update', component: AgentMemberFormCpt, canActivate: [AuthGuide]}
 ];
 
 /**

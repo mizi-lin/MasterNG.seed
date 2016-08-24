@@ -1,18 +1,11 @@
 "use strict";
-exports.HEADER_TOKEN = 'X-ACCESS-TOKEN-BOSS';
-exports.CONFIG = {
+exports.CONST = {
     HEADER_TOKEN: 'X-ACCESS-TOKEN-BOSS',
-    BE_INDEX_PAGE: '/tenants'
-};
-exports.API = {
-    AGENCY: '/services/boss/agency/{agencyId}',
-    AGENCY_ADMIN: '/services/boss/agency/{agencyId}/admin',
-    AGENCY_TENANTS: '/services/boss/agency/{agencyId}/tenant/{tenantId}',
-    TENANTS: '/services/boss/tenant/{tenantId}',
-    TENANTS_USER: '/services/boss/tenant/{tenantId}/user/{userId}',
-    TENANTS_USER_SIMULATOR: '/services/boss/tenant/{tenantId}/user/{userId}/simulator',
-    TENANTS_ACTIVITY: '/services/boss/tenant/{tenantId}/activity/{activityId}',
-    ADMINS: '/services/boss/admin/{adminId}'
+    BE_INDEX_PAGE: '/tenants',
+    CURRENT: 'CURRENT',
+    REGX: {
+        EMAIL: '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'
+    }
 };
 exports.DICT = {
     ROOT: {
@@ -27,6 +20,10 @@ exports.DICT = {
             '3': '暂停',
             '4': '已过期',
             '-1': '已删除'
+        },
+        TENANT: {
+            '0': '禁用',
+            '1': '正常'
         }
     }
 };

@@ -10,35 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var http_client_1 = require('../common/http-client');
-var const_1 = require('../common/const');
+var http_1 = require('@angular/http');
 var AgentServ = (function () {
-    function AgentServ(httpClient, router) {
-        this.httpClient = httpClient;
+    function AgentServ(http, router) {
+        this.http = http;
         this.router = router;
     }
-    AgentServ.prototype.getAgents = function () {
-        return this.httpClient.get(const_1.API.AGENCY);
-    };
-    AgentServ.prototype.getAgent = function (agencyId) {
-        return this.httpClient.get(const_1.API.AGENCY, {
-            agencyId: agencyId
-        });
-    };
-    AgentServ.prototype.saveAgent = function (agent) {
-        return this.httpClient[agent.agencyId ? 'patch' : 'post'](const_1.API.AGENCY, agent);
-    };
-    AgentServ.prototype.getAgentMember = function (agencyId) {
-        return this.httpClient.get(const_1.API.AGENCY_ADMIN, {
-            agencyId: agencyId
-        });
-    };
-    AgentServ.prototype.saveAdmin = function (admin) {
-        return this.httpClient.post(const_1.API.ADMINS, admin);
-    };
     AgentServ = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_client_1.HttpClient, router_1.Router])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], AgentServ);
     return AgentServ;
 }());

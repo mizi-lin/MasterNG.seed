@@ -5,6 +5,7 @@ import {Admin} from '../admin/admin.model';
 import {DICT} from '../common/const';
 import {NamePipe} from '../common/pipe/name.pipe';
 import {GLOBAL} from '../common/global';
+import {ResourcePool} from '../common/resource-pool';
 
 declare var console: any, mu: any;
 
@@ -19,9 +20,11 @@ export class TenantActivitiesCpt {
     private activities: Admin[];
     private tenantId: number;
     private roots: any;
+    private res: any;
 
     constructor(private tenantServ: TenantServ,
                 private G: GLOBAL,
+                private $$: ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -40,18 +43,19 @@ export class TenantActivitiesCpt {
         // 获得上级router 参数多艰难呀`~~
         this.tenantId = +routeParams.tenantId;
 
-        this.sub = this.tenantServ.getTenantActivities({
+        this.sub = this.$$.tenants_activities.get({
             tenantId: this.tenantId
         }).subscribe((res) => {
-            //todo
             this.activities = res.data;
+            this.res = res;
         });
     }
 
     changeUserStatus(activity: any, status: number): void {
         activity.status = +status;
         activity.tenantId = this.tenantId;
-        this.tenantServ.saveTenantActivity(activity).subscribe();
+        activity.__primary__ = 'activityId';
+        this.$$.tenants_activities.save(activity).subscribe();
     }
 
     pending(activity: any): void {
