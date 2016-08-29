@@ -28,7 +28,10 @@
                 </td>
                 <td>{{tenant.companyName}}</td>
                 <td>{{tenant.adminName}}</td>
-                <td>{{tenant.agencyId ? '代理' : '管理员'}}</td>
+                <td>
+                    <em>{{tenant?.agencyName}}</em>
+                    <em>（{{tenant?.agencyId ? '代理' : '管理'}}）</em>
+                </td>
                 <td>{{tenant.activityNum}}</td>
                 <td>{{tenant.balance}}</td>
                 <td>{{tenant.credit}}</td>
