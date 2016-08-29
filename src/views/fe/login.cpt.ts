@@ -18,16 +18,13 @@ declare var mu: any;
 })
 
 export class LoginCpt {
-    fm: any = {
-        email: '',
-        password: ''
-    };
+    fm: any;
 
     constructor(private loginServ: LoginServ,
                 private $$: ResourcePool,
                 private G: GLOBAL,
                 private router: Router) {
-        this.fm = this.G.ENV_CONST.TEST_ACCOUNT;
+        this.fm = this.G.ENV_CONST.TEST_ACCOUNT || {};
     }
 
     save(form: any): void {
