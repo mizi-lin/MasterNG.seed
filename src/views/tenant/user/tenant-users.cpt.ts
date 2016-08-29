@@ -4,12 +4,14 @@ import {TenantServ} from '../tenant.serv';
 import {DICT} from '../../common/const';
 import {GLOBAL} from '../../common/global';
 import {ResourcePool} from '../../common/resource-pool';
+import {NamePipe} from '../../common/pipe/name.pipe';
 
 declare var console: any, mu: any;
 
 @Component({
     selector: 'inmain.tenant-users',
-    templateUrl: 'views/tenant/user/tenant-users.html'
+    templateUrl: 'views/tenant/user/tenant-users.html',
+    pipes: [NamePipe]
 })
 
 export class TenantUsersCpt {

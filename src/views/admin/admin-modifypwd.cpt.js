@@ -37,7 +37,6 @@ var AdminModifyPwdCpt = (function () {
                 _this.fm.adminId = _this.adminId;
             }
             _this.$$[rp].patch(_this.fm).subscribe(function (res) {
-                _this.fm = res.data;
             });
         });
     };

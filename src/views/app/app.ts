@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, trigger, style, transition, animate, state} from '@angular/core';
 import {MNote} from '../common/directive/mNote.direc';
 import {GLOBAL} from '../common/global';
+
+declare var console: any, mu: any;
 
 // import { Header } from '../layout';
 
@@ -32,10 +34,29 @@ import {GLOBAL} from '../common/global';
 @Component({
     selector: 'app',
     templateUrl: 'views/layout/layout.html',
-    directives: [MNote]
+    directives: [MNote],
+    animations: [
+        trigger('mnote', [
+            state('hide', style({
+                display: 'none'
+            })),
+
+            state('show', style({
+                display: 'none'
+            })),
+
+            transition('hide => show', [
+                animate('500ms 1500ms ease-in', style({
+                    'background-color': 'rgba(18, 61, 64, .8)',
+                    top: '-100px'
+                }))
+            ])
+        ])
+    ]
 })
 
 export class App {
+
     constructor(private G: GLOBAL) {
     }
 

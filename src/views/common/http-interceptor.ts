@@ -1,17 +1,10 @@
-import {
-    Http,
-    Headers,
-    Response,
-    ConnectionBackend,
-    RequestOptions,
-    RequestOptionsArgs
-} from '@angular/http';
+import {Http, Headers, Response, ConnectionBackend, RequestOptions, RequestOptionsArgs} from '@angular/http';
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
-
 import {Observable} from 'rxjs';
 import {GLOBAL} from './global';
 import {CONST} from './const';
+import 'rxjs/add/operator/debounceTime';
 
 declare var mu: any, console: any;
 
@@ -41,6 +34,8 @@ export class HttpInterceptor extends Http {
         super(backend, defaultOptions);
     }
 
+    __timer__: any;
+
     addHeaderWithToken(headers: Headers): Headers {
         headers = headers || new Headers();
         headers.append(CONST.HEADER_TOKEN, mu.storage(CONST.HEADER_TOKEN));
@@ -51,8 +46,13 @@ export class HttpInterceptor extends Http {
         return observable.map((response: Response) => {
             let body = response.json();
 
-            if (method === 'patch') {
+            if (mu.or(method, 'patch', 'post')) {
                 this.G.httpStatus = 200;
+
+                this.__timer__ && clearTimeout(this.__timer__);
+                this.__timer__ = setTimeout(() => {
+                    this.G.httpStatus = 0;
+                }, 2000);
             }
 
             return body || {};
@@ -61,7 +61,34 @@ export class HttpInterceptor extends Http {
 
     intercept(observable: Observable<Response>): Observable<Response> {
         return observable.catch((err: any, source: Observable<Response>) => {
-            this.G.httpStatus = err.status;
+            let status: any = this.G.httpStatus = err.status;
+            let title: string;
+
+            switch (status) {
+                case 401:
+                    title = 'TOKEN 失效';
+                    break;
+                case 404:
+                    title = '页面不存在';
+                    break;
+                case 500:
+                    title = '操作失败';
+                    break;
+                default:
+                    title = '操作失败';
+                    break;
+            }
+
+            this.G.httpError = {
+                status: status,
+                title: title,
+                error: err.json()
+            };
+
+            this.__timer__ && clearTimeout(this.__timer__);
+            this.__timer__ = setTimeout(() => {
+                this.G.httpStatus = 0;
+            }, 2000);
 
             // if (err.status  == 401 && !_.endsWith(err.url, 'api/auth/login')) {
             if (err.status === 401) {
@@ -72,23 +99,26 @@ export class HttpInterceptor extends Http {
         });
     }
 
+
+
     get(url: string, options?: RequestOptionsArgs): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
-        return this.intercept(this.map(super.get(url, options), 'get'));
+        console.debug(super.get(url, options));
+        return this.intercept(this.map(super.get(url, options).debounceTime(1000), 'get'));
     }
 
     post(url: string, body?: any, options?: any): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(super.post(url, body, options), 'post'));
+        return this.intercept(this.map(super.post(url, body, options).debounceTime(10000), 'post'));
     }
 
-    patch(url: string,  data?: any, options?: any): Observable<any> {
+    patch(url: string, data?: any, options?: any): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(super.patch(url, data, options), 'patch'));
+        return this.intercept(this.map(super.patch(url, data, options).debounceTime(1000), 'patch'));
     }
 }

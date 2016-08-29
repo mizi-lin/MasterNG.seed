@@ -1,5 +1,10 @@
-<mNote [class.error]="G?.httpStatus === 500" [class.success]="G?.httpStatus === 200" [class.hide]="G?.httpStatus === 0"  #note>
+<mNote  @mnote="G?.httpStatus ? 'show' : 'hide'"
+        [class.error]="G?.httpStatus >= 400"
+        [class.success]="G?.httpStatus < 300 && G?.httpStatus >0"
+        #note>
 </mNote>
+
 <article class="content">
-    <router-outlet></router-outlet>
+    <router-outlet>
+    </router-outlet>
 </article>

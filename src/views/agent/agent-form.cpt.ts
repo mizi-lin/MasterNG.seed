@@ -34,7 +34,7 @@ export class AgentFormCpt implements OnInit, OnDestroy {
     save(form: any): void {
         this.G.save(form, this, (form) => {
             this.fm.__primary__ = 'agencyId';
-            this.sub = this.$$.agencies.patch(this.fm).subscribe((res) => {
+            this.sub = this.$$.agencies.save(this.fm).subscribe((res) => {
                 if (!this.agencyId) {
                     this.router.navigate(['/agents']);
                 }

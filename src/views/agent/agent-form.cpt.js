@@ -29,7 +29,7 @@ var AgentFormCpt = (function () {
         var _this = this;
         this.G.save(form, this, function (form) {
             _this.fm.__primary__ = 'agencyId';
-            _this.sub = _this.$$.agencies.patch(_this.fm).subscribe(function (res) {
+            _this.sub = _this.$$.agencies.save(_this.fm).subscribe(function (res) {
                 if (!_this.agencyId) {
                     _this.router.navigate(['/agents']);
                 }

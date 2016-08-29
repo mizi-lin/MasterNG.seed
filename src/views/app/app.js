@@ -19,7 +19,23 @@ var App = (function () {
         core_1.Component({
             selector: 'app',
             templateUrl: 'views/layout/layout.html',
-            directives: [mNote_direc_1.MNote]
+            directives: [mNote_direc_1.MNote],
+            animations: [
+                core_1.trigger('mnote', [
+                    core_1.state('hide', core_1.style({
+                        display: 'none'
+                    })),
+                    core_1.state('show', core_1.style({
+                        display: 'none'
+                    })),
+                    core_1.transition('hide => show', [
+                        core_1.animate('500ms 1500ms ease-in', core_1.style({
+                            'background-color': 'rgba(18, 61, 64, .8)',
+                            top: '-100px'
+                        }))
+                    ])
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [global_1.GLOBAL])
     ], App);
