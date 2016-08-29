@@ -10,15 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var admin_model_1 = require('./admin.model');
-var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
 var mVEquals_validation_direc_1 = require('../common/directive/validation/mVEquals-validation.direc');
 var AdminModifyPwdCpt = (function () {
-    function AdminModifyPwdCpt(G, adminServ, $$, route, router) {
+    function AdminModifyPwdCpt(G, $$, route, router) {
         this.G = G;
-        this.adminServ = adminServ;
         this.$$ = $$;
         this.route = route;
         this.router = router;
@@ -49,7 +47,7 @@ var AdminModifyPwdCpt = (function () {
             templateUrl: 'views/admin/admin-modifypwd.form.html',
             directives: [mVEquals_validation_direc_1.MVEquals]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AdminModifyPwdCpt);
     return AdminModifyPwdCpt;
 }());
