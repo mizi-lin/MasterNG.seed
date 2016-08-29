@@ -84,20 +84,19 @@ var HttpInterceptor = (function (_super) {
     HttpInterceptor.prototype.get = function (url, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
-        console.debug(_super.prototype.get.call(this, url, options));
-        return this.intercept(this.map(_super.prototype.get.call(this, url, options).debounceTime(1000), 'get'));
+        return this.intercept(this.map(_super.prototype.get.call(this, url, options), 'get'));
     };
     HttpInterceptor.prototype.post = function (url, body, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(_super.prototype.post.call(this, url, body, options).debounceTime(10000), 'post'));
+        return this.intercept(this.map(_super.prototype.post.call(this, url, body, options), 'post'));
     };
     HttpInterceptor.prototype.patch = function (url, data, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(_super.prototype.patch.call(this, url, data, options).debounceTime(1000), 'patch'));
+        return this.intercept(this.map(_super.prototype.patch.call(this, url, data, options), 'patch'));
     };
     HttpInterceptor = __decorate([
         core_1.Injectable(), 
