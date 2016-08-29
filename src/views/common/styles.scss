@@ -63,9 +63,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .colon {
     color: #999;
+    
 
     &::after {
-        content: '\xEF';
+        content: '\FF1A';
     }
 }
 
