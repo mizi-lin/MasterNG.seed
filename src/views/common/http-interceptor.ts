@@ -104,21 +104,20 @@ export class HttpInterceptor extends Http {
     get(url: string, options?: RequestOptionsArgs): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
-        console.debug(super.get(url, options));
-        return this.intercept(this.map(super.get(url, options).debounceTime(1000), 'get'));
+        return this.intercept(this.map(super.get(url, options), 'get'));
     }
 
     post(url: string, body?: any, options?: any): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(super.post(url, body, options).debounceTime(10000), 'post'));
+        return this.intercept(this.map(super.post(url, body, options), 'post'));
     }
 
     patch(url: string, data?: any, options?: any): Observable<any> {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(super.patch(url, data, options).debounceTime(1000), 'patch'));
+        return this.intercept(this.map(super.patch(url, data, options), 'patch'));
     }
 }

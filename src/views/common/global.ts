@@ -25,10 +25,7 @@ export class GLOBAL {
      */
     httpStatus: number = 0;
 
-    httpError: any = {
-    };
-
-    test: string = 'hide';
+    httpError: any = {};
 
     constructor() {
         mu.run(mu.storage('CURRENT'), (admin) => {

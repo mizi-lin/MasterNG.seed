@@ -21,10 +21,7 @@ var LoginCpt = (function () {
         this.$$ = $$;
         this.G = G;
         this.router = router;
-        this.fm = {
-            'email': 'youce-service@admaster.com.cn',
-            'password': 'admaster12345'
-        };
+        this.fm = this.G.ENV_CONST.TEST_ACCOUNT;
     }
     LoginCpt.prototype.save = function (form) {
         var _this = this;
