@@ -21,6 +21,10 @@ var LoginCpt = (function () {
         this.$$ = $$;
         this.G = G;
         this.router = router;
+        this.fm = {
+            email: '',
+            password: ''
+        };
         this.fm = this.G.ENV_CONST.TEST_ACCOUNT;
     }
     LoginCpt.prototype.save = function (form) {
