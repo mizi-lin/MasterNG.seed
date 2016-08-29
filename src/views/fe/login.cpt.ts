@@ -18,7 +18,10 @@ declare var mu: any;
 })
 
 export class LoginCpt {
-    fm: any;
+    fm: any = {
+        email: '',
+        password: ''
+    };
 
     constructor(private loginServ: LoginServ,
                 private $$: ResourcePool,
