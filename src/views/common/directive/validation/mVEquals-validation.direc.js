@@ -14,15 +14,15 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var forms_1 = require('@angular/forms');
 var core_1 = require('@angular/core');
 var MVEquals = (function () {
-    function MVEquals(mVEquals, reverse) {
+    function MVEquals(mVEquals, mReverse_) {
         this.mVEquals = mVEquals;
-        this.reverse = reverse;
+        this.mReverse_ = mReverse_;
     }
     Object.defineProperty(MVEquals.prototype, "isReverse", {
         get: function () {
-            if (!this.reverse)
+            if (!this.mReverse_)
                 return false;
-            return this.reverse === 'true' ? true : false;
+            return this.mReverse_ === 'true' ? true : false;
         },
         enumerable: true,
         configurable: true
@@ -58,7 +58,7 @@ var MVEquals = (function () {
             ]
         }),
         __param(0, core_1.Attribute('mVEquals')),
-        __param(1, core_1.Attribute('reverse')), 
+        __param(1, core_1.Attribute('mReverse_')), 
         __metadata('design:paramtypes', [String, String])
     ], MVEquals);
     return MVEquals;

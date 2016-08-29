@@ -13,7 +13,10 @@ var const_1 = require('./const');
 var GLOBAL = (function () {
     function GLOBAL() {
         var _this = this;
+        this.ENV_CONST = ENV_CONST;
         this.httpStatus = 0;
+        this.httpError = {};
+        this.test = 'hide';
         mu.run(mu.storage('CURRENT'), function (admin) {
             _this.current = admin;
         });

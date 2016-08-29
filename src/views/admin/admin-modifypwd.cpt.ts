@@ -40,15 +40,13 @@ export class AdminModifyPwdCpt implements OnInit {
             }
 
             this.$$[rp].patch(this.fm).subscribe((res) => {
-                this.fm = res.data;
+                // this.fm = res.data;
             });
         });
     }
 
     ngOnInit(): void {
         this.adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
-
-
     }
 
 }

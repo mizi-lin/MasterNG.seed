@@ -1,5 +1,17 @@
 <div class="title-bar">
-    <h5>{{tenant?.tenantName}}</h5>
+    <h5>
+        {{tenant?.tenantName}}
+
+        <label class="small ml20px">
+            <span class="colon">创建人</span>
+            <em>{{tenant?.adminName}}</em>
+        </label>
+
+        <span class="small ml20px">
+            <span class="colon">所属组织</span>
+            <em>{{tenant?.agencyName}}</em>
+        </span>
+    </h5>
 </div>
 
 <div class="main-sidebar">

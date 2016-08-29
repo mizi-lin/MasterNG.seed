@@ -1,370 +1,45 @@
-* {
-  box-sizing: border-box; }
+/*
+Error: Invalid US-ASCII character "\xEF"
+        on line 68 of styles.scss
 
-ul {
-  padding: 0;
-  margin: 0;
-  list-style: none; }
-  ul.inline {
-    font-size: 0; }
-    ul.inline li {
-      display: inline-block;
-      font-size: 14px; }
+63: 
+64: .colon {
+65:     color: #999;
+66: 
+67:     &::after {
+68:         content: '：';
+69:     }
+70: }
+71: 
+72: em {
+73:     font-style: normal;
 
-ol {
-  padding: 0;
-  margin: 0;
-  list-style: none; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0; }
-
-.pl0px {
-  padding-left: 0 !important; }
-
-note {
-  position: fixed;
-  top: 46px;
-  left: 0;
-  right: 0;
-  min-height: 46px;
-  z-index: 100001; }
-  note.hide {
-    display: none; }
-  note.show {
-    display: block; }
-  note.success {
-    background-color: rgba(18, 61, 64, 0.8);
-    text-align: center;
-    color: #fff;
-    line-height: 46px; }
-  note.error {
-    background-color: rgba(255, 0, 0, 0.3);
-    text-align: center;
-    color: #ff0000;
-    line-height: 46px; }
-  note.alert {
-    background-color: rgba(0, 0, 255, 0.2);
-    text-align: center;
-    color: #0066ff;
-    line-height: 46px; }
-
-.btn {
-  display: inline-block;
-  padding: 5px 10px;
-  font-size: 14px;
-  border: 1px solid #eaeaea; }
-  .btn.full {
-    width: 100%; }
-  .btn.save {
-    padding-left: 20px;
-    padding-right: 20px; }
-  .btn.blue {
-    background: #09bcbd;
-    color: #fff;
-    border: 1px solid rgba(9, 188, 189, 0.8); }
-    .btn.blue:hover {
-      background: rgba(9, 188, 189, 0.8); }
-  .btn.white {
-    background: #fff;
-    color: #666;
-    border: 1px solid #d2d2d2; }
-    .btn.white:hover {
-      color: #666;
-      background: #f5f5f5; }
-  .btn:hover {
-    color: #fff;
-    background: rgba(9, 188, 189, 0.6);
-    cursor: pointer; }
-
-input[type='text'],
-input[type='password'],
-select {
-  padding: 0 0 0 5px;
-  margin: 0;
-  height: 32px;
-  width: 200px;
-  border: 1px solid #eaeaea;
-  outline: none;
-  line-height: 32px;
-  color: #666; }
-  input[type='text'].full,
-  input[type='password'].full,
-  select.full {
-    width: 100%; }
-  input[type='text'].auto,
-  input[type='password'].auto,
-  select.auto {
-    width: auto; }
-  input[type='text'].large,
-  input[type='password'].large,
-  select.large {
-    width: 280px; }
-  input[type='text'].small,
-  input[type='password'].small,
-  select.small {
-    width: 150px; }
-  input[type='text'].ng-invalid.ng-touched,
-  input[type='password'].ng-invalid.ng-touched,
-  select.ng-invalid.ng-touched {
-    border: 1px solid #FF0000; }
-
-.form.submitted .ng-invalid {
-  border: 1px solid #FF0000; }
-.form > .item {
-  min-height: 52px; }
-  .form > .item label {
-    display: inline-block;
-    width: 100px; }
-    .form > .item label::after {
-      content: ': '; }
-    .form > .item label::before {
-      content: '*';
-      color: #fff; }
-    .form > .item label.required::before {
-      content: '*';
-      color: #f00; }
-
-#wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  padding: 0;
-  margin: 0;
-  min-width: 1240px;
-  overflow-y: auto;
-  background: #f6f6f6;
-  color: #666;
-  font-size: 14px; }
-  #wrapper a {
-    text-decoration: none;
-    color: #666; }
-  #wrapper fe {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%; }
-    #wrapper fe.login {
-      padding-top: 200px;
-      background: url("../../assets/images/index_bg2.png") no-repeat, url("../../assets/images/fe_index.jpg") repeat;
-      background-size: cover, cover; }
-      #wrapper fe.login .main {
-        display: block;
-        margin: 0 auto;
-        padding: 30px 30px 50px;
-        width: 380px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 3px;
-        box-shadow: 0 1px 100px 20px rgba(255, 255, 255, 0.1); }
-        #wrapper fe.login .main h5 {
-          padding: 10px 0;
-          color: #fff;
-          font-weight: 300;
-          font-size: 16px; }
-        #wrapper fe.login .main input {
-          height: 42px;
-          font-size: 16px;
-          line-height: 42px; }
-        #wrapper fe.login .main .btn {
-          margin-top: 20px;
-          height: 42px;
-          font-size: 16px; }
-  #wrapper > .content {
-    width: 100%;
-    height: 100%; }
-    #wrapper > .content > layout {
-      display: block;
-      width: 100%;
-      height: 100%; }
-      #wrapper > .content > layout header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 46px;
-        background: #343f45;
-        z-index: 888; }
-        #wrapper > .content > layout header .logo,
-        #wrapper > .content > layout header .nav,
-        #wrapper > .content > layout header .bar {
-          position: absolute;
-          top: 0;
-          bottom: 2px; }
-          #wrapper > .content > layout header .logo > li,
-          #wrapper > .content > layout header .nav > li,
-          #wrapper > .content > layout header .bar > li {
-            line-height: 44px;
-            color: #fff; }
-            #wrapper > .content > layout header .logo > li > a,
-            #wrapper > .content > layout header .nav > li > a,
-            #wrapper > .content > layout header .bar > li > a {
-              display: block;
-              width: 100%;
-              height: 100%;
-              color: #ddd; }
-        #wrapper > .content > layout header .logo {
-          left: 0;
-          width: 160px;
-          line-height: 46px;
-          text-align: center;
-          font-size: 0;
-          background: url("http://www.youce.io/images/logo.png") no-repeat 20px center;
-          background-size: 50%; }
-        #wrapper > .content > layout header .nav {
-          left: 160px; }
-          #wrapper > .content > layout header .nav > li {
-            display: inline-block; }
-            #wrapper > .content > layout header .nav > li > a {
-              padding: 0 15px; }
-            #wrapper > .content > layout header .nav > li.active, #wrapper > .content > layout header .nav > li:hover {
-              background: rgba(0, 0, 0, 0.3);
-              color: #09bcbd;
-              cursor: pointer;
-              border-bottom: 2px solid #09bcbd; }
-        #wrapper > .content > layout header .bar {
-          right: 10px;
-          bottom: 0; }
-          #wrapper > .content > layout header .bar > li {
-            padding: 0 20px; }
-            #wrapper > .content > layout header .bar > li + li {
-              border-left: 1px solid rgba(255, 255, 255, 0.1); }
-            #wrapper > .content > layout header .bar > li.active, #wrapper > .content > layout header .bar > li:hover {
-              background: rgba(255, 255, 255, 0.1);
-              cursor: pointer; }
-      #wrapper > .content > layout main {
-        position: absolute;
-        top: 46px;
-        right: 0;
-        bottom: 0;
-        left: 0; }
-      #wrapper > .content > layout page {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%; }
-        #wrapper > .content > layout page.dlg {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          padding-top: 200px;
-          background: rgba(0, 0, 0, 0.3);
-          z-index: 10000; }
-          #wrapper > .content > layout page.dlg.small > .content,
-          #wrapper > .content > layout page.dlg .content.small {
-            width: 400px; }
-          #wrapper > .content > layout page.dlg .content {
-            margin: 0 auto;
-            width: 800px;
-            background: #fff; }
-            #wrapper > .content > layout page.dlg .content .main {
-              padding: 20px; }
-        #wrapper > .content > layout page .title-bar {
-          position: relative;
-          padding-left: 20px;
-          height: 46px;
-          background: #fff;
-          border-bottom: 1px solid #eaeaea; }
-          #wrapper > .content > layout page .title-bar h5 {
-            display: inline-block;
-            font-size: 17px;
-            font-weight: 200;
-            line-height: 46px; }
-            #wrapper > .content > layout page .title-bar h5 + .actions {
-              border-left: 1px solid #eaeaea; }
-          #wrapper > .content > layout page .title-bar .actions {
-            position: absolute;
-            right: 20px;
-            top: 0;
-            bottom: 0;
-            padding-left: 20px; }
-            #wrapper > .content > layout page .title-bar .actions::before {
-              content: '';
-              display: inline-block;
-              width: 0;
-              height: 100%;
-              font-size: 0;
-              vertical-align: middle; }
-        #wrapper > .content > layout page > .main {
-          margin: 20px;
-          padding: 20px;
-          min-height: 100px;
-          background: #fff;
-          border: 1px solid #eaeaea;
-          box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1); }
-        #wrapper > .content > layout page > .main-sidebar {
-          position: relative;
-          height: 100%; }
-          #wrapper > .content > layout page > .main-sidebar > .sidebar {
-            padding-top: 20px;
-            width: 160px;
-            height: 100%;
-            background: #fff;
-            border-right: 1px solid #eaeaea; }
-            #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li {
-              position: relative;
-              padding-left: 20px;
-              height: 52px;
-              line-height: 52px;
-              color: #999; }
-              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover {
-                background: #f0fbfc;
-                cursor: pointer; }
-                #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active > a, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover > a {
-                  color: #14bbbc; }
-                #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li.active::after, #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li:hover::after {
-                  content: '';
-                  position: absolute;
-                  top: 0;
-                  bottom: 0;
-                  left: 100%;
-                  border-right: 2px solid #09bcbd;
-                  z-index: 1000; }
-              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li > a {
-                display: block;
-                width: 100%;
-                height: 100%; }
-              #wrapper > .content > layout page > .main-sidebar > .sidebar ol > li + li {
-                margin-top: 1px; }
-          #wrapper > .content > layout page > .main-sidebar > .main {
-            position: absolute;
-            left: 160px;
-            right: 0;
-            top: 0;
-            height: 100%;
-            padding: 20px;
-            overflow: hidden;
-            overflow-y: auto;
-            background: #fff; }
-            #wrapper > .content > layout page > .main-sidebar > .main .title-bar {
-              padding-left: 0; }
-              #wrapper > .content > layout page > .main-sidebar > .main .title-bar .actions {
-                right: 0; }
-            #wrapper > .content > layout page > .main-sidebar > .main .dlg .title-bar {
-              padding-left: 20px; }
-      #wrapper > .content > layout .table {
-        width: 100%;
-        max-width: 100%;
-        border: 0;
-        border-spacing: 0;
-        border-collapse: collapse; }
-        #wrapper > .content > layout .table th, #wrapper > .content > layout .table td {
-          text-align: left;
-          padding: 5px 5px 5px 10px;
-          height: 36px; }
-        #wrapper > .content > layout .table th {
-          font-weight: 200;
-          font-size: 15px;
-          background: #f3f3f3;
-          color: #666; }
-        #wrapper > .content > layout .table td {
-          border-top: 1px solid #eaeaea;
-          font-size: 14px; }
-        #wrapper > .content > layout .table.hover > tbody > tr:hover {
-          background: #f8f8f8; }
-
-/*# sourceMappingURL=styles.css.map */
+Backtrace:
+styles.scss:68
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1299:in `rescue in block in find_encoding_error'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1296:in `block in find_encoding_error'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1295:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1295:in `each_with_index'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1295:in `find_encoding_error'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:904:in `check_sass_encoding'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/engine.rb:433:in `check_encoding!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/engine.rb:389:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:363:in `watch_or_update'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/exec/base.rb:52:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/exec/base.rb:19:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:23:in `load'
+/usr/local/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xEF\"\A         on line 68 of styles.scss\A \A 63: \A 64: .colon {\A 65:     color: #999;\A 66: \A 67:     &::after {\A 68:         content: '：';\A 69:     }\A 70: }\A 71: \A 72: em {\A 73:     font-style: normal;"; }

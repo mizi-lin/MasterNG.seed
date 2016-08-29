@@ -22,7 +22,7 @@
         <label>密码</label>
         <input type="password" name="password"
                #password="ngModel"
-               reverse="true"
+               mReverse_="true"
                mVEquals="__password__"
                [(ngModel)]="fm.password" />
     </div>
@@ -33,7 +33,7 @@
                name="__password__"
                #__password__="ngModel"
                [(ngModel)]="fm.__password__"
-               reverse="false"
+               mReverse_="false"
                mVEquals="password" />
     </div>
 

@@ -15,13 +15,13 @@ declare var mu: any, console: any;
 
 export class MVEquals implements Validator {
     constructor(@Attribute('mVEquals') public mVEquals: string,
-                @Attribute('reverse') public reverse: string) {
+                @Attribute('mReverse_') public mReverse_: string) {
 
     }
 
     private get isReverse(): boolean {
-        if (!this.reverse) return false;
-        return this.reverse === 'true' ? true : false;
+        if (!this.mReverse_) return false;
+        return this.mReverse_ === 'true' ? true : false;
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
@@ -38,13 +38,13 @@ export class MVEquals implements Validator {
             };
         }
 
-        // value equal and reverse
+        // value equal and mReverse_
         if (e && v === e.value && this.isReverse) {
             delete e.errors['mVEquals'];
             if (!Object.keys(e.errors).length) e.setErrors(null);
         }
 
-        // value not equal and reverse
+        // value not equal and mReverse_
         if (e && v !== e.value && this.isReverse) {
             e.setErrors({
                 mVEquals: false

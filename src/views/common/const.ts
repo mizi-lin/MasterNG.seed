@@ -33,6 +33,11 @@ export const DICT = {
         TENANT: {
             '0': '禁用',
             '1': '正常'
+        },
+
+        TENANT_USER: {
+            '0': '未授权',
+            '1': '已授权'
         }
     }
 };

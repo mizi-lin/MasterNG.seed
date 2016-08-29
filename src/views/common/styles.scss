@@ -10,6 +10,16 @@ $basePaddingLeft: 20px;
     box-sizing: border-box;
 }
 
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -39,13 +49,39 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 0 !important;
 }
 
+.ml10px {
+    margin-left: 10px;
+}
 
-note {
+.ml20px {
+    margin-left: 20px;
+}
+
+.small {
+    font-size: 0.8em;
+}
+
+.colon {
+    color: #999;
+
+    &::after {
+        content: '：';
+    }
+}
+
+em {
+    font-style: normal;
+}
+
+// 消息提醒
+mnote {
     position: fixed;
     top: 46px;
     left: 0; right: 0;
     min-height: 46px;
-    z-index: 100001;
+    z-index: 887;
+
+    background: #0000FF;
 
     &.hide {
         display: none;
@@ -63,10 +99,29 @@ note {
     }
 
     &.error {
-        background-color: rgba(255, 0, 0, .3);
+        background-color: rgba(255, 0, 0, .6);
         text-align: center;
-        color: #ff0000;
-        line-height: 46px;
+        color: #fff;
+        line-height: 28px;
+
+        .content {
+            padding: $basePaddingLeft;
+            padding-left: $leftSidebar;
+            text-align: left;
+
+            h5 {
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            ol {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+
+        }
     }
 
     &.alert {

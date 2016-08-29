@@ -29,7 +29,6 @@ const PORT = process.env.PORT || 3000;
 const config = {};
 module.exports = config;
 
-
 config.resolve = {
     extensions: ['', '.ts', '.js'],
     modulesDirectories: ['node_modules'],
@@ -90,6 +89,7 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION || ENV_TEST) {
         new CopyWebpackPlugin([
             {from: './src/assets', to: 'assets'},
             {from: './src/lib', to: 'lib'},
+            {from: './src/env', to: 'env'},
             {from: './src/views', to: 'views', ignore: ['*.ts', '*.js', '*.map']}
         ]),
         new HtmlWebpackPlugin({

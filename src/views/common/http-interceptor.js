@@ -19,6 +19,7 @@ var core_1 = require('@angular/core');
 var rxjs_1 = require('rxjs');
 var global_1 = require('./global');
 var const_1 = require('./const');
+require('rxjs/add/operator/debounceTime');
 var HttpInterceptor = (function (_super) {
     __extends(HttpInterceptor, _super);
     function HttpInterceptor(backend, defaultOptions, router, G) {
@@ -34,8 +35,12 @@ var HttpInterceptor = (function (_super) {
         var _this = this;
         return observable.map(function (response) {
             var body = response.json();
-            if (method === 'patch') {
+            if (mu.or(method, 'patch', 'post')) {
                 _this.G.httpStatus = 200;
+                _this.__timer__ && clearTimeout(_this.__timer__);
+                _this.__timer__ = setTimeout(function () {
+                    _this.G.httpStatus = 0;
+                }, 2000);
             }
             return body || {};
         });
@@ -43,7 +48,31 @@ var HttpInterceptor = (function (_super) {
     HttpInterceptor.prototype.intercept = function (observable) {
         var _this = this;
         return observable.catch(function (err, source) {
-            _this.G.httpStatus = err.status;
+            var status = _this.G.httpStatus = err.status;
+            var title;
+            switch (status) {
+                case 401:
+                    title = 'TOKEN 失效';
+                    break;
+                case 404:
+                    title = '页面不存在';
+                    break;
+                case 500:
+                    title = '操作失败';
+                    break;
+                default:
+                    title = '操作失败';
+                    break;
+            }
+            _this.G.httpError = {
+                status: status,
+                title: title,
+                error: err.json()
+            };
+            _this.__timer__ && clearTimeout(_this.__timer__);
+            _this.__timer__ = setTimeout(function () {
+                _this.G.httpStatus = 0;
+            }, 2000);
             if (err.status === 401) {
                 return rxjs_1.Observable.empty();
             }
@@ -55,19 +84,20 @@ var HttpInterceptor = (function (_super) {
     HttpInterceptor.prototype.get = function (url, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
-        return this.intercept(this.map(_super.prototype.get.call(this, url, options), 'get'));
+        console.debug(_super.prototype.get.call(this, url, options));
+        return this.intercept(this.map(_super.prototype.get.call(this, url, options).debounceTime(1000), 'get'));
     };
     HttpInterceptor.prototype.post = function (url, body, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(_super.prototype.post.call(this, url, body, options), 'post'));
+        return this.intercept(this.map(_super.prototype.post.call(this, url, body, options).debounceTime(10000), 'post'));
     };
     HttpInterceptor.prototype.patch = function (url, data, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
-        return this.intercept(this.map(_super.prototype.patch.call(this, url, data, options), 'patch'));
+        return this.intercept(this.map(_super.prototype.patch.call(this, url, data, options).debounceTime(1000), 'patch'));
     };
     HttpInterceptor = __decorate([
         core_1.Injectable(), 

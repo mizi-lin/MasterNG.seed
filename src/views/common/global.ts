@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Admin} from '../admin/admin.model';
 import {CONST} from './const';
 
-declare var mu: any, console: any;
+declare var mu: any, console: any, ENV_CONST: any;
 
 @Injectable()
 export class GLOBAL {
@@ -11,6 +11,8 @@ export class GLOBAL {
 
     // 判断用户是否管理员
     isAdmin: boolean;
+
+    ENV_CONST: any = ENV_CONST;
 
     /**
      * http status 状态
@@ -22,6 +24,11 @@ export class GLOBAL {
      * 404 无接口
      */
     httpStatus: number = 0;
+
+    httpError: any = {
+    };
+
+    test: string = 'hide';
 
     constructor() {
         mu.run(mu.storage('CURRENT'), (admin) => {

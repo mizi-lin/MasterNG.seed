@@ -10,38 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var global_1 = require('../global');
-var rxjs_1 = require('rxjs');
 var MNote = (function () {
     function MNote(G) {
-        var _this = this;
         this.G = G;
-        this.httpStatus = new rxjs_1.Observable(function (observer) {
-            setInterval(function () {
-                observer.next(_this.G.httpStatus);
-            }, 500);
-        });
-        this.sub = this.httpStatus.subscribe(function (value) {
-            switch (value) {
-                case 200:
-                    _this.title = '操作成功';
-                    break;
-                case 401:
-                    _this.title = 'TOKEN 失效';
-                    break;
-                case 404:
-                    _this.title = '页面不存在';
-                    break;
-                case 500:
-                    _this.title = '操作失败';
-                    break;
-            }
-            if (value) {
-                setTimeout(function () {
-                    _this.G.httpStatus = 0;
-                    _this.title = '';
-                }, 2000);
-            }
-        });
     }
     MNote.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
@@ -49,7 +20,7 @@ var MNote = (function () {
     MNote = __decorate([
         core_1.Component({
             selector: 'mNote',
-            template: "{{title}}"
+            template: "\n        <div class=\"content\" *ngIf=\"G?.httpStatus >= 400\">\n            <h5>{{G?.httpError?.title}}</h5>\n            <ol>\n                <li *ngFor=\"let err of G.httpError.error.data\">\n                    {{err.message}}\n                </li>\n            </ol>\n        </div>\n    \n        <div class=\"content\" *ngIf=\"G?.httpStatus < 300\">\n            \u64CD\u4F5C\u6210\u529F\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [global_1.GLOBAL])
     ], MNote);
