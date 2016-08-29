@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Admin} from './admin.model';
-import {AdminServ} from './admin.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
 import {ResourcePool} from '../common/resource-pool';
@@ -21,7 +20,6 @@ export class AdminModifyPwdCpt implements OnInit {
     sub: any;
 
     constructor(private G: GLOBAL,
-                private adminServ: AdminServ,
                 private $$: ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -40,7 +38,7 @@ export class AdminModifyPwdCpt implements OnInit {
             }
 
             this.$$[rp].patch(this.fm).subscribe((res) => {
-                // this.fm = res.data;
+                // @todo after update rc.5 or 6 then form.reset
             });
         });
     }

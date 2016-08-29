@@ -1,21 +1,21 @@
 /*
-Error: Invalid US-ASCII character "\xEF"
-        on line 68 of styles.scss
+Error: Invalid US-ASCII character "\xE6"
+        on line 76 of styles.scss
 
-63: 
-64: .colon {
-65:     color: #999;
-66: 
-67:     &::after {
-68:         content: '：';
-69:     }
-70: }
 71: 
 72: em {
 73:     font-style: normal;
+74: }
+75: 
+76: // 消息提醒
+77: mnote {
+78:     position: fixed;
+79:     top: 46px;
+80:     left: 0; right: 0;
+81:     min-height: 46px;
 
 Backtrace:
-styles.scss:68
+styles.scss:76
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1299:in `rescue in block in find_encoding_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1296:in `block in find_encoding_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/util.rb:1295:in `each'
@@ -42,4 +42,4 @@ styles.scss:68
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid US-ASCII character \"\xEF\"\A         on line 68 of styles.scss\A \A 63: \A 64: .colon {\A 65:     color: #999;\A 66: \A 67:     &::after {\A 68:         content: '：';\A 69:     }\A 70: }\A 71: \A 72: em {\A 73:     font-style: normal;"; }
+  content: "Error: Invalid US-ASCII character \"\xE6\"\A         on line 76 of styles.scss\A \A 71: \A 72: em {\A 73:     font-style: normal;\A 74: }\A 75: \A 76: // 消息提醒\A 77: mnote {\A 78:     position: fixed;\A 79:     top: 46px;\A 80:     left: 0; right: 0;\A 81:     min-height: 46px;"; }
