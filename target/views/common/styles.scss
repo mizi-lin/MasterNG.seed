@@ -74,7 +74,6 @@ em {
     font-style: normal;
 }
 
-// 消息提醒
 mnote {
     position: fixed;
     top: 46px;
@@ -224,7 +223,7 @@ select {
         min-height: 52px;
         label {
             display: inline-block;
-            width: 100px;
+            width: 120px;
 
             &::after {
                 content: ': ';
