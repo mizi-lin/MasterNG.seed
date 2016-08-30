@@ -9,10 +9,8 @@
         <thead>
             <tr>
                 <th>活动名称</th>
-                <th>优惠券数量</th>
                 <th>活动起止</th>
                 <th>创建用户</th>
-                <th>累计兑现金额</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr>
@@ -23,13 +21,10 @@
                 <td>
                     {{activity.activityName || '-'}}
                 </td>
-                <td></td>
                 <td>{{activity.startTime | date: 'yyyy-MM-dd'}} - {{activity.endTime | date: 'yyyy-MM-dd'}}</td>
                 <td>
-                    {{activity.createUserName}}
-                </td>
-                <td>
-                    {{activity.createUserName}}
+                    <a [attr.href]="G.ENV_CONST.URI_YOUCE + '/start.html?accessToken=' + activity.simulatorToken" target="_blank" class="btn white">模拟登陆</a>
+                    <span class="ml10px">{{activity.createUserName}}</span>
                 </td>
                 <td>
                     {{activity.status | name: 'ACTIVITY'}}
