@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var tenant_serv_1 = require('./tenant.serv');
 var const_1 = require('../common/const');
-var name_pipe_1 = require('../common/pipe/name.pipe');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
 var TenantActivitiesCpt = (function () {
@@ -31,7 +30,8 @@ var TenantActivitiesCpt = (function () {
                 title: v
             };
         }, []);
-        var routeParams = this.router.routerState.parent(this.route).snapshot.params;
+        var routeParams = this.G.stateParams(this.route, null);
+        ;
         this.tenantId = +routeParams.tenantId;
         this.sub = this.$$.tenants_activities.get({
             tenantId: this.tenantId
@@ -58,10 +58,9 @@ var TenantActivitiesCpt = (function () {
     TenantActivitiesCpt = __decorate([
         core_1.Component({
             selector: 'inmain.tenant-activities',
-            templateUrl: 'views/tenant/tenant-activities.html',
-            pipes: [name_pipe_1.NamePipe]
+            templateUrl: 'views/tenant/tenant-activities.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], TenantActivitiesCpt);
     return TenantActivitiesCpt;
 }());

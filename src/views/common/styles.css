@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 em {
   font-style: normal; }
 
-mnote {
+d-note {
   position: fixed;
   top: 46px;
   left: 0;
@@ -55,32 +55,32 @@ mnote {
   min-height: 46px;
   z-index: 887;
   background: #0000FF; }
-  mnote.hide {
+  d-note.hide {
     display: none; }
-  mnote.show {
+  d-note.show {
     display: block; }
-  mnote.success {
+  d-note.success {
     background-color: rgba(18, 61, 64, 0.8);
     text-align: center;
     color: #fff;
     line-height: 46px; }
-  mnote.error {
+  d-note.error {
     background-color: rgba(255, 0, 0, 0.6);
     text-align: center;
     color: #fff;
     line-height: 28px; }
-    mnote.error .content {
+    d-note.error .content {
       padding: 20px;
       padding-left: 160px;
       text-align: left; }
-      mnote.error .content h5 {
+      d-note.error .content h5 {
         font-weight: bold;
         font-size: 16px; }
-      mnote.error .content ol {
+      d-note.error .content ol {
         margin: 0;
         padding: 0;
         list-style: none; }
-  mnote.alert {
+  d-note.alert {
     background-color: rgba(0, 0, 255, 0.2);
     text-align: center;
     color: #0066ff;

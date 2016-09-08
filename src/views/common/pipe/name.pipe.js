@@ -11,23 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var global_1 = require('../global');
 var const_1 = require('../const');
-var NamePipe = (function () {
-    function NamePipe(G) {
+var $$NamePipe = (function () {
+    function $$NamePipe(G) {
         this.G = G;
         this.D = const_1.DICT;
     }
-    NamePipe.prototype.transform = function (value, key, options) {
+    $$NamePipe.prototype.transform = function (value, key, options) {
         options = mu.extend({
             parent: 'STATUS',
             source: 'D'
         }, options || {});
         return this[options.source][options.parent][key][value];
     };
-    NamePipe = __decorate([
+    $$NamePipe = __decorate([
         core_1.Pipe({ name: 'name' }), 
         __metadata('design:paramtypes', [global_1.GLOBAL])
-    ], NamePipe);
-    return NamePipe;
+    ], $$NamePipe);
+    return $$NamePipe;
 }());
-exports.NamePipe = NamePipe;
+exports.$$NamePipe = $$NamePipe;
 //# sourceMappingURL=name.pipe.js.map

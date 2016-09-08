@@ -3,7 +3,7 @@ import {AdminServ} from './admin.serv';
 import {Admin} from './admin.model';
 import {ActivatedRoute} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 @Component({
     selector: 'page.detail',
@@ -19,7 +19,7 @@ export class AdminDetailCpt implements OnInit, OnDestroy {
 
     constructor(private adminServ: AdminServ,
                 private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute) {
     }
 

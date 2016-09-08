@@ -11,13 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var http_1 = require('@angular/http');
 var core_1 = require('@angular/core');
 var global_1 = require('./global');
-var Resource = (function () {
-    function Resource(http, G) {
+var $$Resource = (function () {
+    function $$Resource(http, G) {
         this.http = http;
         this.G = G;
     }
     ;
-    Resource.prototype.restful = function (url, params, isReplace) {
+    $$Resource.prototype.restful = function (url, params, isReplace) {
         url = url || '';
         isReplace = mu.ifnvl(isReplace, true);
         var sp = mu.clone(params || {});
@@ -42,7 +42,7 @@ var Resource = (function () {
             restParams: restParams
         };
     };
-    Resource.prototype.get = function (url, search, options) {
+    $$Resource.prototype.get = function (url, search, options) {
         var rest = this.restful(url, search);
         url = rest.url;
         options = mu.extend(true, {
@@ -50,7 +50,7 @@ var Resource = (function () {
         }, options || {});
         return this.http.get(url, options);
     };
-    Resource.prototype.post = function (url, search, data, options) {
+    $$Resource.prototype.post = function (url, search, data, options) {
         switch (arguments.length) {
             case 1:
                 data = {};
@@ -73,7 +73,7 @@ var Resource = (function () {
         }, options || {});
         return this.http.post(restdata.url, data, options);
     };
-    Resource.prototype.patch = function (url, search, data, options) {
+    $$Resource.prototype.patch = function (url, search, data, options) {
         switch (arguments.length) {
             case 1:
                 search = {};
@@ -96,7 +96,7 @@ var Resource = (function () {
         }, options || {});
         return this.http.patch(restdata.url, data, options);
     };
-    Resource.prototype.$$ = function (url) {
+    $$Resource.prototype.$$ = function (url) {
         var vm = this;
         return {
             get: function (search, options) {
@@ -133,11 +133,11 @@ var Resource = (function () {
             }
         };
     };
-    Resource = __decorate([
+    $$Resource = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, global_1.GLOBAL])
-    ], Resource);
-    return Resource;
+    ], $$Resource);
+    return $$Resource;
 }());
-exports.Resource = Resource;
+exports.$$Resource = $$Resource;
 //# sourceMappingURL=resource.js.map

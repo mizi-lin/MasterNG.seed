@@ -5,7 +5,7 @@ import {TenantServ} from './tenant.serv';
 @Component({
     selector: 'page.tenant-create.dlg.small',
     templateUrl: 'views/tenant/tenant-create.html',
-    directives: [TenantUpdateCpt],
+    // directives: [TenantUpdateCpt],
     providers: [TenantServ]
 })
 

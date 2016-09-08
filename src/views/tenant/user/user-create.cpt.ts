@@ -3,15 +3,14 @@ import {DICT} from '../../common/const';
 import {TenantServ} from '../tenant.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../../common/global';
-import {ResourcePool} from '../../common/resource-pool';
-import {M_VALIDATION} from '../../common/directive/validation/index';
+import {$$ResourcePool} from '../../common/resource-pool';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'page.tenant-user-create.dlg.small',
-    templateUrl: 'views/tenant/user/user-form.html',
-    directives: [M_VALIDATION]
+    templateUrl: 'views/tenant/user/user-form.html'
+    // directives: [M_VALIDATION]
 })
 
 export class TenantUserCreateCpt implements OnInit {
@@ -22,14 +21,15 @@ export class TenantUserCreateCpt implements OnInit {
 
     tenantId: number;
 
-    vm: any;
+
+    params: any;
 
     constructor(private G: GLOBAL,
                 private ts: TenantServ,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
-        this.vm = this;
+
     }
 
     ngOnInit(): void {
@@ -40,7 +40,8 @@ export class TenantUserCreateCpt implements OnInit {
             };
         }, []);
 
-        this.tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
+        this.params = this.G.stateParams(this.route, null);
+        this.tenantId = +this.params['tenantId'];
     }
 
     save(form: any): void {

@@ -3,7 +3,7 @@ import {TenantServ} from './tenant.serv';
 import {Tenant} from './tenant.model';
 import {ActivatedRoute} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 @Component({
     selector: 'page.detail',
@@ -19,7 +19,7 @@ export class TenantDetailCpt implements OnInit, OnDestroy {
 
     constructor(private tenantServ: TenantServ,
                 private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute) {
     }
 

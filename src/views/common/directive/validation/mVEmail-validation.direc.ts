@@ -1,5 +1,5 @@
 import {NG_VALIDATORS, Validator, AbstractControl} from '@angular/forms';
-import {forwardRef, provide, Directive, Attribute} from '@angular/core';
+import {forwardRef, Directive, Attribute} from '@angular/core';
 import {CONST} from '../../const';
 
 declare var mu: any, console: any;
@@ -7,10 +7,11 @@ declare var mu: any, console: any;
 @Directive({
     selector: '[mVEmail][ngModel]',
     providers: [
-        provide(NG_VALIDATORS, {
+        {
+            provide: NG_VALIDATORS,
             useExisting: forwardRef(() => MVEmail),
             multi: true
-        })
+        }
     ]
 })
 

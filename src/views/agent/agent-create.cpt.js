@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var agent_form_cpt_1 = require('./agent-form.cpt');
 var agent_serv_1 = require('./agent.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
@@ -24,10 +23,9 @@ var AgentCreateCpt = (function () {
         core_1.Component({
             selector: 'page.agent-create.dlg.small',
             templateUrl: 'views/agent/agent-create.html',
-            directives: [agent_form_cpt_1.AgentFormCpt],
             providers: [agent_serv_1.AgentServ]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.Router])
     ], AgentCreateCpt);
     return AgentCreateCpt;
 }());

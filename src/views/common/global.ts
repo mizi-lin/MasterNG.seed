@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Admin} from '../admin/admin.model';
 import {CONST} from './const';
+import {ActivatedRoute} from '@angular/router';
 
 declare var mu: any, console: any, ENV_CONST: any;
 
@@ -27,7 +28,7 @@ export class GLOBAL {
 
     httpError: any = {};
 
-    constructor() {
+    constructor(private route: ActivatedRoute) {
         mu.run(mu.storage('CURRENT'), (admin) => {
             this.current = admin;
         });
@@ -63,5 +64,17 @@ export class GLOBAL {
         }
 
         return false;
+    }
+
+    stateParams(route: ActivatedRoute, params: any = null): any {
+        params = params || {};
+
+        if (!route) {
+            return params;
+        }
+
+        params = mu.extend(params, route.snapshot.params || {});
+
+        return this.stateParams(route.parent, params);
     }
 }

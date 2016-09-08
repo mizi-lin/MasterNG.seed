@@ -40,7 +40,7 @@ var TenantDetailCpt = (function () {
             templateUrl: 'views/tenant/tenant-detail.html',
             providers: [tenant_serv_1.TenantServ]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute])
     ], TenantDetailCpt);
     return TenantDetailCpt;
 }());

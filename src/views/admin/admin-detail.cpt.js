@@ -43,7 +43,7 @@ var AdminDetailCpt = (function () {
             templateUrl: 'views/admin/admin-detail.html',
             providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute])
     ], AdminDetailCpt);
     return AdminDetailCpt;
 }());

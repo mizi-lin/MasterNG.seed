@@ -3,7 +3,7 @@ import {Agent} from './agent';
 import {AgentServ} from './agent.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 declare var console: any;
 declare var mu: any;
@@ -24,7 +24,7 @@ export class AgentFormCpt implements OnInit, OnDestroy {
     agencyId: number;
 
     constructor(private agentServ: AgentServ,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router,
                 private G: GLOBAL) {
@@ -44,7 +44,7 @@ export class AgentFormCpt implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // 获得上级router 参数多艰难呀`~~
-        let agencyId: number = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        let agencyId: number = +this.G.stateParams(this.route)['agencyId'];
         if (agencyId) {
             this.agencyId = agencyId;
             this.sub = this.$$.agencies.get({

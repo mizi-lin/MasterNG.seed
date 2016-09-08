@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var const_1 = require('./const');
+var router_1 = require('@angular/router');
 var GLOBAL = (function () {
-    function GLOBAL() {
+    function GLOBAL(route) {
         var _this = this;
+        this.route = route;
         this.ENV_CONST = ENV_CONST;
         this.httpStatus = 0;
         this.httpError = {};
@@ -38,9 +40,18 @@ var GLOBAL = (function () {
         }
         return false;
     };
+    GLOBAL.prototype.stateParams = function (route, params) {
+        if (params === void 0) { params = null; }
+        params = params || {};
+        if (!route) {
+            return params;
+        }
+        params = mu.extend(params, route.snapshot.params || {});
+        return this.stateParams(route.parent, params);
+    };
     GLOBAL = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], GLOBAL);
     return GLOBAL;
 }());

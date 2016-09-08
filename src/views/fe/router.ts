@@ -1,7 +1,7 @@
-import {RouterConfig} from '@angular/router';
+import {Routes} from '@angular/router';
 
 import {LoginCpt} from './';
 
-export  const feRouter: RouterConfig = [
+export  const $$ROUTES_FE: Routes = [
     { path: 'login',  component: LoginCpt }
 ];

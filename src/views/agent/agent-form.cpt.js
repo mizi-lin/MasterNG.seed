@@ -38,7 +38,7 @@ var AgentFormCpt = (function () {
     };
     AgentFormCpt.prototype.ngOnInit = function () {
         var _this = this;
-        var agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        var agencyId = +this.G.stateParams(this.route)['agencyId'];
         if (agencyId) {
             this.agencyId = agencyId;
             this.sub = this.$$.agencies.get({
@@ -57,7 +57,7 @@ var AgentFormCpt = (function () {
             selector: 'agent-form',
             templateUrl: 'views/agent/agent-form.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router, global_1.GLOBAL])
     ], AgentFormCpt);
     return AgentFormCpt;
 }());

@@ -13,7 +13,6 @@ var admin_model_1 = require('./admin.model');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
-var mVEquals_validation_direc_1 = require('../common/directive/validation/mVEquals-validation.direc');
 var AdminModifyPwdCpt = (function () {
     function AdminModifyPwdCpt(G, $$, route, router) {
         this.G = G;
@@ -35,19 +34,19 @@ var AdminModifyPwdCpt = (function () {
                 _this.fm.adminId = _this.adminId;
             }
             _this.$$[rp].patch(_this.fm).subscribe(function (res) {
+                form.resetForm();
             });
         });
     };
     AdminModifyPwdCpt.prototype.ngOnInit = function () {
-        this.adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
+        this.adminId = this.G.stateParams(this.route)['adminId'];
     };
     AdminModifyPwdCpt = __decorate([
         core_1.Component({
             selector: 'admin-form',
-            templateUrl: 'views/admin/admin-modifypwd.form.html',
-            directives: [mVEquals_validation_direc_1.MVEquals]
+            templateUrl: 'views/admin/admin-modifypwd.form.html'
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AdminModifyPwdCpt);
     return AdminModifyPwdCpt;
 }());

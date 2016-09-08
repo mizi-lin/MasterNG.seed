@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'header',
-    templateUrl: 'views/layout/header.html',
-    directives: [ROUTER_DIRECTIVES]
+    templateUrl: 'views/layout/header.html'
 })
 
 export class Header {

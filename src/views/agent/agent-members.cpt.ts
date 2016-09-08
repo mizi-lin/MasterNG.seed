@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AgentServ} from './agent.serv';
 import {Admin} from '../admin/admin.model';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 declare var console: any;
 
@@ -19,14 +19,14 @@ export class AgentMembersCpt {
 
     constructor(private agentServ: AgentServ,
                 private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
 
     ngOnInit(): void {
         // 获得上级router 参数多艰难呀`~~
-        this.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.agencyId = +this.G.stateParams(this.route)['agencyId'];
         this.sub = this.$$.agencies_members.get({
             agencyId: this.agencyId
         }).subscribe((res) => {

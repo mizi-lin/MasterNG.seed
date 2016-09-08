@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var tenant_form_cpt_1 = require('./tenant-form.cpt');
 var tenant_serv_1 = require('./tenant.serv');
 var TenantCreateCpt = (function () {
     function TenantCreateCpt() {
@@ -18,7 +17,6 @@ var TenantCreateCpt = (function () {
         core_1.Component({
             selector: 'page.tenant-create.dlg.small',
             templateUrl: 'views/tenant/tenant-create.html',
-            directives: [tenant_form_cpt_1.TenantUpdateCpt],
             providers: [tenant_serv_1.TenantServ]
         }), 
         __metadata('design:paramtypes', [])

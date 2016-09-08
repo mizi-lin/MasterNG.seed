@@ -8,8 +8,7 @@ declare var mu: any, console: any;
  * 某个 value 对应的 name
  */
 @Pipe({name: 'name'})
-
-export class NamePipe implements PipeTransform {
+export class $$NamePipe implements PipeTransform {
     D: any;
 
     constructor(private G: GLOBAL) {

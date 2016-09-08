@@ -1,6 +1,6 @@
 "use strict";
 var _1 = require('./');
-exports.feRouter = [
+exports.$$ROUTES_FE = [
     { path: 'login', component: _1.LoginCpt }
 ];
 //# sourceMappingURL=router.js.map

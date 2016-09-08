@@ -2,15 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Admin} from './admin.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 import {MVEquals} from '../common/directive/validation/mVEquals-validation.direc';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'admin-form',
-    templateUrl: 'views/admin/admin-modifypwd.form.html',
-    directives: [MVEquals]
+    templateUrl: 'views/admin/admin-modifypwd.form.html'
 })
 
 export class AdminModifyPwdCpt implements OnInit {
@@ -20,7 +19,7 @@ export class AdminModifyPwdCpt implements OnInit {
     sub: any;
 
     constructor(private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -38,13 +37,13 @@ export class AdminModifyPwdCpt implements OnInit {
             }
 
             this.$$[rp].patch(this.fm).subscribe((res) => {
-                // @todo after update rc.5 or 6 then form.reset
+                form.resetForm();
             });
         });
     }
 
     ngOnInit(): void {
-        this.adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
+        this.adminId = this.G.stateParams(this.route)['adminId'];
     }
 
 }

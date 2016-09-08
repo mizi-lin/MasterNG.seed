@@ -3,15 +3,15 @@ import {Admin} from './admin.model';
 import {AdminServ} from './admin.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 import {M_VALIDATION} from '../common/directive/validation/index';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'admin-form',
-    templateUrl: 'views/admin/admin.form.html',
-    directives: [M_VALIDATION]
+    templateUrl: 'views/admin/admin.form.html'
+    // directives: [M_VALIDATION]
 })
 
 export class AdminUpdateCpt implements OnInit, OnDestroy {
@@ -23,7 +23,7 @@ export class AdminUpdateCpt implements OnInit, OnDestroy {
 
     constructor(private G: GLOBAL,
                 private adminServ: AdminServ,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -46,8 +46,7 @@ export class AdminUpdateCpt implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // 获得上级router 参数多艰难呀`~~
-        let adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
-
+        let adminId = this.G.stateParams(this.route)['adminId'];
         if (adminId === 'current') {
             this.isCurrent = true;
             this.fm = mu.clone(this.G.current);

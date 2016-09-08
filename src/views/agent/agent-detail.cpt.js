@@ -38,7 +38,7 @@ var AgentDetailCpt = (function () {
         core_1.Component({
             selector: 'page.agent-detail', templateUrl: 'views/agent/agent-detail.html', providers: [agent_serv_1.AgentServ]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, agent_serv_1.AgentServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [global_1.GLOBAL, agent_serv_1.AgentServ, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute])
     ], AgentDetailCpt);
     return AgentDetailCpt;
 }());

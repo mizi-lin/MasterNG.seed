@@ -13,7 +13,7 @@ declare var mu: any, console: any;
  */
 
 @Injectable()
-export class Resource {
+export class $$Resource {
 
     constructor(private http: Http,
                 private G: GLOBAL) {

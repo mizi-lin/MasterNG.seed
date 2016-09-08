@@ -29,7 +29,7 @@ var MVEquals = (function () {
     });
     MVEquals.prototype.validate = function (c) {
         var v = c.value;
-        var e = c.root.find(this.mVEquals);
+        var e = c.root.get(this.mVEquals);
         if (e && v !== e.value && !this.isReverse) {
             return {
                 mVEquals: false
@@ -51,10 +51,11 @@ var MVEquals = (function () {
         core_1.Directive({
             selector: '[mVEquals]',
             providers: [
-                core_1.provide(forms_1.NG_VALIDATORS, {
+                {
+                    provide: forms_1.NG_VALIDATORS,
                     useExisting: core_1.forwardRef(function () { return MVEquals; }),
                     multi: true
-                })
+                }
             ]
         }),
         __param(0, core_1.Attribute('mVEquals')),

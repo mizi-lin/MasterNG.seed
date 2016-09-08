@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var tenant_serv_1 = require('./tenant.serv');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
-var name_pipe_1 = require('../common/pipe/name.pipe');
 var TenantsCpt = (function () {
     function TenantsCpt(ts, $$, G) {
         this.ts = ts;
@@ -27,10 +26,9 @@ var TenantsCpt = (function () {
         core_1.Component({
             selector: 'page.tenants',
             templateUrl: 'views/tenant/tenants.html',
-            providers: [tenant_serv_1.TenantServ],
-            pipes: [name_pipe_1.NamePipe]
+            providers: [tenant_serv_1.TenantServ]
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, resource_pool_1.ResourcePool, global_1.GLOBAL])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, resource_pool_1.$$ResourcePool, global_1.GLOBAL])
     ], TenantsCpt);
     return TenantsCpt;
 }());

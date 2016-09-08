@@ -5,7 +5,7 @@ import {AdminServ} from './admin.serv';
 @Component({
     selector: 'page.admin-create',
     templateUrl: 'views/admin/admin-create.html',
-    directives: [AdminUpdateCpt],
+    // directives: [AdminUpdateCpt],
     providers: [AdminServ]
 })
 
