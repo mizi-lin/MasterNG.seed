@@ -4,14 +4,12 @@ import {AdminServ} from './admin.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
 import {$$ResourcePool} from '../common/resource-pool';
-import {M_VALIDATION} from '../common/directive/validation/index';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'admin-form',
     templateUrl: 'views/admin/admin.form.html'
-    // directives: [M_VALIDATION]
 })
 
 export class AdminUpdateCpt implements OnInit, OnDestroy {

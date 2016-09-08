@@ -3,7 +3,6 @@ import {Admin} from './admin.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
 import {$$ResourcePool} from '../common/resource-pool';
-import {MVEquals} from '../common/directive/validation/mVEquals-validation.direc';
 
 declare var mu: any, console: any;
 

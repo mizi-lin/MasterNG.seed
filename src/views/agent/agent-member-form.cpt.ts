@@ -6,7 +6,7 @@ import {AdminServ} from '../admin/admin.serv';
 import {$$ResourcePool} from '../common/resource-pool';
 import {CONST} from '../common/const';
 
-// import {M_VALIDATION} from '../common/directive/validation/index';
+// import {$$DIREC_VALIDATION} from '../common/directive/validation/index';
 
 declare var console: any;
 
@@ -14,7 +14,7 @@ declare var console: any;
     selector: 'agent-member-form',
     templateUrl: 'views/agent/agent-member-form.html',
     providers: [AdminServ]
-    // directives: [M_VALIDATION]
+    // directives: [$$DIREC_VALIDATION]
 })
 
 export class AgentMemberFormCpt {
