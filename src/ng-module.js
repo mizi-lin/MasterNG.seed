@@ -25,8 +25,8 @@ var name_pipe_1 = require('./views/common/pipe/name.pipe');
 var resource_pool_1 = require('./views/common/resource-pool');
 var resource_1 = require('./views/common/resource');
 var http_interceptor_1 = require('./views/common/http-interceptor');
-var note_direc_1 = require('./views/common/directive/note.direc');
 var index_3 = require('./views/admin/index');
+var index_4 = require('./views/common/directive/index');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,8 +36,7 @@ var AppModule = (function () {
                 header_1.Header,
                 app_1.AppCpt,
                 login_cpt_1.LoginCpt
-            ].concat(index_2.$$CPT_TENANT, index_1.$$CPT_AGENT, index_3.$$CPT_ADMIN, [
-                note_direc_1.$$NoteDirec,
+            ].concat(index_2.$$CPT_TENANT, index_1.$$CPT_AGENT, index_3.$$CPT_ADMIN, index_4.$$DIREC, [
                 name_pipe_1.$$NamePipe
             ]),
             imports: [

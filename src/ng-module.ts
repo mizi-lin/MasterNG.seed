@@ -17,8 +17,8 @@ import {$$NamePipe} from './views/common/pipe/name.pipe';
 import {$$ResourcePool} from './views/common/resource-pool';
 import {$$Resource} from './views/common/resource';
 import {$$HttpInterceptor} from './views/common/http-interceptor';
-import {$$NoteDirec} from './views/common/directive/note.direc';
 import {$$CPT_ADMIN} from './views/admin/index';
+import {$$DIREC} from './views/common/directive/index';
 
 @NgModule({
     /**
@@ -37,7 +37,7 @@ import {$$CPT_ADMIN} from './views/admin/index';
         ...$$CPT_AGENT,
         ...$$CPT_ADMIN,
 
-        $$NoteDirec,
+        ...$$DIREC,
 
         $$NamePipe
     ],

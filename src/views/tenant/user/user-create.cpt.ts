@@ -10,7 +10,7 @@ declare var mu: any, console: any;
 @Component({
     selector: 'page.tenant-user-create.dlg.small',
     templateUrl: 'views/tenant/user/user-form.html'
-    // directives: [M_VALIDATION]
+    // directives: [$$DIREC_VALIDATION]
 })
 
 export class TenantUserCreateCpt implements OnInit {
