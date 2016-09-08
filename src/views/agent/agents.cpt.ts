@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {AgentServ} from './agent.serv';
 import {Agent} from './agent';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class AgentsCpt implements OnInit {
     agents: Agent[];
 
     constructor(private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private agentServ: AgentServ) {
     }
 

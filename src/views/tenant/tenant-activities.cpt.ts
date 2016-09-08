@@ -3,16 +3,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TenantServ} from './tenant.serv';
 import {Admin} from '../admin/admin.model';
 import {DICT} from '../common/const';
-import {NamePipe} from '../common/pipe/name.pipe';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 declare var console: any, mu: any;
 
 @Component({
     selector: 'inmain.tenant-activities',
-    templateUrl: 'views/tenant/tenant-activities.html',
-    pipes: [NamePipe]
+    templateUrl: 'views/tenant/tenant-activities.html'
 })
 
 export class TenantActivitiesCpt {
@@ -24,7 +22,7 @@ export class TenantActivitiesCpt {
 
     constructor(private tenantServ: TenantServ,
                 private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -38,7 +36,7 @@ export class TenantActivitiesCpt {
             };
         }, []);
 
-        let routeParams: any = this.router.routerState.parent(this.route).snapshot.params;
+        let routeParams: any = this.G.stateParams(this.route, null);;
 
         // 获得上级router 参数多艰难呀`~~
         this.tenantId = +routeParams.tenantId;

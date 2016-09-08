@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var resource_1 = require('./resource');
 var core_1 = require('@angular/core');
-var ResourcePool = (function () {
-    function ResourcePool(R) {
+var $$ResourcePool = (function () {
+    function $$ResourcePool(R) {
         this.R = R;
         this.agencies = this.R.$$('/services/boss/agency/{agencyId}');
         this.agencies_members = this.R.$$('/services/boss/agency/{agencyId}/admin');
@@ -23,11 +23,11 @@ var ResourcePool = (function () {
         this.current = this.R.$$('/services/boss/admin/current');
         this.login = this.R.$$('/services/admin/login');
     }
-    ResourcePool = __decorate([
+    $$ResourcePool = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [resource_1.Resource])
-    ], ResourcePool);
-    return ResourcePool;
+        __metadata('design:paramtypes', [resource_1.$$Resource])
+    ], $$ResourcePool);
+    return $$ResourcePool;
 }());
-exports.ResourcePool = ResourcePool;
+exports.$$ResourcePool = $$ResourcePool;
 //# sourceMappingURL=resource-pool.js.map

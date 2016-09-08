@@ -20,18 +20,18 @@ var rxjs_1 = require('rxjs');
 var global_1 = require('./global');
 var const_1 = require('./const');
 require('rxjs/add/operator/debounceTime');
-var HttpInterceptor = (function (_super) {
-    __extends(HttpInterceptor, _super);
-    function HttpInterceptor(backend, defaultOptions, router, G) {
+var $$HttpInterceptor = (function (_super) {
+    __extends($$HttpInterceptor, _super);
+    function $$HttpInterceptor(backend, defaultOptions, router, G) {
         _super.call(this, backend, defaultOptions);
         this.G = G;
     }
-    HttpInterceptor.prototype.addHeaderWithToken = function (headers) {
+    $$HttpInterceptor.prototype.addHeaderWithToken = function (headers) {
         headers = headers || new http_1.Headers();
         headers.append(const_1.CONST.HEADER_TOKEN, mu.storage(const_1.CONST.HEADER_TOKEN));
         return headers;
     };
-    HttpInterceptor.prototype.map = function (observable, method) {
+    $$HttpInterceptor.prototype.map = function (observable, method) {
         var _this = this;
         return observable.map(function (response) {
             var body = response.json();
@@ -45,29 +45,51 @@ var HttpInterceptor = (function (_super) {
             return body || {};
         });
     };
-    HttpInterceptor.prototype.intercept = function (observable) {
+    $$HttpInterceptor.prototype.intercept = function (observable) {
         var _this = this;
         return observable.catch(function (err, source) {
             var status = _this.G.httpStatus = err.status;
             var title;
+            var error;
             switch (status) {
                 case 401:
-                    title = 'TOKEN 失效';
+                    title = 'TOKEN失效';
                     break;
                 case 404:
                     title = '页面不存在';
                     break;
                 case 500:
-                    title = '操作失败';
+                    title = '操作错误或失败';
+                    break;
+                case 502:
+                    title = '连接中断';
                     break;
                 default:
                     title = '操作失败';
                     break;
             }
+            if (status === 404) {
+                error = {
+                    data: [
+                        { message: '当前页面或资源不存在' }
+                    ]
+                };
+            }
+            else if (status === 502) {
+                error = {
+                    data: [
+                        { message: '网络连接错误' },
+                        { message: '或服务器连接中断' }
+                    ]
+                };
+            }
+            else {
+                error = err.json();
+            }
             _this.G.httpError = {
                 status: status,
                 title: title,
-                error: err.json()
+                error: error
             };
             _this.__timer__ && clearTimeout(_this.__timer__);
             _this.__timer__ = setTimeout(function () {
@@ -81,28 +103,28 @@ var HttpInterceptor = (function (_super) {
             }
         });
     };
-    HttpInterceptor.prototype.get = function (url, options) {
+    $$HttpInterceptor.prototype.get = function (url, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         return this.intercept(this.map(_super.prototype.get.call(this, url, options), 'get'));
     };
-    HttpInterceptor.prototype.post = function (url, body, options) {
+    $$HttpInterceptor.prototype.post = function (url, body, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
         return this.intercept(this.map(_super.prototype.post.call(this, url, body, options), 'post'));
     };
-    HttpInterceptor.prototype.patch = function (url, data, options) {
+    $$HttpInterceptor.prototype.patch = function (url, data, options) {
         options = options || {};
         options.headers = this.addHeaderWithToken(options.headers);
         options.headers.append('Content-Type', 'application/json');
         return this.intercept(this.map(_super.prototype.patch.call(this, url, data, options), 'patch'));
     };
-    HttpInterceptor = __decorate([
+    $$HttpInterceptor = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.ConnectionBackend, http_1.RequestOptions, router_1.Router, global_1.GLOBAL])
-    ], HttpInterceptor);
-    return HttpInterceptor;
+    ], $$HttpInterceptor);
+    return $$HttpInterceptor;
 }(http_1.Http));
-exports.HttpInterceptor = HttpInterceptor;
+exports.$$HttpInterceptor = $$HttpInterceptor;
 //# sourceMappingURL=http-interceptor.js.map

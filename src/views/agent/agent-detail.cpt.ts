@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AgentServ} from './agent.serv';
 import {Agent} from './agent';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 @Component({
     selector: 'page.agent-detail', templateUrl: 'views/agent/agent-detail.html', providers: [AgentServ]
@@ -17,7 +17,7 @@ export class AgentDetailCpt implements OnInit, OnDestroy {
 
     constructor(private G: GLOBAL,
                 private agentServ: AgentServ,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute) {
     }
 

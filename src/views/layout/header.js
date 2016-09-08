@@ -23,8 +23,7 @@ var Header = (function () {
     Header = __decorate([
         core_1.Component({
             selector: 'header',
-            templateUrl: 'views/layout/header.html',
-            directives: [router_1.ROUTER_DIRECTIVES]
+            templateUrl: 'views/layout/header.html'
         }), 
         __metadata('design:paramtypes', [router_1.Router, global_1.GLOBAL])
     ], Header);

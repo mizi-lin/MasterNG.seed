@@ -11,16 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var login_serv_1 = require('./login.serv');
 var router_1 = require('@angular/router');
-var const_1 = require('../common/const');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
-var index_1 = require('../common/directive/validation/index');
+var const_1 = require('../common/const');
 var LoginCpt = (function () {
-    function LoginCpt(loginServ, $$, G, router) {
-        this.loginServ = loginServ;
+    function LoginCpt($$, G, router) {
         this.$$ = $$;
         this.G = G;
         this.router = router;
+        this.fm = {};
         this.fm = this.G.ENV_CONST.TEST_ACCOUNT || {};
     }
     LoginCpt.prototype.save = function (form) {
@@ -40,10 +39,9 @@ var LoginCpt = (function () {
         core_1.Component({
             selector: 'fe.login',
             templateUrl: 'views/fe/login.html',
-            providers: [login_serv_1.LoginServ],
-            directives: [index_1.M_VALIDATION]
+            providers: [login_serv_1.LoginServ]
         }), 
-        __metadata('design:paramtypes', [login_serv_1.LoginServ, resource_pool_1.ResourcePool, global_1.GLOBAL, router_1.Router])
+        __metadata('design:paramtypes', [resource_pool_1.$$ResourcePool, global_1.GLOBAL, router_1.Router])
     ], LoginCpt);
     return LoginCpt;
 }());

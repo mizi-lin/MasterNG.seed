@@ -9,15 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var agent_member_form_cpt_1 = require('./agent-member-form.cpt');
 var AgentMemberCreateCpt = (function () {
     function AgentMemberCreateCpt() {
     }
     AgentMemberCreateCpt = __decorate([
         core_1.Component({
             selector: 'page.agent-member-form.dlg.small',
-            templateUrl: 'views/agent/agent-member-create.html',
-            directives: [agent_member_form_cpt_1.AgentMemberFormCpt]
+            templateUrl: 'views/agent/agent-member-create.html'
         }), 
         __metadata('design:paramtypes', [])
     ], AgentMemberCreateCpt);

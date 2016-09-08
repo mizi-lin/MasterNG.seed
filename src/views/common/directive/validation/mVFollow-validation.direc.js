@@ -19,7 +19,7 @@ var MVFollow = (function () {
     }
     MVFollow.prototype.validate = function (c) {
         var v = c.value;
-        var eq = c.root.find(this.mVFollow).value;
+        var eq = c.root.get(this.mVFollow).value;
         if (mu.isExist(v)) {
             return eq ? null : {
                 mVFollow: '当一个值有值时, 另外一个值也必须有值'
@@ -31,10 +31,11 @@ var MVFollow = (function () {
         core_1.Directive({
             selector: '[mVFollow][ngModel]',
             providers: [
-                core_1.provide(forms_1.NG_VALIDATORS, {
+                {
+                    provide: forms_1.NG_VALIDATORS,
                     useExisting: core_1.forwardRef(function () { return MVFollow; }),
                     multi: true
-                })
+                }
             ]
         }),
         __param(0, core_1.Attribute('mVFollow')), 

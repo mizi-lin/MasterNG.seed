@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import {LoginServ} from './login.serv';
 import {Router} from '@angular/router';
-
-import {CONST} from '../common/const';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
-import {M_VALIDATION} from '../common/directive/validation/index';
+import {$$ResourcePool} from '../common/resource-pool';
+import {CONST} from '../common/const';
 
 declare var mu: any;
 
@@ -13,15 +11,13 @@ declare var mu: any;
 @Component({
     selector: 'fe.login',
     templateUrl: 'views/fe/login.html',
-    providers: [LoginServ],
-    directives: [M_VALIDATION]
+    providers: [LoginServ]
 })
 
 export class LoginCpt {
-    fm: any;
+    fm: any = {};
 
-    constructor(private loginServ: LoginServ,
-                private $$: ResourcePool,
+    constructor(private $$: $$ResourcePool,
                 private G: GLOBAL,
                 private router: Router) {
         this.fm = this.G.ENV_CONST.TEST_ACCOUNT || {};

@@ -1,10 +1,10 @@
-import {RouterConfig} from '@angular/router';
+import {Routes} from '@angular/router';
 
 import {AdminLayoutCpt, AdminsCpt, AdminCreateCpt, AdminUpdateCpt, AdminDetailCpt} from './';
 import {AuthGuide} from '../common/auth-guide';
 import {AdminModifyPwdCpt} from './admin-modifypwd.cpt';
 
-export const adminDetailRouter: RouterConfig = [ {
+export const $$ROUTES_ADMIN_DETAIL: Routes = [ {
         path: ':adminId', component: AdminDetailCpt, canActivate: [AuthGuide], children: [
             {path: '', component: AdminUpdateCpt, canActivate: [AuthGuide]},
             {path: 'current', component: AdminUpdateCpt, canActivate: [AuthGuide]},
@@ -13,11 +13,11 @@ export const adminDetailRouter: RouterConfig = [ {
     }
 ];
 
-export const adminRouter: RouterConfig = [{
+export const $$ROUTES_ADMIN: Routes = [{
         path: 'admins', component: AdminLayoutCpt, canActivate: [AuthGuide], children: [
             {path: '', component: AdminsCpt, canActivate: [AuthGuide]},
             {path: 'create', component: AdminCreateCpt, canActivate: [AuthGuide]},
-            ...adminDetailRouter
+            ...$$ROUTES_ADMIN_DETAIL
         ]
     }
 ];

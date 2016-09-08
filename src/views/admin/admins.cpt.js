@@ -28,7 +28,7 @@ var AdminsCpt = (function () {
             templateUrl: 'views/admin/admins.html',
             providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.ResourcePool])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.$$ResourcePool])
     ], AdminsCpt);
     return AdminsCpt;
 }());

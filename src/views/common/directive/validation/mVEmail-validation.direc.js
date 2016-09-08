@@ -28,10 +28,11 @@ var MVEmail = (function () {
         core_1.Directive({
             selector: '[mVEmail][ngModel]',
             providers: [
-                core_1.provide(forms_1.NG_VALIDATORS, {
+                {
+                    provide: forms_1.NG_VALIDATORS,
                     useExisting: core_1.forwardRef(function () { return MVEmail; }),
                     multi: true
-                })
+                }
             ]
         }),
         __param(0, core_1.Attribute('mVEmail')), 

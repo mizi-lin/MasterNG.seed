@@ -3,18 +3,18 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Admin} from '../admin/admin.model';
 import {GLOBAL} from '../common/global';
 import {AdminServ} from '../admin/admin.serv';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 import {CONST} from '../common/const';
 
-import {M_VALIDATION} from '../common/directive/validation/index';
+// import {M_VALIDATION} from '../common/directive/validation/index';
 
 declare var console: any;
 
 @Component({
     selector: 'agent-member-form',
     templateUrl: 'views/agent/agent-member-form.html',
-    providers: [AdminServ],
-    directives: [M_VALIDATION]
+    providers: [AdminServ]
+    // directives: [M_VALIDATION]
 })
 
 export class AgentMemberFormCpt {
@@ -24,7 +24,7 @@ export class AgentMemberFormCpt {
 
     constructor(private adminServ: AdminServ,
                 private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private route: ActivatedRoute,
                 private router: Router) {
     }
@@ -44,9 +44,7 @@ export class AgentMemberFormCpt {
 
     ngOnInit(): void {
 
-        // 获得上级router 参数多艰难呀`~~
-        // 而且只能在 ngOnInit 中获取
-        this.fm.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.fm.agencyId = +this.G.stateParams(this.route)['agencyId'];
 
         this.adminId = +this.route.snapshot.params['adminId'];
 

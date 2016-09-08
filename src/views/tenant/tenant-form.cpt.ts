@@ -3,7 +3,7 @@ import {Tenant} from './tenant.model';
 import {TenantServ} from './tenant.serv';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 declare var mu: any, console: any;
 
@@ -21,7 +21,7 @@ export class TenantUpdateCpt implements OnInit, OnDestroy {
     constructor(private ts: TenantServ,
                 private route: ActivatedRoute,
                 private router: Router,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private G: GLOBAL) {
     }
 
@@ -37,8 +37,7 @@ export class TenantUpdateCpt implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        // 获得上级router 参数多艰难呀`~~
-        let tenantId: number = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
+        let tenantId: number = +this.route.snapshot.params['tenantId'];
         if (tenantId) {
             this.tenantId = tenantId;
             this.sub = this.$$.tenants.get({

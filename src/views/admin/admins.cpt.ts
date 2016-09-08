@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AdminServ} from './admin.serv';
 import {Admin} from './admin.model';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 @Component({
     selector: 'page.admins',
@@ -15,7 +15,7 @@ export class AdminsCpt implements OnInit {
 
     constructor(private G: GLOBAL,
                 private ts: AdminServ,
-                private $$: ResourcePool) {
+                private $$: $$ResourcePool) {
     }
 
     ngOnInit(): void {

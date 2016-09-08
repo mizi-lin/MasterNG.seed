@@ -15,7 +15,6 @@ var global_1 = require('../common/global');
 var admin_serv_1 = require('../admin/admin.serv');
 var resource_pool_1 = require('../common/resource-pool');
 var const_1 = require('../common/const');
-var index_1 = require('../common/directive/validation/index');
 var AgentMemberFormCpt = (function () {
     function AgentMemberFormCpt(adminServ, G, $$, route, router) {
         this.adminServ = adminServ;
@@ -41,7 +40,7 @@ var AgentMemberFormCpt = (function () {
     };
     AgentMemberFormCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.fm.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.fm.agencyId = +this.G.stateParams(this.route)['agencyId'];
         this.adminId = +this.route.snapshot.params['adminId'];
         if (this.adminId) {
             this.$$.admins.get({
@@ -55,10 +54,9 @@ var AgentMemberFormCpt = (function () {
         core_1.Component({
             selector: 'agent-member-form',
             templateUrl: 'views/agent/agent-member-form.html',
-            providers: [admin_serv_1.AdminServ],
-            directives: [index_1.M_VALIDATION]
+            providers: [admin_serv_1.AdminServ]
         }), 
-        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [admin_serv_1.AdminServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AgentMemberFormCpt);
     return AgentMemberFormCpt;
 }());

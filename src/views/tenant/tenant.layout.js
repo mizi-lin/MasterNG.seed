@@ -9,15 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var layout_1 = require('../layout');
 var TenantLayoutCpt = (function () {
     function TenantLayoutCpt() {
     }
     TenantLayoutCpt = __decorate([
         core_1.Component({
             selector: 'layout',
-            templateUrl: 'views/tenant/tenant.layout.html',
-            directives: [layout_1.Header]
+            templateUrl: 'views/tenant/tenant.layout.html'
         }), 
         __metadata('design:paramtypes', [])
     ], TenantLayoutCpt);

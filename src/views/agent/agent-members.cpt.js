@@ -23,7 +23,7 @@ var AgentMembersCpt = (function () {
     }
     AgentMembersCpt.prototype.ngOnInit = function () {
         var _this = this;
-        this.agencyId = +this.router.routerState.parent(this.route).snapshot.params['agencyId'];
+        this.agencyId = +this.G.stateParams(this.route)['agencyId'];
         this.sub = this.$$.agencies_members.get({
             agencyId: this.agencyId
         }).subscribe(function (res) {
@@ -40,7 +40,7 @@ var AgentMembersCpt = (function () {
             selector: 'inmain.agent-member',
             templateUrl: 'views/agent/agent-members.html'
         }), 
-        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [agent_serv_1.AgentServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AgentMembersCpt);
     return AgentMembersCpt;
 }());

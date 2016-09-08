@@ -1,15 +1,16 @@
 import {NG_VALIDATORS, Validator, AbstractControl} from '@angular/forms';
-import {forwardRef, provide, Directive, Attribute} from '@angular/core';
+import {forwardRef, Directive, Attribute} from '@angular/core';
 
 declare var mu: any, console: any;
 
 @Directive({
     selector: '[mVEquals]',
     providers: [
-        provide(NG_VALIDATORS, {
+        {
+            provide: NG_VALIDATORS,
             useExisting: forwardRef(() => MVEquals),
             multi: true
-        })
+        }
     ]
 })
 
@@ -29,7 +30,7 @@ export class MVEquals implements Validator {
         let v = c.value;
 
         // control vlaue
-        let e = c.root.find(this.mVEquals);
+        let e = c.root.get(this.mVEquals);
 
         // value not equal
         if (e && v !== e.value && !this.isReverse) {

@@ -36,7 +36,7 @@ var TenantUpdateCpt = (function () {
     };
     TenantUpdateCpt.prototype.ngOnInit = function () {
         var _this = this;
-        var tenantId = +this.router.routerState.parent(this.route).snapshot.params['tenantId'];
+        var tenantId = +this.route.snapshot.params['tenantId'];
         if (tenantId) {
             this.tenantId = tenantId;
             this.sub = this.$$.tenants.get({
@@ -54,7 +54,7 @@ var TenantUpdateCpt = (function () {
             selector: 'tenant-form',
             templateUrl: 'views/tenant/tenant-form.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router, resource_pool_1.ResourcePool, global_1.GLOBAL])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, router_1.ActivatedRoute, router_1.Router, resource_pool_1.$$ResourcePool, global_1.GLOBAL])
     ], TenantUpdateCpt);
     return TenantUpdateCpt;
 }());

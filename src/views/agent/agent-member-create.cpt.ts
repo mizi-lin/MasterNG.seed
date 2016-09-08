@@ -5,8 +5,8 @@ declare var console: any;
 
 @Component({
     selector: 'page.agent-member-form.dlg.small',
-    templateUrl: 'views/agent/agent-member-create.html',
-    directives: [AgentMemberFormCpt]
+    templateUrl: 'views/agent/agent-member-create.html'
+    // directives: [AgentMemberFormCpt]
 })
 
 export class AgentMemberCreateCpt {

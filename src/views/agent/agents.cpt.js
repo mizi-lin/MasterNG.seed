@@ -28,7 +28,7 @@ var AgentsCpt = (function () {
             selector: 'page.agents',
             templateUrl: 'views/agent/agents.html'
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.ResourcePool, agent_serv_1.AgentServ])
+        __metadata('design:paramtypes', [global_1.GLOBAL, resource_pool_1.$$ResourcePool, agent_serv_1.AgentServ])
     ], AgentsCpt);
     return AgentsCpt;
 }());

@@ -14,7 +14,6 @@ var tenant_serv_1 = require('../tenant.serv');
 var const_1 = require('../../common/const');
 var global_1 = require('../../common/global');
 var resource_pool_1 = require('../../common/resource-pool');
-var name_pipe_1 = require('../../common/pipe/name.pipe');
 var TenantUsersCpt = (function () {
     function TenantUsersCpt(tenantServ, G, $$, route, router) {
         this.tenantServ = tenantServ;
@@ -37,7 +36,8 @@ var TenantUsersCpt = (function () {
                 title: v
             };
         }, []);
-        var routeParams = this.router.routerState.parent(this.route).snapshot.params;
+        var routeParams = this.G.stateParams(this.route, null);
+        ;
         this.tenantId = +routeParams.tenantId;
         this.sub = this.$$.tenants_users.get({
             tenantId: this.tenantId
@@ -51,10 +51,9 @@ var TenantUsersCpt = (function () {
     TenantUsersCpt = __decorate([
         core_1.Component({
             selector: 'inmain.tenant-users',
-            templateUrl: 'views/tenant/user/tenant-users.html',
-            pipes: [name_pipe_1.NamePipe]
+            templateUrl: 'views/tenant/user/tenant-users.html'
         }), 
-        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [tenant_serv_1.TenantServ, global_1.GLOBAL, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], TenantUsersCpt);
     return TenantUsersCpt;
 }());

@@ -1,10 +1,10 @@
-import {Resource} from './resource';
+import {$$Resource} from './resource';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class ResourcePool {
+export class $$ResourcePool {
 
-    constructor(private R: Resource) {
+    constructor(private R: $$Resource) {
     }
 
     /**

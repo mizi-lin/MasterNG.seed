@@ -4,8 +4,8 @@ import { Header } from '../layout';
 
 @Component({
     selector: 'layout',
-    templateUrl: 'views/admin/admin.layout.html',
-    directives: [Header]
+    templateUrl: 'views/admin/admin.layout.html'
+    // directives: [Header]
 })
 
 export class AdminLayoutCpt {

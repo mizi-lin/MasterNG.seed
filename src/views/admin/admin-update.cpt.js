@@ -14,7 +14,6 @@ var admin_serv_1 = require('./admin.serv');
 var router_1 = require('@angular/router');
 var global_1 = require('../common/global');
 var resource_pool_1 = require('../common/resource-pool');
-var index_1 = require('../common/directive/validation/index');
 var AdminUpdateCpt = (function () {
     function AdminUpdateCpt(G, adminServ, $$, route, router) {
         this.G = G;
@@ -44,7 +43,7 @@ var AdminUpdateCpt = (function () {
     };
     AdminUpdateCpt.prototype.ngOnInit = function () {
         var _this = this;
-        var adminId = this.router.routerState.parent(this.route).snapshot.params['adminId'];
+        var adminId = this.G.stateParams(this.route)['adminId'];
         if (adminId === 'current') {
             this.isCurrent = true;
             this.fm = mu.clone(this.G.current);
@@ -65,10 +64,9 @@ var AdminUpdateCpt = (function () {
     AdminUpdateCpt = __decorate([
         core_1.Component({
             selector: 'admin-form',
-            templateUrl: 'views/admin/admin.form.html',
-            directives: [index_1.M_VALIDATION]
+            templateUrl: 'views/admin/admin.form.html'
         }), 
-        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.ResourcePool, router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [global_1.GLOBAL, admin_serv_1.AdminServ, resource_pool_1.$$ResourcePool, router_1.ActivatedRoute, router_1.Router])
     ], AdminUpdateCpt);
     return AdminUpdateCpt;
 }());

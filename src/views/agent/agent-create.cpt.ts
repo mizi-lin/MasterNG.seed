@@ -3,21 +3,21 @@ import {AgentFormCpt} from './agent-form.cpt';
 import {AgentServ} from './agent.serv';
 import {Router} from '@angular/router';
 import {GLOBAL} from '../common/global';
-import {ResourcePool} from '../common/resource-pool';
+import {$$ResourcePool} from '../common/resource-pool';
 
 declare var mu: any, console: any;
 
 @Component({
     selector: 'page.agent-create.dlg.small',
     templateUrl: 'views/agent/agent-create.html',
-    directives: [AgentFormCpt],
+    // directives: [AgentFormCpt],
     providers: [AgentServ]
 })
 
 export class AgentCreateCpt {
 
     constructor(private G: GLOBAL,
-                private $$: ResourcePool,
+                private $$: $$ResourcePool,
                 private router: Router) {
     }
 }

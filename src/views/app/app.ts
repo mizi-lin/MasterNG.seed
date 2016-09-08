@@ -1,5 +1,5 @@
 import {Component, trigger, style, transition, animate, state} from '@angular/core';
-import {MNote} from '../common/directive/mNote.direc';
+// import {$$NoteDirec} from '../common/directive/mNote.direc';
 import {GLOBAL} from '../common/global';
 
 declare var console: any, mu: any;
@@ -34,7 +34,6 @@ declare var console: any, mu: any;
 @Component({
     selector: 'app',
     templateUrl: 'views/layout/layout.html',
-    directives: [MNote],
     animations: [
         trigger('mnote', [
             state('hide', style({
@@ -55,8 +54,7 @@ declare var console: any, mu: any;
     ]
 })
 
-export class App {
-
+export class AppCpt {
     constructor(private G: GLOBAL) {
     }
 

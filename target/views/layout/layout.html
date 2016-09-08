@@ -1,8 +1,8 @@
-<mNote  @mnote="G?.httpStatus ? 'show' : 'hide'"
+<d-note  [@mnote]="G?.httpStatus ? 'show' : 'hide'"
         [class.error]="G?.httpStatus >= 400"
         [class.success]="G?.httpStatus < 300 && G?.httpStatus >0"
         #note>
-</mNote>
+</d-note>
 
 <article class="content">
     <router-outlet>

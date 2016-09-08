@@ -1,4 +1,4 @@
-import {RouterConfig} from '@angular/router';
+import {Routes} from '@angular/router';
 
 import {
     AgentLayoutCpt,
@@ -17,7 +17,7 @@ import {AgentMemberCreateCpt} from './agent-member-create.cpt';
 /**
  * 代理 detail 页面子路由
  */
-export const agentDetailRouter: RouterConfig = [
+export const $$ROUTES_AGENT_DETAIL: Routes = [
     {path: '', component: AgentFormCpt, canActivate: [AuthGuide]},
     {path: 'members', component: AgentMembersCpt, canActivate: [AuthGuide]},
     {path: 'members/create', component: AgentMemberCreateCpt, canActivate: [AuthGuide]},
@@ -27,15 +27,15 @@ export const agentDetailRouter: RouterConfig = [
 /**
  * 代理模块子路由
  */
-export const agentsRouter: RouterConfig = [
+export const $$ROUTES_AGENTS: Routes = [
     {path: '', component: AgentsCpt, canActivate: [AuthGuide], outlet: ''},
     {path: 'create', component: AgentCreateCpt, canActivate: [AuthGuide]},
-    {path: ':agencyId', component: AgentDetailCpt, canActivate: [AuthGuide], outlet: '', children: [...agentDetailRouter]}
+    {path: ':agencyId', component: AgentDetailCpt, canActivate: [AuthGuide], outlet: '', children: [...$$ROUTES_AGENT_DETAIL]}
 ];
 
 /**
  * 代理模块父级路由
  */
-export const agentRouter: RouterConfig = [
-    {path: 'agents', component: AgentLayoutCpt, canActivate: [AuthGuide], children: [...agentsRouter]}
+export const $$ROUTE_AGENT: Routes = [
+    {path: 'agents', component: AgentLayoutCpt, canActivate: [AuthGuide], children: [...$$ROUTES_AGENTS]}
 ];
