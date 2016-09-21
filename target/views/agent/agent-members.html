@@ -1,6 +1,6 @@
 <div class="title-bar">
     <div class="actions">
-        <button class="btn blue" [routerLink]="['../members/create']">添加用户</button>
+        <button class="btn white" [routerLink]="['../members/create']">添加用户</button>
     </div>
 </div>
 
@@ -20,14 +20,16 @@
         <tbody>
             <tr *ngFor="let member of members">
                 <td>
-                    {{member.name}}
+                    <a [routerLink]="['.', member.adminId, 'update']">
+                        {{member.name || '--'}}
+                    </a>
                 </td>
                 <td>{{member.email}}</td>
                 <td>{{member.createTime | date: 'yyyy-MM-dd HH:mm'}}</td>
                 <td>
-                    <!--<button class="btn" (click)="disabled()">禁用</button>-->
-
-                    <button class="btn blue" [routerLink]="['.', member.adminId, 'update']">编辑</button>
+                    <button class="btn {{member.status ? 'white' : 'blue_outer' }}" (click)="activeness(member)">
+                        {{member.status ? '禁用' : '恢复' }}
+                    </button>
                 </td>
             </tr>
         </tbody>

@@ -36,7 +36,11 @@
                 <td>{{tenant.balance}}</td>
                 <td>{{tenant.credit}}</td>
                 <td>{{tenant.status || 1 | name: 'TENANT' }}</td>
-                <td></td>
+                <td>
+                    <button class="btn {{tenant.status ? 'white' : 'blue_outer' }}" (click)="activeness(tenant)">
+                        {{tenant.status ? '禁用' : '恢复' }}
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
