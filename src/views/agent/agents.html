@@ -27,7 +27,11 @@
                 <td>{{agent.companyName}}</td>
                 <td>{{agent.tenantNum}}</td>
                 <td>{{agent.totalBalance}}</td>
-                <td></td>
+                <td>
+                    <button class="btn white" (click)="activeness(agent)">
+                        {{agent.status ? '禁用' : '恢复' }}
+                    </button>
+                </td>
             </tr>
         </tbody>
 

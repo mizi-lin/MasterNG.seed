@@ -594,6 +594,16 @@ select {
                 td {
                     border-top: 1px solid $borderColor;
                     font-size: 14px;
+
+                    &:first-child {
+                        a {
+                            color: $baseColor;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
                 }
 
                 &.hover {

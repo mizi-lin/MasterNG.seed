@@ -25,6 +25,7 @@ export class Agent {
         public agencyId?: number,
         public name?: string,
         public companyName?: string,
+        public status?: number,
         public totalBalance?: number,
         public tenantNum?: number,
         public creditPerTenant?: number

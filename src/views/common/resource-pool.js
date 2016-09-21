@@ -14,6 +14,7 @@ var $$ResourcePool = (function () {
     function $$ResourcePool(R) {
         this.R = R;
         this.agencies = this.R.$$('/services/boss/agency/{agencyId}');
+        this.agencies_activeness = this.R.$$('/services/boss/agency/{agencyId}/activeness');
         this.agencies_members = this.R.$$('/services/boss/agency/{agencyId}/admin');
         this.tenants = this.R.$$('/services/boss/tenant/{tenantId}');
         this.tenants_users = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}');
