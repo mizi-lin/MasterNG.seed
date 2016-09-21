@@ -14,6 +14,10 @@ export class $$ResourcePool {
         // 代理
     agencies: any = this.R.$$('/services/boss/agency/{agencyId}');
 
+    // 代理 -> 状态
+    agencies_activeness: any = this.R.$$('/services/boss/agency/{agencyId}/activeness');
+
+
     // 代理下的会员
     agencies_members: any = this.R.$$('/services/boss/agency/{agencyId}/admin');
 
