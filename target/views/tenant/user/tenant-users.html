@@ -23,6 +23,12 @@
             <tr *ngFor="let user of users">
                 <td>
                     {{user.userName || '-'}}
+                    <div class="mt10px">
+                        <a [attr.href]="G.ENV_CONST.URI_YOUCE + '/start.html?accessToken=' + user.simulatorToken"
+                           target="_blank" class="btn white" *ngIf="user.status">
+                            模拟登陆
+                        </a>
+                    </div>
                 </td>
                 <td>{{user.email}}</td>
                 <td>{{user.createTime | date: 'yyyy-MM-dd HH:mm'}}</td>
@@ -35,7 +41,10 @@
                     {{user.status | name: 'TENANT_USER'}}
                 </td>
                 <td>
-                    <a [attr.href]="G.ENV_CONST.URI_YOUCE + '/start.html?accessToken=' + user.simulatorToken" target="_blank" class="btn white" *ngIf="user.status">模拟登陆</a>
+
+                    <button class="btn {{user.status ? 'white' : 'blue_outer' }}" (click)="activeness(user)">
+                        {{user.status ? '禁用' : '恢复' }}
+                    </button>
                 </td>
             </tr>
         </tbody>

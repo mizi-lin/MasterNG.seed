@@ -4,7 +4,6 @@ import {TenantServ} from '../tenant.serv';
 import {DICT} from '../../common/const';
 import {GLOBAL} from '../../common/global';
 import {$$ResourcePool} from '../../common/resource-pool';
-import {Admin} from '../../admin/admin.model';
 
 declare var console: any, mu: any;
 

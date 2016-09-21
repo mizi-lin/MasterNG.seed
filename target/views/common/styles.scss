@@ -49,6 +49,14 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 0 !important;
 }
 
+.mt5px {
+    margin-top: 5px;
+}
+
+.mt10px {
+    margin-top: 10px;
+}
+
 .ml10px {
     margin-left: 10px;
 }
@@ -154,6 +162,17 @@ d-note {
 
         &:hover {
             background: rgba(9, 188, 189, .8);
+        }
+    }
+
+    &.blue_outer {
+        background: #fff;
+        color: $baseColor;
+        border: 1px solid $baseColor;
+
+        &:hover {
+            color: #666;
+            background: #f5f5f5;
         }
     }
 
@@ -594,6 +613,16 @@ select {
                 td {
                     border-top: 1px solid $borderColor;
                     font-size: 14px;
+
+                    &:first-child {
+                        a {
+                            color: $baseColor;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
                 }
 
                 &.hover {
