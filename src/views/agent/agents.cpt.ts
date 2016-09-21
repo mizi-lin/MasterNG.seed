@@ -4,6 +4,7 @@ import {Agent} from './agent';
 import {GLOBAL} from '../common/global';
 import {$$ResourcePool} from '../common/resource-pool';
 
+declare var mu: any, console: any;
 
 @Component({
     providers: [AgentServ],
@@ -20,12 +21,15 @@ export class AgentsCpt implements OnInit {
     }
 
     activeness(agent: Agent): void {
+
         this.$$.agencies_activeness.patch({
             agencyId: agent.agencyId
         }, {
             status: agent.status ? 0 : 1
         }).subscribe((rst) => {
-            agent = rst.data;
+            // 擦
+            // agent = rst.data 竟然不行`, 页面检测不到 agent 变化
+            agent = mu.extend(agent, rst.data);
         });
     }
 

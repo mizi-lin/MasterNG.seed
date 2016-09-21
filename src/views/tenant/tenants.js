@@ -18,6 +18,16 @@ var TenantsCpt = (function () {
         this.$$ = $$;
         this.G = G;
     }
+    TenantsCpt.prototype.activeness = function (tenant) {
+        tenant.status = tenant.status ? 0 : 1;
+        this.$$.tenants_activeness.patch({
+            tenantId: tenant.tenantId
+        }, {
+            status: tenant.status
+        }).subscribe(function (rst) {
+            tenant = mu.extend(tenant, rst.data);
+        });
+    };
     TenantsCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.$$.tenants.get().subscribe(function (res) { return _this.tenants = res.data; });

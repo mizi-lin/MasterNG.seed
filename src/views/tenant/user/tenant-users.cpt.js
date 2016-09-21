@@ -28,6 +28,16 @@ var TenantUsersCpt = (function () {
         user.__primary__ = 'userId';
         this.$$.tenants_users.save(user).subscribe();
     };
+    TenantUsersCpt.prototype.activeness = function (user) {
+        user.status = user.status ? 0 : 1;
+        this.$$.users_activeness.patch({
+            userId: user.userId
+        }, {
+            status: user.status
+        }).subscribe(function (rst) {
+            user = mu.extend(user, rst.data);
+        });
+    };
     TenantUsersCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.roots = mu.map(const_1.DICT.ROOT, function (v, k) {

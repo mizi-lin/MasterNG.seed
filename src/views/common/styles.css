@@ -30,6 +30,12 @@ h1, h2, h3, h4, h5, h6 {
 .pl0px {
   padding-left: 0 !important; }
 
+.mt5px {
+  margin-top: 5px; }
+
+.mt10px {
+  margin-top: 10px; }
+
 .ml10px {
   margin-left: 10px; }
 
@@ -102,6 +108,13 @@ d-note {
     border: 1px solid rgba(9, 188, 189, 0.8); }
     .btn.blue:hover {
       background: rgba(9, 188, 189, 0.8); }
+  .btn.blue_outer {
+    background: #fff;
+    color: #09bcbd;
+    border: 1px solid #09bcbd; }
+    .btn.blue_outer:hover {
+      color: #666;
+      background: #f5f5f5; }
   .btn.white {
     background: #fff;
     color: #666;
