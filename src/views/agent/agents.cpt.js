@@ -24,7 +24,7 @@ var AgentsCpt = (function () {
         }, {
             status: agent.status ? 0 : 1
         }).subscribe(function (rst) {
-            agent = rst.data;
+            agent = mu.extend(agent, rst.data);
         });
     };
     AgentsCpt.prototype.ngOnInit = function () {

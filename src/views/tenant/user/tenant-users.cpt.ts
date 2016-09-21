@@ -4,6 +4,7 @@ import {TenantServ} from '../tenant.serv';
 import {DICT} from '../../common/const';
 import {GLOBAL} from '../../common/global';
 import {$$ResourcePool} from '../../common/resource-pool';
+import {Admin} from '../../admin/admin.model';
 
 declare var console: any, mu: any;
 
@@ -32,6 +33,16 @@ export class TenantUsersCpt {
         this.$$.tenants_users.save(user).subscribe();
     }
 
+    activeness(user: any): void {
+        user.status =  user.status ? 0 : 1;
+        this.$$.users_activeness.patch({
+            userId: user.userId
+        }, {
+            status: user.status
+        }).subscribe((rst) => {
+            user = mu.extend(user, rst.data);
+        });
+    }
 
     ngOnInit(): void {
 

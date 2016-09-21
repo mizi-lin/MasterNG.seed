@@ -21,6 +21,8 @@ export class $$ResourcePool {
     // 代理下的会员
     agencies_members: any = this.R.$$('/services/boss/agency/{agencyId}/admin');
 
+
+
     /**
      * 租户 Tenant
      * @type {any}
@@ -30,11 +32,19 @@ export class $$ResourcePool {
     // 租户下的用户
     tenants_users: any = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}');
 
-    // 租户下的用户模拟登陆
-    tenants_user_simulators: any = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}/simulator');
-
     // 租户下的活动
     tenants_activities: any = this.R.$$('/services/boss/tenant/{tenantId}/activity/{activityId}');
+
+    // 租户下的会员状态
+    tenants_activeness: any = this.R.$$('/services/boss/tenant/{tenantId}/activeness');
+
+
+    /**
+     * User
+     */
+
+        // User状态
+    users_activeness: any = this.R.$$('/services/boss/user/{userId}/activeness');
 
 
     /**
@@ -43,6 +53,9 @@ export class $$ResourcePool {
 
         // 管理员列表
     admins: any = this.R.$$('/services/boss/admin/{adminId}');
+
+    // 代理下的会员状态
+    admins_activeness: any = this.R.$$('/services/boss/admin/{adminId}/activeness');
 
     // 当前用户信息
     current: any = this.R.$$('/services/boss/admin/current');
