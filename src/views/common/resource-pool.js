@@ -18,6 +18,7 @@ var $$ResourcePool = (function () {
         this.agencies_members = this.R.$$('/services/boss/agency/{agencyId}/admin');
         this.tenants = this.R.$$('/services/boss/tenant/{tenantId}');
         this.tenants_users = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}');
+        this.tenants_users_activeness = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}/activeness');
         this.tenants_activities = this.R.$$('/services/boss/tenant/{tenantId}/activity/{activityId}');
         this.tenants_activeness = this.R.$$('/services/boss/tenant/{tenantId}/activeness');
         this.users_activeness = this.R.$$('/services/boss/user/{userId}/activeness');

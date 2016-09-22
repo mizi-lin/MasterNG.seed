@@ -29,11 +29,11 @@ var TenantUsersCpt = (function () {
         this.$$.tenants_users.save(user).subscribe();
     };
     TenantUsersCpt.prototype.activeness = function (user) {
-        user.status = user.status ? 0 : 1;
-        this.$$.users_activeness.patch({
-            userId: user.userId
+        this.$$.tenants_users_activeness.patch({
+            userId: user.userId,
+            tenantId: this.tenantId
         }, {
-            status: user.status
+            status: user.status ? 0 : 1
         }).subscribe(function (rst) {
             user = mu.extend(user, rst.data);
         });

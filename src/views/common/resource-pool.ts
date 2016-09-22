@@ -32,6 +32,8 @@ export class $$ResourcePool {
     // 租户下的用户
     tenants_users: any = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}');
 
+    tenants_users_activeness: any = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}/activeness');
+
     // 租户下的活动
     tenants_activities: any = this.R.$$('/services/boss/tenant/{tenantId}/activity/{activityId}');
 
