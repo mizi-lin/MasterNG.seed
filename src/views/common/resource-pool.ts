@@ -40,7 +40,6 @@ export class $$ResourcePool {
     // 租户下的会员状态
     tenants_activeness: any = this.R.$$('/services/boss/tenant/{tenantId}/activeness');
 
-
     /**
      * User
      */
