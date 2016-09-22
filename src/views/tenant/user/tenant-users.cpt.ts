@@ -33,11 +33,11 @@ export class TenantUsersCpt {
     }
 
     activeness(user: any): void {
-        user.status =  user.status ? 0 : 1;
-        this.$$.users_activeness.patch({
-            userId: user.userId
+        this.$$.tenants_users_activeness.patch({
+            userId: user.userId,
+            tenantId: this.tenantId
         }, {
-            status: user.status
+            status: user.status ? 0 : 1
         }).subscribe((rst) => {
             user = mu.extend(user, rst.data);
         });
