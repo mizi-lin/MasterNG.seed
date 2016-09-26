@@ -18,6 +18,15 @@ var AgentsCpt = (function () {
         this.$$ = $$;
         this.agentServ = agentServ;
     }
+    AgentsCpt.prototype.activeness = function (agent) {
+        this.$$.agencies_activeness.patch({
+            agencyId: agent.agencyId
+        }, {
+            status: agent.status ? 0 : 1
+        }).subscribe(function (rst) {
+            agent = mu.extend(agent, rst.data);
+        });
+    };
     AgentsCpt.prototype.ngOnInit = function () {
         var _this = this;
         this.$$.agencies.get().subscribe(function (rst) { return _this.agents = rst.data; });

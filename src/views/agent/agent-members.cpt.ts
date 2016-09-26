@@ -5,7 +5,7 @@ import {Admin} from '../admin/admin.model';
 import {GLOBAL} from '../common/global';
 import {$$ResourcePool} from '../common/resource-pool';
 
-declare var console: any;
+declare var console: any, mu: any;
 
 @Component({
     selector: 'inmain.agent-member',
@@ -34,7 +34,15 @@ export class AgentMembersCpt {
         });
     }
 
-    disabled(): void {
+    activeness(member: Admin): void {
+        member.status =  member.status ? 0 : 1;
+        this.$$.admins_activeness.patch({
+            adminId: member.adminId
+        }, {
+            status: member.status
+        }).subscribe((rst) => {
+            member = mu.extend(member, rst.data);
+        });
     }
 
     ngOnDestroy(): void {

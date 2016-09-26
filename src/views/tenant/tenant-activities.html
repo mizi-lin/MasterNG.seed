@@ -23,7 +23,7 @@
                 </td>
                 <td>{{activity.startTime | date: 'yyyy-MM-dd'}} - {{activity.endTime | date: 'yyyy-MM-dd'}}</td>
                 <td>
-                    <a [attr.href]="G.ENV_CONST.URI_YOUCE + '/start.html?accessToken=' + activity.simulatorToken" target="_blank" class="btn white">模拟登陆</a>
+                    <a [attr.href]="G.ENV_CONST.URI_YOUCE + '/start.html?accessToken=' + activity.simulatorToken" target="_blank" class="btn white" *ngIf="activity.simulatorToken">模拟登陆</a>
                     <span class="ml10px">{{activity.createUserName}}</span>
                 </td>
                 <td>

@@ -16,10 +16,12 @@ export class $$NamePipe implements PipeTransform {
     }
 
     transform(value: string, key: string, options: any): any {
+
         options = mu.extend({
             parent: 'STATUS',
             source: 'D'
         }, options || {});
+
         return this[options.source][options.parent][key][value];
     }
 }
