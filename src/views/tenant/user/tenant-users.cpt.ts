@@ -32,6 +32,16 @@ export class TenantUsersCpt {
         this.$$.tenants_users.save(user).subscribe();
     }
 
+    activeness(user: any): void {
+        this.$$.tenants_users_activeness.patch({
+            userId: user.userId,
+            tenantId: this.tenantId
+        }, {
+            status: user.status ? 0 : 1
+        }).subscribe((rst) => {
+            user = mu.extend(user, rst.data);
+        });
+    }
 
     ngOnInit(): void {
 

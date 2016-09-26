@@ -30,7 +30,15 @@ var AgentMembersCpt = (function () {
             _this.members = res.data;
         });
     };
-    AgentMembersCpt.prototype.disabled = function () {
+    AgentMembersCpt.prototype.activeness = function (member) {
+        member.status = member.status ? 0 : 1;
+        this.$$.admins_activeness.patch({
+            adminId: member.adminId
+        }, {
+            status: member.status
+        }).subscribe(function (rst) {
+            member = mu.extend(member, rst.data);
+        });
     };
     AgentMembersCpt.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();

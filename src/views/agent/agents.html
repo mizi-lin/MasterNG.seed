@@ -15,6 +15,7 @@
                 <th>公司名称</th>
                 <th>租户数</th>
                 <th>余额</th>
+                <th>状态</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -27,7 +28,12 @@
                 <td>{{agent.companyName}}</td>
                 <td>{{agent.tenantNum}}</td>
                 <td>{{agent.totalBalance}}</td>
-                <td></td>
+                <td> {{agent.status ? '正常' : '禁用' }}</td>
+                <td>
+                    <button class="btn {{agent.status ? 'white' : 'blue_outer' }}" (click)="activeness(agent)">
+                        {{agent.status ? '禁用' : '恢复' }}
+                    </button>
+                </td>
             </tr>
         </tbody>
 

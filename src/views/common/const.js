@@ -25,7 +25,7 @@ exports.DICT = {
             '0': '禁用',
             '1': '正常'
         },
-        TENANT_USER: {
+        USER_AUTHORISE: {
             '0': '未授权',
             '1': '已授权'
         }

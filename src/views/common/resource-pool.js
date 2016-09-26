@@ -14,12 +14,16 @@ var $$ResourcePool = (function () {
     function $$ResourcePool(R) {
         this.R = R;
         this.agencies = this.R.$$('/services/boss/agency/{agencyId}');
+        this.agencies_activeness = this.R.$$('/services/boss/agency/{agencyId}/activeness');
         this.agencies_members = this.R.$$('/services/boss/agency/{agencyId}/admin');
         this.tenants = this.R.$$('/services/boss/tenant/{tenantId}');
         this.tenants_users = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}');
-        this.tenants_user_simulators = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}/simulator');
+        this.tenants_users_activeness = this.R.$$('/services/boss/tenant/{tenantId}/user/{userId}/activeness');
         this.tenants_activities = this.R.$$('/services/boss/tenant/{tenantId}/activity/{activityId}');
+        this.tenants_activeness = this.R.$$('/services/boss/tenant/{tenantId}/activeness');
+        this.users_activeness = this.R.$$('/services/boss/user/{userId}/activeness');
         this.admins = this.R.$$('/services/boss/admin/{adminId}');
+        this.admins_activeness = this.R.$$('/services/boss/admin/{adminId}/activeness');
         this.current = this.R.$$('/services/boss/admin/current');
         this.login = this.R.$$('/services/admin/login');
     }
