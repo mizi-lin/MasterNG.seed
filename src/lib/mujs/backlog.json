@@ -1,8 +1,0 @@
-{
-    "1.7.3": "修改判断当前代码运行环境, 添加一堆方法 mu.is.xxxx",
-    "1.7.4": "update mu.storage",
-    "1.7.5": "将 deepDecodeURIComponent 从 mu.param 中移出单独成一个方法",
-    "1.7.7": "添加数组集合的概念, 交集 mu.union(), 并集 mu.intersect(), 差集 mu.minus(), 补集 mu.complement()"
-    "1.7.8": "集合中, 添加摘出pick功能, mu.pick()"
-    "1.7.9": "集合中, 添加摘出pick功能, mu.pick()"
-}

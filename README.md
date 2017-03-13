@@ -24,7 +24,7 @@ Getting Started
 ---------------
 
 #### Prerequisites
-- `node >=5.12`
+- `node >=6.1.0`
 
 #### Quick Start
 ```shell

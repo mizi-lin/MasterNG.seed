@@ -1,24 +1,24 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppCpt} from './views/app/app';
-import {GLOBAL} from './views/common/global';
+import {GLOBAL} from './common/global';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import {RouterModule, Router} from '@angular/router';
 
 import {LoginCpt} from './views/fe/login.cpt';
-import {AuthGuide} from './views/common/auth-guide';
+import {AuthGuide} from './common/auth-guide';
 import {Header} from './views/layout/header';
 
-import {$$ROUTES} from './views/common/routes';
+import {$$ROUTES} from './common/routes';
 import {$$CPT_AGENT} from './views/agent/index';
 import {$$CPT_TENANT} from './views/tenant/index';
-import {$$NamePipe} from './views/common/pipe/name.pipe';
-import {$$ResourcePool} from './views/common/resource-pool';
-import {$$Resource} from './views/common/resource';
-import {$$HttpInterceptor} from './views/common/http-interceptor';
+import {$$NamePipe} from './common/pipe/name.pipe';
+import {$$ResourcePool} from './common/resource-pool';
+import {$$Resource} from './common/resource';
+import {$$HttpInterceptor} from './common/http-interceptor';
 import {$$CPT_ADMIN} from './views/admin/index';
-import {$$DIREC} from './views/common/directive/index';
+import {$$DIREC} from './common/directive/index';
 
 @NgModule({
     /**
