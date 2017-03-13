@@ -1,2 +1,0 @@
-window.mu = mu;
-})(window);
