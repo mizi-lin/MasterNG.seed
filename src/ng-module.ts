@@ -1,24 +1,17 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {AppCpt} from './views/app/app';
 import {GLOBAL} from './common/global';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
-import {RouterModule, Router} from '@angular/router';
 
-import {LoginCpt} from './views/fe/login.cpt';
-import {AuthGuide} from './common/auth-guide';
-import {Header} from './views/layout/header';
+// import {AuthGuide} from './common/auth-guide';
 
-import {$$ROUTES} from './common/routes';
-import {$$CPT_AGENT} from './views/agent/index';
-import {$$CPT_TENANT} from './views/tenant/index';
-import {$$NamePipe} from './common/pipe/name.pipe';
 import {$$ResourcePool} from './common/resource-pool';
 import {$$Resource} from './common/resource';
 import {$$HttpInterceptor} from './common/http-interceptor';
-import {$$CPT_ADMIN} from './views/admin/index';
-import {$$DIREC} from './common/directive/index';
+
+import {AppCpt} from './module/app/app.cpt';
+
 
 @NgModule({
     /**
@@ -29,17 +22,14 @@ import {$$DIREC} from './common/directive/index';
      * RC.5 以后只要在根模块中全局声明
      */
     declarations: [
-        Header,
-        AppCpt,
-        LoginCpt,
-
-        ...$$CPT_TENANT,
-        ...$$CPT_AGENT,
-        ...$$CPT_ADMIN,
-
-        ...$$DIREC,
-
-        $$NamePipe
+        AppCpt
+        // LoginCpt,
+        //
+        // ...$$CPT_TENANT,
+        // ...$$CPT_AGENT,
+        // ...$$CPT_ADMIN,
+        // ...$$DIREC,
+        // $$NamePipe
     ],
 
     /**
@@ -57,8 +47,8 @@ import {$$DIREC} from './common/directive/index';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
-        RouterModule.forRoot($$ROUTES, {useHash: true})
+        HttpModule
+        // RouterModule.forRoot($$ROUTES, {useHash: true})
     ],
 
     /**
@@ -68,19 +58,23 @@ import {$$DIREC} from './common/directive/index';
     providers: [
         {
             provide: Http,
-            useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions, router: Router, G: GLOBAL) => {
-                return new $$HttpInterceptor(xhrBackend, requestOptions, router, G);
+            useFactory: (xhrBackend: XHRBackend,
+                         requestOptions: RequestOptions,
+                         // router: Router,
+                         G: GLOBAL) => {
+                return new $$HttpInterceptor(xhrBackend, requestOptions, G);
             },
+
             deps: [
                 XHRBackend,
                 RequestOptions,
-                Router,
+                // Router,
                 GLOBAL
             ]
         },
 
         GLOBAL,
-        AuthGuide,
+        // AuthGuide,
         $$Resource,
         $$ResourcePool
     ],
@@ -98,53 +92,3 @@ import {$$DIREC} from './common/directive/index';
  */
 export class AppModule {
 }
-
-// bootstrap(App, [
-//
-//     // 全局变量
-//     GLOBAL,
-//
-//     // ROUTER_PROVIDERS,
-//     BrowserModule,
-//     FormsModule,
-//     HttpModule,
-//     RouterModule.forRoot(ROUTES, { useHash: true }),
-//
-//     // 使用 # hash
-//     {
-//         provide: LocationStrategy,
-//         useClass: HashLocationStrategy
-//     },
-//
-//     ConnectionBackend,
-//
-//     XHRBackend,
-//
-//     {
-//         provide: Http,
-//         useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions, router: Router, G: GLOBAL) => {
-//             return new $$HttpInterceptor(xhrBackend, requestOptions, router, G);
-//         },
-//         deps: [
-//             XHRBackend,
-//             RequestOptions,
-//             Router,
-//             GLOBAL
-//         ]
-//     },
-//
-//     $$HttpInterceptor,
-//
-//     $$Resource,
-//     $$ResourcePool,
-//
-//     {
-//         provide: RequestOptions,
-//         useClass: BaseRequestOptions
-//     },
-//     {
-//         provide: ResponseOptions,
-//         useClass: BaseResponseOptions
-//     }
-//
-// ]).catch((error: Error) => console.error(error));

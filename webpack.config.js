@@ -28,7 +28,7 @@ const config = {};
 module.exports = config;
 
 config.resolve = {
-    extensions: ['.html', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
     modules: [
         path.resolve(__dirname, 'node_modules')
     ]
@@ -56,9 +56,16 @@ config.module = {
 
         {
             test: /\.html$/,
-            use: 'raw-loader'
+            use: 'raw-loader',
+            include: path.resolve(__dirname, 'app/'),
         },
 
+        /**
+         * 要使用css, post, sass 必须安装下列包
+         * npm install css-loader --save-dev
+         * npm install postcss postcss-loader --save-dev
+         * npm install node-sass sass sass-loader --save-dev
+         */
         {
             test: /\.(css|scss)$/,
             use: ExtractTextPlugin.extract({
@@ -99,6 +106,15 @@ config.plugins.push(
         }
     }),
 
+    // 修正 -> WARNING in ./~/@angular/core/@angular/core.es5.js 3702:272-293 Critical dependency: the request of a dependency is an expression
+    new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)@angular/,
+        __dirname, // location of your src
+        {
+            // your Angular Async Route paths relative to this root directory
+        }
+    ),
+
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     }),
@@ -111,6 +127,12 @@ config.plugins.push(
     new CopyWebpackPlugin([
         {from: './src/assets', to: 'assets'}
     ]),
+
+    new ExtractTextPlugin({
+        filename: './styles/[name].[contenthash].css',
+        allChunks: true,
+        disable: false
+    }),
 
     new HtmlWebpackPlugin({
         chunkSortMode: 'dependency',
@@ -168,7 +190,6 @@ if(ENV_PROD) {
 
     config.plugins.push(
         new WebpackMd5Hash(),
-        new ExtractTextPlugin('styles.[contenthash].css'),
         new webpack.optimize.UglifyJsPlugin({
             mangle: true,
             compress: {

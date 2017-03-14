@@ -10,10 +10,10 @@ const ROOT_DIR = process.cwd();
 const app = express();
 
 app.set('host', process.env.HOST || 'localhost');
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3333);
 
 app.use(require('morgan')('dev'));
-app.use(express.static(`${ROOT_DIR}/target`));
+app.use(express.static(`${ROOT_DIR}/dist`));
 
 
 //=========================================================
@@ -22,7 +22,7 @@ app.use(express.static(`${ROOT_DIR}/target`));
 const router = new express.Router();
 
 router.get('*', (req, res) => {
-  res.sendFile(`${ROOT_DIR}/target/index.html`);
+  res.sendFile(`${ROOT_DIR}/dist/index.html`);
 });
 
 app.use(router);
