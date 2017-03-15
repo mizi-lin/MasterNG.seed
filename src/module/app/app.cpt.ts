@@ -1,10 +1,7 @@
 import {Component} from '@angular/core';
 import {GLOBAL} from './../../common/global';
 
-import tpl from './layout/abc.html';
 import './layout/abc.scss';
-
-console.debug(tpl);
 
 /**
  * Component 元数据(matadata)
@@ -32,7 +29,7 @@ console.debug(tpl);
 
 @Component({
     selector: 'app',
-    template: `<div>ABCDE</div>`
+    templateUrl: './layout/layout.html'
 })
 
 export class AppCpt {

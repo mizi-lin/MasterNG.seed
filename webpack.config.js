@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const WebpackMd5Hash = require('webpack-md5-hash');
-
+const ForkCheckerPlugin = require('awesome-typescript-loader');
 
 //=========================================================
 //  ENVIRONMENT VARS
@@ -50,14 +50,27 @@ config.module = {
     loaders: [
         {
             test: /\.ts$/,
-            use: 'ts-loader',
+            use: [
+                // 'ts-loader',
+                /**
+                 * 相对于 ts-loader
+                 * 使用awesome-typescript-loader编译速度提升10倍
+                 */
+                'awesome-typescript-loader',
+                /**
+                 * - angular2-template-loader 可以使得 ng2 组件内的 templateUrl|styleUrls 像这样使用：
+                 *		templateUrl: './app.component.html'
+                 *		styleUrls: ['./app.component.css']
+                 */
+                'angular2-template-loader',
+                // 使 angular2 支持 webpack 1.x 懒加载
+                'angular2-router-loader'],
             exclude: /node_modules/
         },
 
         {
             test: /\.html$/,
-            use: 'raw-loader',
-            include: path.resolve(__dirname, 'app/'),
+            use: 'raw-loader'
         },
 
         /**
@@ -94,6 +107,8 @@ config.module = {
 config.plugins = [];
 
 config.plugins.push(
+    new webpack.ProgressPlugin(),
+
     new webpack.LoaderOptionsPlugin({
         debug: true,
         options: {
@@ -106,7 +121,11 @@ config.plugins.push(
         }
     }),
 
-    // 修正 -> WARNING in ./~/@angular/core/@angular/core.es5.js 3702:272-293 Critical dependency: the request of a dependency is an expression
+    /**
+     *  修正 ->
+     *  WARNING in ./~/@angular/core/@angular/core.es5.js 3702:272-293
+     *  Critical dependency: the request of a dependency is an expression
+     */
     new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)@angular/,
         __dirname, // location of your src
@@ -114,6 +133,13 @@ config.plugins.push(
             // your Angular Async Route paths relative to this root directory
         }
     ),
+
+
+    // /**
+    //  * 将 typescript 的类型检查分离出在另一个进程，
+    //  * 这样在打包 webpack 时候不需要等待
+    //  */
+    // new ForkCheckerPlugin(),
 
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
@@ -124,16 +150,26 @@ config.plugins.push(
         minChunks: Infinity
     }),
 
+    /**
+     * 拷贝文件及文件夹
+     */
     new CopyWebpackPlugin([
         {from: './src/assets', to: 'assets'}
+        // {from: './src/module', to: 'module', ignore: ['*.ts', '*.js', '*.map']}
     ]),
 
+    /**
+     * CSS文件生成目录
+     */
     new ExtractTextPlugin({
         filename: './styles/[name].[contenthash].css',
         allChunks: true,
         disable: false
     }),
 
+    /**
+     * HTML文件注入方式
+     */
     new HtmlWebpackPlugin({
         chunkSortMode: 'dependency',
         filename: 'index.html',
