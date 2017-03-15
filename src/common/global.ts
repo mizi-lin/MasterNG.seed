@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CONST} from './const';
-import mu from 'mzmu';
+import * as mu from 'mzmu';
 
 @Injectable()
 export class GLOBAL {
@@ -15,6 +15,8 @@ export class GLOBAL {
     setCurrent(current: any): void {
         // this.isAdmin = !current.agencyId;
         // this.current = current;
+
+        //noinspection TypeScriptUnresolvedFunction
         mu.storage(CONST.CURRENT, current);
     }
 
