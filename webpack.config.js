@@ -28,16 +28,24 @@ const config = {};
 module.exports = config;
 
 config.resolve = {
-    extensions: ['.ts', '.js'],
+    extensions: ['.html', '.ts', '.js'],
     modules: [
         path.resolve(__dirname, 'node_modules')
-    ]
+    ],
+
+    /**
+     * 模块别名定义，方便后续直接引用别名，无须多写长长的地址
+     */
+    alias: {
+        'mu': require.resolve('mzmu')
+    }
 };
 
 config.entry = {
     main: ['./src/main.ts'],
     polyfills: './src/polyfills.ts',
-    vendor: './src/vendor.ts'
+    vendor: './src/vendor.ts',
+    assets: './src/assets.ts'
 };
 
 config.output = {
@@ -134,27 +142,26 @@ config.plugins.push(
         }
     ),
 
-
-    // /**
-    //  * 将 typescript 的类型检查分离出在另一个进程，
-    //  * 这样在打包 webpack 时候不需要等待
-    //  */
-    // new ForkCheckerPlugin(),
-
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-        name: ['vendor', 'polyfills'],
+        name: ['vendor', 'polyfills', 'assets'],
         minChunks: Infinity
+    }),
+
+    new webpack.ProvidePlugin({
+        // 注入环境变量
+        'ENV_CONFIG': path.resolve(__dirname, `./src/env/${NODE_ENV}/env.ts`)
     }),
 
     /**
      * 拷贝文件及文件夹
      */
     new CopyWebpackPlugin([
-        {from: './src/assets', to: 'assets'}
+        {from: './src/assets', to: 'assets'},
+        {from: './src/store', to: 'store'}
         // {from: './src/module', to: 'module', ignore: ['*.ts', '*.js', '*.map']}
     ]),
 
