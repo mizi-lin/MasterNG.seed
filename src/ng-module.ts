@@ -3,14 +3,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {GLOBAL} from './common/global';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
+import {Router, RouterModule} from '@angular/router';
 
 // import {AuthGuide} from './common/auth-guide';
 
 import {$$ResourcePool} from './common/resource-pool';
 import {$$Resource} from './common/resource';
 import {$$HttpInterceptor} from './common/http-interceptor';
+import {$$ROUTES} from './common/routes';
 
 import {AppCpt} from './module/app/app.cpt';
+import {$$CPT_FE} from './module/fe';
 
 
 @NgModule({
@@ -22,20 +25,13 @@ import {AppCpt} from './module/app/app.cpt';
      * RC.5 以后只要在根模块中全局声明
      */
     declarations: [
-        AppCpt
-        // LoginCpt,
-        //
-        // ...$$CPT_TENANT,
-        // ...$$CPT_AGENT,
-        // ...$$CPT_ADMIN,
-        // ...$$DIREC,
-        // $$NamePipe
+        AppCpt,
+        $$CPT_FE
     ],
 
     /**
      * exports 是 declarations 的子集
      * 它可作用于其他模块中的组件模板
-     *
      * 根模块不需要导出任何东西, 它只应用在特性模块中
      */
     // exports: [AppComponent],
@@ -47,8 +43,10 @@ import {AppCpt} from './module/app/app.cpt';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule
-        // RouterModule.forRoot($$ROUTES, {useHash: true})
+        HttpModule,
+
+        // 系统自带 router
+        RouterModule.forRoot($$ROUTES, {useHash: true})
     ],
 
     /**
@@ -60,7 +58,7 @@ import {AppCpt} from './module/app/app.cpt';
             provide: Http,
             useFactory: (xhrBackend: XHRBackend,
                          requestOptions: RequestOptions,
-                         // router: Router,
+                         router: Router,
                          G: GLOBAL) => {
                 return new $$HttpInterceptor(xhrBackend, requestOptions, G);
             },
@@ -68,7 +66,7 @@ import {AppCpt} from './module/app/app.cpt';
             deps: [
                 XHRBackend,
                 RequestOptions,
-                // Router,
+                Router,
                 GLOBAL
             ]
         },

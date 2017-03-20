@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {GLOBAL} from './../../common/global';
 
-import './layout/abc.scss';
-
 /**
  * Component 元数据(matadata)
  *
@@ -29,7 +27,7 @@ import './layout/abc.scss';
 
 @Component({
     selector: 'app',
-    templateUrl: './layout/layout.html'
+    templateUrl: './app.tpl'
 })
 
 export class AppCpt {

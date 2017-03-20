@@ -1,0 +1,42 @@
+{
+    "data": [
+        {
+            "userId": 1,
+            "name": "张三",
+            "age": 30,
+            "desc": "江山如此多娇",
+            "provinceId": 3
+        },
+        {
+            "userId": 2,
+            "name": "李四",
+            "age": 21,
+            "desc": "隔壁王二在哪?",
+            "provinceId": 6
+        },
+        {
+            "userId": 3,
+            "name": "王五",
+            "age": 32,
+            "desc": "我不是老王, 我也不住隔壁",
+            "provinceId": 9
+        }
+    ],
+
+    "province": {
+        "3": {
+            "provinceId": 3,
+            "name": "上海"
+        },
+
+        "6": {
+            "provinceId": 6,
+            "name": "北京"
+        },
+
+        "9": {
+            "provinceId": 9,
+            "name": "广州"
+        }
+    }
+}
