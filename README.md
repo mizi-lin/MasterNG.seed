@@ -1,51 +1,27 @@
-[![Build Status](https://travis-ci.org/r-park/angular2-webpack-seed.svg?branch=master)](https://travis-ci.org/r-park/angular2-webpack-seed)
+# MasterNG
 
+### JS代码规范
 
-# Angular2 Webpack Seed
+#### 参数命名
 
-- Angular2
-- Jasmine
-- Karma
-- SASS
-- Typescript
-- Webpack
-- Webpack Development Server
+1. 常量: 两个单词之间下划线连接，必须全大写；USER_NAME
+2. 变量: 两个单词之间下划线连接，必须全小写 user_name
 
+> 在类里面，private 私有变量以'_'下划线开头区分private 和 public; 如 _user_info;
 
-#### Features
-- Inline external HTML templates into typescript component files (optional)
-- Inline and autoprefix external SCSS files into typescript component files (optional)
-- Inject style tags into `index.html` (optional)
-- Inject script tags into `index.html`
-- Bundle and minify release builds
+> 只有 jQuery DOM 对象可使用'$'开头，如 $div
 
+3. 方法名: 骆驼命名法, 首字母小写; 动名词 如 getUserName
+4. 类，angular模块：Pascal 命名法，首字母大写；名词 如 UserModule, UserDetailComponent
 
-Getting Started
----------------
+##### 其余规则遵循 jslint 配置
 
-#### Prerequisites
-- `node >=6.1.0`
+### CSS规范
 
-#### Quick Start
-```shell
-$ npm install
-$ npm run typings
-$ npm start
-```
+1. 尽量少使用ID选择器
+2. 选择器命名使用中划线链接，.user-name
+3. 若有使用第三方样式库，则选择器命名需要带上前缀以区分，.mn-user-name
 
+------
 
-Usage
------
-
-|Script|Description|
-|---|---|
-|`npm start`|Start webpack development server @ `localhost:3000`|
-|`npm run build`|Lint, test, and build the application to `./target`|
-|`npm run lint`|Lint `.ts` and `.js` files|
-|`npm run lint:js`|Lint `.js` files with eslint|
-|`npm run lint:ts`|Lint `.ts` files with tslint|
-|`npm run server`|Start express server @ `localhost:3000` to serve built artifacts from `./target` (must run `npm run build` first)|
-|`npm test`|Run unit tests with Karma and Jasmine|
-|`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
-|`npm run typings`|Install ambient typings|
-|`npm version`|Bump package.json version, generate CHANGELOG.md, git commit and tag (see [npm version](https://docs.npmjs.com/cli/version))|
+其他的遵循 ant-design 给出的一些 [规范标准](https://ant.design/docs/spec/introduce-cn)
