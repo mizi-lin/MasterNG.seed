@@ -1,0 +1,6 @@
+{
+    "data": {
+        "index.hello": true,
+        "index.welcome": false
+    }
+}
