@@ -1,6 +1,6 @@
 {
   "name": "ngx-seed",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
@@ -13,6 +13,14 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pub:lib": "npm run build:lib && npm publish dist"
+  },
+  "author": "Mizi Lin<amily4555@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amily4555/ng4-seed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amily4555/ng4-seed/issues"
   },
   "private": false,
   "dependencies": {
@@ -33,7 +41,7 @@
     "font-awesome": "^4.7.0",
     "handsontable": "^0.34.0",
     "jquery": "^3.2.1",
-    "masterng": "0.0.2",
+    "masterng": "0.0.6",
     "mzmu": "^1.8.14",
     "ng-zorro-antd": "^0.5.0-rc.3",
     "normalize.css": "^7.0.0",

@@ -1,4 +1,4 @@
-import {MnResource} from '../../lib/mn-req/mn-resource';
+import {MnResource} from 'masterng/mn-req/mn-resource';
 import {Injectable} from '@angular/core';
 
 @Injectable()
