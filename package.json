@@ -1,5 +1,5 @@
 {
-  "name": "ngx-seed",
+  "name": "MasterNG.seed",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
@@ -41,9 +41,9 @@
     "font-awesome": "^4.7.0",
     "handsontable": "^0.34.0",
     "jquery": "^3.2.1",
-    "masterng": "0.0.6",
+    "masterng": "0.0.8",
     "mzmu": "^1.8.14",
-    "ng-zorro-antd": "^0.5.0-rc.3",
+    "ng-zorro-antd": "^0.5.0",
     "normalize.css": "^7.0.0",
     "numbro": "^1.11.0",
     "pikaday": "^1.6.1",
