@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {EchartsService} from '../../lib/mn-echarts/echarts.service';
+import {EchartsService} from 'masterng/mn-echarts/echarts.service';
 import {Http} from '@angular/http';
 
 declare const mu: any;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MnRuleServices} from '../../lib/mn-rule/mn-rule.services';
+import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
 declare const mu: any;
 
 @Component({

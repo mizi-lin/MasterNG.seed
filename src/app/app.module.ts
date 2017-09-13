@@ -10,11 +10,12 @@ import {ResourcePool} from './demo-req/resource-pool';
 import {InitializeService} from './common/initialize.service';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {InitializeFactory} from './common/initialize.factory';
-import {MnI18nServices} from '../lib/mn-i18n/mn-i18n.services';
-import {MnRuleServices} from '../lib/mn-rule/mn-rule.services';
 import {NgZorroAntdModule} from 'ng-zorro-antd/src/release/ng-zorro-antd.module';
-import {MasterNgModule} from '../lib/master-ng.module';
 import {DemoMcComponent} from './demo-mc/demo-mc.component';
+
+import {MasterNgModule} from 'masterng';
+import {MnI18nServices} from 'masterng/mn-i18n/mn-i18n.services';
+import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,6 @@ import {DemoMcComponent} from './demo-mc/demo-mc.component';
     providers: [
         ResourcePool,
         InitializeService,
-
         {
             provide: APP_INITIALIZER,
             // 这里不要用匿名函数, webpack 会报错
@@ -76,7 +76,7 @@ import {DemoMcComponent} from './demo-mc/demo-mc.component';
                 MnRuleServices
             ],
             multi: true
-        },
+        }
     ],
     bootstrap: [AppComponent]
 })

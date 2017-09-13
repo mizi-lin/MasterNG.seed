@@ -23,8 +23,5 @@
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,
         "strictMetadataEmit": true
-    },
-    "files": [
-        "src/lib/index.ts"
-    ]
+    }
 }
