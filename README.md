@@ -9,6 +9,8 @@
 
 > 在类里面，private 私有变量以'_'下划线开头区分private 和 public; 如 _user_info;
 
+> 在方法里，临时变量以'_'结尾结束，以区别于类的私有变量
+
 > 只有 jQuery DOM 对象可使用'$'开头，如 $div
 
 3. 方法名: 骆驼命名法, 首字母小写; 动名词 如 getUserName
