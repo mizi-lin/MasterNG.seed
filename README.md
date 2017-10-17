@@ -27,3 +27,8 @@
 ------
 
 其他的遵循 ant-design 给出的一些 [规范标准](https://ant.design/docs/spec/introduce-cn)
+
+
+### angular-cli update 1.5-rc.0
+
+tsconfig.json 中的 target 需要改为 es2015
