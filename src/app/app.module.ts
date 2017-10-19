@@ -19,6 +19,9 @@ import {MnI18nServices} from 'masterng/mn-i18n/mn-i18n.services';
 import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
 import {MnReqService} from 'masterng/mn-req/mn-req.service';
 import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
+import {DateRangePickerModule} from 'mizi-ngx-daterangepicker';
+import {TreeviewModule} from 'mizi-ngx-treeview';
+import {MonthPickerModule} from 'ngx-month-picker';
 
 @NgModule({
     declarations: [
@@ -71,7 +74,12 @@ import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
             }
         ], {useHash: true}),
 
-        MasterNgModule.forRoot()
+        MasterNgModule.forRoot(),
+
+        NgZorroAntdModule.forRoot(),
+        DateRangePickerModule.forRoot(),
+        TreeviewModule.forRoot(),
+        MonthPickerModule.forRoot()
 
     ],
     providers: [

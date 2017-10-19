@@ -5,6 +5,7 @@ import {MnReqService} from 'masterng/mn-req/mn-req.service';
 import {ResourcePool} from '../demo-req/resource-pool';
 import {Observable} from 'rxjs/Observable';
 import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
+declare const mu: any;
 
 export function InitializeFactory(_initServ: InitializeService,
                                   _i18nServ: MnI18nServices,
@@ -49,7 +50,7 @@ export function InitializeFactory(_initServ: InitializeService,
 
         _reqServ.reqCatch = ((error, caught, url) => {
             if (error.status === 404) {
-                return Observable.empty();
+                return mu.prop(Observable, 'empty')();
             }
         });
 
