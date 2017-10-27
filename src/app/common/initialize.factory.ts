@@ -2,9 +2,9 @@ import {InitializeService} from './initialize.service';
 import {MnI18nServices} from 'masterng/mn-i18n/mn-i18n.services';
 import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
 import {MnReqService} from 'masterng/mn-req/mn-req.service';
-import {ResourcePool} from '../demo-req/resource-pool';
 import {Observable} from 'rxjs/Observable';
 import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
+import {BaseResources} from './base.resources';
 
 declare const mu: any;
 
@@ -12,7 +12,7 @@ export function InitializeFactory(_initServ: InitializeService,
                                   _i18nServ: MnI18nServices,
                                   _ruleServ: MnRuleServices,
                                   _reqServ: MnReqService,
-                                  _rp: ResourcePool,
+                                  _rp: BaseResources,
                                   _ecServ: MnEchartsService) {
     return () => {
 

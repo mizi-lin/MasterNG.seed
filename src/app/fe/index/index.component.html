@@ -1,0 +1,43 @@
+<div class="wrapper index">
+    <div class="bht_"></div>
+    <div class="logo"></div>
+    <div class="login">
+        <div class="form">
+            <h5 [class.ng-invalid]="form.error">{{form.error || '登录到您的账户' }}</h5>
+            <form novalidate
+                  autocomplete="off"
+                  name="form"
+                  #myform="ngForm"
+                  [class.submitted]="myform._submitted"
+                  (ngSubmit)="login()">
+                <mn-fill>
+                    <mn-col class="addon">
+                        <i class="icons icon-user"></i>
+                    </mn-col>
+                    <mn-col [span]="1">
+                        <input type="email" name="username" class="form-control" placeholder="Username"
+                               [(ngModel)]="form.uname" required />
+                    </mn-col>
+                </mn-fill>
+
+                <mn-fill>
+                    <mn-col class="addon">
+                        <i class="icons icon-lock"></i>
+                    </mn-col>
+                    <mn-col [span]="1">
+                        <input type="password" name="password" class="form-control" placeholder="Password"
+                               [(ngModel)]="form.password"
+                               required />
+                    </mn-col>
+                </mn-fill>
+
+                <button class="btn success"
+                        mn-btn
+                        [shape]="'full'">
+                    Login
+                </button>
+                <div class="copyright">&copy;2017 AdMaster. 保留所有权利</div>
+            </form>
+        </div>
+    </div>
+</div>

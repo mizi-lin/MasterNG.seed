@@ -1,19 +1,11 @@
 import {AppComponent} from './app.component';
-import {DemoPanelComponent} from './demo-panel/demo-panel.component';
-import {DemoReqComponent} from './demo-req/demo-req.component';
-import {DemoEchartsComponent} from './demo-echarts/demo-echarts.component';
-import {DemoI18nComponent} from './demo-i18n/demo-i18n.component';
-import {DemoRuleComponent} from './demo-rule/demo-rule.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
-import {ResourcePool} from './demo-req/resource-pool';
 import {InitializeService} from './common/initialize.service';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {InitializeFactory} from './common/initialize.factory';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
-import {DemoMcComponent} from './demo-mc/demo-mc.component';
 import {HeatWidgetComponent} from './common/widgets/heat-widget/heat-widget.component';
-import {DemoEchart2Component} from './demo-echart2/demo-echart2.component';
 import {MasterNgModule} from 'masterng';
 import {MnI18nServices} from 'masterng/mn-i18n/mn-i18n.services';
 import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
@@ -22,67 +14,56 @@ import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
 import {DateRangePickerModule} from 'mizi-ngx-daterangepicker';
 import {TreeviewModule} from 'mizi-ngx-treeview';
 import {MonthPickerModule} from 'ngx-month-picker';
+import {BaseRoutes} from './common/base.routes';
+import {BaseResources} from './common/base.resources';
+import {BeComponent} from './be/be.component';
+import {DashboardComponent} from './be/dashboard/dashboard.component';
+import {FeComponent} from './fe/fe.component';
+import {IndexComponent} from './fe/index/index.component';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {CanActiveRoute} from './common/can-active.route';
+import {BaseServices} from './common/base.services';
+
+const COMPONENTS = [
+    FeComponent,
+    IndexComponent,
+    BeComponent,
+    DashboardComponent
+];
+
+const WIDGETS = [
+    HeatWidgetComponent
+];
+
+const PIPES = [];
 
 @NgModule({
     declarations: [
         AppComponent,
-        DemoPanelComponent,
-        DemoReqComponent,
-        DemoEchartsComponent,
-        DemoI18nComponent,
-        DemoRuleComponent,
-        DemoMcComponent,
-        HeatWidgetComponent,
-        DemoEchart2Component
+        ...WIDGETS,
+        ...PIPES,
+        ...COMPONENTS
     ],
     imports: [
+        // ng module
+        CommonModule,
+        FormsModule,
         BrowserModule,
+        RouterModule.forRoot(BaseRoutes, {useHash: true}),
+        // third party module
         NgZorroAntdModule.forRoot(),
-
-        RouterModule.forRoot([
-            {
-                path: 'panel',
-                component: DemoPanelComponent
-            },
-            {
-                path: 'req',
-                component: DemoReqComponent
-            },
-            {
-                path: 'echarts',
-                component: DemoEchartsComponent
-            },
-
-            {
-                path: 'echarts2',
-                component: DemoEchart2Component
-            },
-
-            {
-                path: 'i18n',
-                component: DemoI18nComponent
-            },
-
-            {
-                path: 'rule',
-                component: DemoRuleComponent
-            },
-
-            {
-                path: 'mc',
-                component: DemoMcComponent
-            }
-        ], {useHash: true}),
-
+        // self module
         MasterNgModule.forRoot(),
-        NgZorroAntdModule.forRoot(),
         DateRangePickerModule.forRoot(),
         TreeviewModule.forRoot(),
         MonthPickerModule.forRoot()
 
     ],
     providers: [
-        ResourcePool,
+        BaseServices,
+        BaseResources,
+        CanActiveRoute,
         InitializeService,
 
         {
@@ -94,7 +75,7 @@ import {MonthPickerModule} from 'ngx-month-picker';
                 MnI18nServices,
                 MnRuleServices,
                 MnReqService,
-                ResourcePool,
+                BaseResources,
                 MnEchartsService
             ],
             multi: true
