@@ -72,7 +72,7 @@ export class CanActiveRoute implements CanActivate {
             return false;
         }
 
-        if (must_token) {
+        if (must_token && token) {
             return true;
         } else {
             this._router.navigate([BaseConst.INDEX_PAGE]);

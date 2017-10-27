@@ -7,6 +7,6 @@ export const environment = {
     production: false,
     test_account: {
         name: 'mizi.lin@masterng.cc',
-        pwd: 'masterng@seed'
+        password: 'masterng@seed'
     }
 };

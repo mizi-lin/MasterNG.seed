@@ -5,6 +5,7 @@ import {MnReqService} from 'masterng/mn-req/mn-req.service';
 import {Observable} from 'rxjs/Observable';
 import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
 import {BaseResources} from './base.resources';
+import {BaseConst} from './base.const';
 
 declare const mu: any;
 
@@ -33,17 +34,7 @@ export function InitializeFactory(_initServ: InitializeService,
             {
                 method: 'append',
                 key: 'X-TOKEN',
-                value: '-----'
-            },
-            {
-                method: 'append',
-                key: 'X-ORIGIN',
-                value: '|||||'
-            },
-            {
-                method: 'append',
-                key: 'X-ACCESS-TOKEN',
-                value: ':::::'
+                value: () => mu.storage(BaseConst.STORAGE_TOKEN)
             }
         ]);
 

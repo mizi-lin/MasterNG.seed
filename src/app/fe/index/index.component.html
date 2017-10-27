@@ -1,9 +1,9 @@
+<div class="bg"></div>
 <div class="wrapper index">
-    <div class="bht_"></div>
     <div class="logo"></div>
     <div class="login">
         <div class="form">
-            <h5 [class.ng-invalid]="form.error">{{form.error || '登录到您的账户' }}</h5>
+            <h5 [class.ng-invalid]="form.error">{{form.error || 'Login.' }}</h5>
             <form novalidate
                   autocomplete="off"
                   name="form"
@@ -16,7 +16,7 @@
                     </mn-col>
                     <mn-col [span]="1">
                         <input type="email" name="username" class="form-control" placeholder="Username"
-                               [(ngModel)]="form.uname" required />
+                               [(ngModel)]="form.name" required />
                     </mn-col>
                 </mn-fill>
 
@@ -36,7 +36,7 @@
                         [shape]="'full'">
                     Login
                 </button>
-                <div class="copyright">&copy;2017 AdMaster. 保留所有权利</div>
+                <div class="copyright">MasterNG.seed 2017</div>
             </form>
         </div>
     </div>

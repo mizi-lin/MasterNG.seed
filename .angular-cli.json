@@ -17,8 +17,9 @@
             "test": "test.ts",
             "tsconfig": "tsconfig.app.json",
             "testTsconfig": "tsconfig.spec.json",
-            "prefix": "mn",
+            "prefix": "mns",
             "styles": [
+                "./app/common/base.scss",
                 "../node_modules/masterng/assets/master-ng.scss",
                 "../node_modules/font-awesome/scss/font-awesome.scss",
                 "../node_modules/normalize.css/normalize.css"

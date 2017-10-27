@@ -1,11 +1,11 @@
-import {AfterViewInit, Component} from '@angular/core';
-import * as $ from 'jquery';
-declare let mu: any;
+import {AfterViewInit, Component, ViewEncapsulation} from '@angular/core';
+declare const mu: any;
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
     title = 'app';
