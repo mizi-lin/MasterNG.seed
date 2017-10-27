@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BaseServices} from '../common/base.services';
 
 @Component({
-  selector: 'mn-be',
-  templateUrl: './be.component.html',
-  styleUrls: ['./be.component.scss']
+    selector: 'mn-be.mns-tags',
+    templateUrl: './be.component.html',
+    styleUrls: ['./be.component.scss']
 })
 export class BeComponent implements OnInit {
 
-  constructor() { }
+    constructor(
+        private _bs: BaseServices
+    ) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    logout() {
+        return this._bs.logout();
+    }
 
 }
