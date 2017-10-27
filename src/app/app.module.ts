@@ -75,7 +75,6 @@ import {MonthPickerModule} from 'ngx-month-picker';
         ], {useHash: true}),
 
         MasterNgModule.forRoot(),
-
         NgZorroAntdModule.forRoot(),
         DateRangePickerModule.forRoot(),
         TreeviewModule.forRoot(),

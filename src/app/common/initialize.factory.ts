@@ -5,6 +5,7 @@ import {MnReqService} from 'masterng/mn-req/mn-req.service';
 import {ResourcePool} from '../demo-req/resource-pool';
 import {Observable} from 'rxjs/Observable';
 import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
+
 declare const mu: any;
 
 export function InitializeFactory(_initServ: InitializeService,
