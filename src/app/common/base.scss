@@ -11,11 +11,20 @@ body {
     font: 14px/1.5 Pingfang SC, Helvetica Neue, Microsoft Yahei, Helvetica, Arial, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
     color: #666;
     min-width: 1240px;
-    // -40px -200px
 
     .mns-tags {
         display: block;
         width: auto;
+        height: 100%;
+
+        .h-auto {
+           height: auto;
+        }
+    }
+
+    app-root {
+        display: block;
+        height: 100%;
     }
 }
 
