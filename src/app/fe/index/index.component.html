@@ -16,6 +16,7 @@
                     </mn-col>
                     <mn-col [span]="1">
                         <input type="email" name="username" class="form-control" placeholder="Username"
+                               autocomplete="off"
                                [(ngModel)]="form.name" required />
                     </mn-col>
                 </mn-fill>
@@ -26,6 +27,7 @@
                     </mn-col>
                     <mn-col [span]="1">
                         <input type="password" name="password" class="form-control" placeholder="Password"
+                               autocomplete="off"
                                [(ngModel)]="form.password"
                                required />
                     </mn-col>
