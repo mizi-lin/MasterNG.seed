@@ -32,3 +32,14 @@
 ### angular-cli update 1.5-rc.0
 
 tsconfig.json 中的 target 需要改为 es2015
+
+### node-sass
+
+若 npm install node-sass 安装不了
+可以把 npm 源换位 cnpm
+
+### git 忽略已提交的文件/文件夹
+
+1. 删除已提交但不需要提交的文件(dist)并push到服务器上删除掉服务器上的文件。
+2. 使用Git-cmd执行 git rm -r --cached dist 
+3. 在.gitignore 中添加需要忽略的文件夹
