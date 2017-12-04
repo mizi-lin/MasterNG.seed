@@ -1,36 +1,31 @@
 import {InitializeService} from './initialize.service';
-import {MnI18nServices} from 'masterng/mn-i18n/mn-i18n.services';
-import {MnRuleServices} from 'masterng/mn-rule/mn-rule.services';
-import {MnReqService} from 'masterng/mn-req/mn-req.service';
 import {Observable} from 'rxjs/Observable';
-import {MnEchartsService} from 'masterng/mn-echarts/mn-echarts.service';
 import {BaseResources} from './base.resources';
 import {BaseConst} from './base.const';
+import {MnCommonServices} from 'masterng/mn-common/services/mn-common.services';
 
 declare const mu: any;
 
-export function InitializeFactory(_initServ: InitializeService,
-                                  _i18nServ: MnI18nServices,
-                                  _ruleServ: MnRuleServices,
-                                  _reqServ: MnReqService,
+export function InitializeFactory(_initService: InitializeService,
                                   _rp: BaseResources,
-                                  _ecServ: MnEchartsService) {
+                                  _mcs: MnCommonServices
+) {
     return () => {
 
         /**
          * 系统初始化，获得相关信息
          */
-        _initServ.initApp();
+        _initService.initApp();
 
         /**
          * 国际化
          */
-        _i18nServ.setConfig({
+        _mcs._i18nService.setConfig({
             lang: 'en',
             prefix: 'assets/i18n'
         });
 
-        _reqServ.setHeaders([
+        _mcs._reqService.setHeaders([
             {
                 method: 'append',
                 key: 'X-TOKEN',
@@ -38,28 +33,28 @@ export function InitializeFactory(_initServ: InitializeService,
             }
         ]);
 
-        _reqServ.setResources(_rp);
+        _mcs._reqService.setResources(_rp);
 
-        _reqServ.reqCatch = ((error, caught, url) => {
+        _mcs._reqService.reqCatch = ((error, caught, url) => {
             if (error.status === 404) {
                 return mu.prop(Observable, 'empty')();
             }
         });
 
-        _reqServ.reqError = ((error, url) => {
+        _mcs._reqService.reqError = ((error, url) => {
         });
 
         /**
          * 规则匹配
          */
-        _ruleServ.setRules({
+        _mcs._ruleService.setRules({
             'aaa.bbb.ccc': true,
             'aaa.bbb.ddd': false,
             'aaa.bbb.eee': false,
             'aaa.bbb.fff': true
         });
 
-        _ecServ.setConfig({
+        _mcs._echartsService.setConfig({
             toolbars: true,
             show_tools: 'toggle'
         });

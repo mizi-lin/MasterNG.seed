@@ -9,3 +9,6 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
+
+// platformBrowserDynamic().bootstrapModule(AppModule, {ngZone: 'noop'}).then(ref => {
+// });

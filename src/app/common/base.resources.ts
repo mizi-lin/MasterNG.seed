@@ -9,4 +9,3 @@ export class BaseResources {
 
     login: any = this._mr.pool('./assets/store/login.json');
 }
-
